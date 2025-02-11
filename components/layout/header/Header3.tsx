@@ -20,13 +20,13 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu,isOffCa
 										<Link className="nav-link active" href="/#about">Sobre mí</Link>
 									</li>
 									<li className="nav-item">
-										<Link className="nav-link" href="/#resume">Publicaciones</Link>
+										<Link className="nav-link" href="/#publicaciones">Publicaciones</Link>
 									</li>
 									<li className="nav-item">
 										<Link className="nav-link" href="/#services">Podcast</Link>
 									</li>
 									<li className="nav-item">
-										<Link className="nav-link" href="/#portfolio">Premios</Link>
+										<Link className="nav-link" href="/#resume">Premios</Link>
 									</li>
 									<li className="nav-item">
 										<Link className="nav-link" href="/#blog">Blog</Link>

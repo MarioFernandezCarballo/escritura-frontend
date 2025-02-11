@@ -4,7 +4,10 @@ import Link from 'next/link'
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { useState, useEffect } from 'react'
-import { fetchPodcastEpisodes, PodcastEpisode } from '@/util/podcast'
+import Podcast from "./podcast/page"
+import Publicaciones from "./publicaciones/page"
+import Contacto from "./contact/page"
+import Premios from "./premios/page"
 
 const swiperOptions = {
 	modules: [Autoplay, Pagination, Navigation],
@@ -66,7 +69,6 @@ interface BlogPost {
 
 export default function Home3() {
     const [posts, setPosts] = useState<BlogPost[]>([]);
-    const [podcastEpisodes, setPodcastEpisodes] = useState<PodcastEpisode[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -80,14 +82,6 @@ export default function Home3() {
                 setPosts(data);
             } catch (error) {
                 console.error('Error fetching posts:', error);
-            }
-
-            // Fetch podcast episodes
-            try {
-                const episodes = await fetchPodcastEpisodes();
-                setPodcastEpisodes(episodes);
-            } catch (error) {
-                console.error('Error fetching podcast episodes:', error);
             }
         };
 
@@ -135,159 +129,9 @@ export default function Home3() {
 										<i className="ri-arrow-right-line ms-2" />
 									</Link>
 								</div>
-								<div className="typical pt-70">
-									<h3>Publicaciones</h3>
-									<div className="container px-0 pt-4">
-										<div className="row">
-											<div className="card-scroll">
-												<div className="cards">
-													<div className="card-custom pt-0" data-index={0}>
-														<div className="card__inner rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3">
-															<div className="card__image-container w-25 rounded-0 zoom-img position-relative">
-																<img className="card__image" src="assets/imgs/home-page-3/typical/Esfera.jpg" alt="zelio" />
-																<Link href="@@link" className="card-image-overlay position-absolute start-0 end-0 w-100 h-100" />
-															</div>
-															<div className="card__content px-md-4 px-3 pt-lg-0 pb-lg-8 pb-5">
-																<div className="card__title mb-0 mb-lg-2">
-																	<p className="text-300 fs-5 mb-0">2020</p>
-																	<Link href="#">
-																		<p className="fs-3 text-dark">Al otro lado de la esfera</p>
-																	</Link>
-																</div>
-																<p className="text-300 mb-lg-auto mb-md-4 mb-3">Set in a dystopian future, "Reflections of Tomorrow" is a thought-provoking novel that explores themes of identity, freedom, and resilience. Through its compelling storyline and well-drawn characters, the book invites readers to ponder the ethical dilemmas of technological advancement and societal change.</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="services" className="my-services pt-70">
-									<h3>Podcast</h3>
-									{podcastEpisodes.map((episode, index) => (
-										<div key={index} className="card-services mb-3 pt-4">
-											<div className="card__inner rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 d-flex">
-												<div className="d-block">
-													<div className="card__icon icon-shape icon-lg rounded-circle">
-														<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none">
-															<g clipPath="url(#clip0_184_1754)">
-																<path className="fill-primary-3" d="M21.1875 7.03125V4.21875H16.8421C15.3434 4.21875 13.9009 4.61381 12.6297 5.36667C12.1617 2.33194 9.51408 0 6.32812 0H5.625V2.8125H2.8125V5.625H0V22.5938H7.15191C9.12042 22.5938 10.1521 23.9276 10.2556 24H13.7444C13.8499 23.9261 14.8715 22.5938 16.8481 22.5938H24V7.03125H21.1875ZM16.8421 5.625H19.7812V18.375H16.8421C15.3722 18.375 13.9563 18.7552 12.7031 19.48V7.00472C12.8124 6.9488 14.3378 5.625 16.8421 5.625ZM7.03125 1.45537C9.43927 1.7947 11.2969 3.85055 11.2969 6.32812V16.5239C10.2659 15.2518 8.75058 14.3825 7.03125 14.1945V1.45537ZM4.21875 4.21875H5.625V15.5625H6.32812C8.69639 15.5625 10.6826 17.2124 11.1779 19.4126C9.95433 18.7316 8.58145 18.375 7.15786 18.375H4.21875V4.21875ZM22.5938 21.1875H16.8481C15.478 21.1875 14.1843 21.6847 13.1731 22.5938H10.8269C9.81567 21.6847 8.52202 21.1875 7.15186 21.1875H1.40625V7.03125H2.8125V19.7812H7.15786C9.69675 19.7812 11.2132 21.1253 11.334 21.1875H12.666C12.7859 21.1258 14.3071 19.7812 16.8421 19.7812H21.1875V8.4375H22.5938V21.1875Z" fill="#FCC6E2" />
-															</g>
-														</svg>
-													</div>
-												</div>
-												<div className="card__content px-md-4 px-3">
-													<div className="card__title mb-0 mb-lg-2">
-														<Link href={episode.link} target="_blank">
-															<p className="fs-4 text-dark">{episode.title}</p>
-														</Link>
-													</div>
-													<p className="text-300 mb-lg-auto mb-md-4 mb-3">{episode.description}</p>
-													<p className="text-primary-3 mb-0">{new Date(episode.pubDate).toLocaleDateString()}</p>
-												</div>
-											</div>
-										</div>
-									))}
-								</div>
-								<div id="resume" className="education pt-70">
-									<div className="row">
-										<div className="col-6">
-											<h3>Education</h3>
-										</div>
-										<div className="col-6">
-											<h3 className="d-none d-md-block">Awards</h3>
-										</div>
-									</div>
-									<div className="row pt-4">
-										<div className="col-md-6 align-self-stretch h-100">
-											<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3 h-100">
-												<div className="icon rounded-circle overflow-hidden d-inline-block">
-													<img src="assets/imgs/home-page-3/education/icon-1.png" alt="Education" />
-												</div>
-												<p className="text-dark fs-5 mt-1 mb-2">Certificates in Digital Content and SEO Writing</p>
-												<ul className="d-flex gap-4 ps-3 border-bottom pb-2 mb-4">
-													<li>
-														<p>2023-2024:</p>
-													</li>
-													<li>
-														<p className="text-primary-3">CM Institute</p>
-													</li>
-												</ul>
-												<div className="icon rounded-circle overflow-hidden d-inline-block">
-													<img src="assets/imgs/home-page-3/education/icon-2.png" alt="Education" />
-												</div>
-												<p className="text-dark fs-5 mt-1 mb-2">Writing Workshops and Continuing Education</p>
-												<ul className="d-flex gap-4 ps-3 border-bottom pb-2 mb-4">
-													<li>
-														<p className="mb-2">2019-2021:</p>
-													</li>
-													<li>
-														<p className="text-primary-3">University of Iowa</p>
-													</li>
-												</ul>
-												<div className="icon rounded-circle overflow-hidden d-inline-block">
-													<img src="assets/imgs/home-page-3/education/icon-3.png" alt="Education" />
-												</div>
-												<p className="text-dark fs-5 mt-1 mb-2">Bachelor of Arts in English Literature</p>
-												<ul className="d-flex gap-4 ps-3 mb-0">
-													<li>
-														<p className="mb-2">2016-2018:</p>
-													</li>
-													<li>
-														<p className="text-primary-3">Bachelor of Arts</p>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div className="col-md-6 align-self-stretch mt-md-0 mt-5">
-											<h3 className="d-block d-md-none">Awards</h3>
-											<div className="card-award rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3 align-self-stretch h-100 overflow-hidden">
-												<div className="position-relative h-100 align-self-stretch align-items-center">
-													<ul className="list-style-1 d-flex ps-3 flex-column mb-0">
-														<li className="position-relative z-1">
-															<p className="fs-5 text-dark mb-2">Columnist for The New Yorker</p>
-															<ul className="list-style-2 d-flex gap-4 ps-3">
-																<li>
-																	<p className="text-primary-3 mb-0">NY Times</p>
-																</li>
-																<li>
-																	<p className="mb-2">2018 - 2020</p>
-																</li>
-															</ul>
-															<p className="mb-4">Worked with various clients, including magazines, websites, and publishing houses, to produce high-quality content across multiple genres.</p>
-														</li>
-														<li className="position-relative z-1">
-															<p className="fs-5 text-dark mb-2">Content Writer at LitHub</p>
-															<ul className="list-style-2 d-flex gap-4 ps-3">
-																<li>
-																	<p className="text-primary-3 mb-0">GitHub</p>
-																</li>
-																<li>
-																	<p className="mb-2">2018 - 2020</p>
-																</li>
-															</ul>
-															<p className="mb-6">Created engaging articles, blog posts, and features for one of the leading literary websites.</p>
-														</li>
-														<li className="position-relative z-1">
-															<p className="fs-5 text-dark mb-2">Editor at The Write Stuff</p>
-															<ul className="list-style-2 d-flex gap-4 ps-3">
-																<li>
-																	<p className="text-primary-3 mb-0">A.Lecturer</p>
-																</li>
-																<li>
-																	<p className="mb-2">2018 - 2020</p>
-																</li>
-															</ul>
-															<p>Overseeing the editorial process, providing guidance, and ensuring the highest standards of content.</p>
-														</li>
-													</ul>
-													<div className="line-left position-absolute top-0 border-start h-md-100 z-0" />
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<Publicaciones />
+								<Podcast />
+								<Premios />
 								<div id="blog" className="blog pt-70">
 									<h3>From Blog</h3>
 									<div className="position-relative pt-4">
@@ -326,64 +170,11 @@ export default function Home3() {
 										</Link>
 									</div>
 								</div>
-								<div id="contact" className="contact pt-70">
-									<h3>Contacto</h3>
-									<div className="d-flex align-items-center gap-5 mt-4">
-										<div className="d-flex flex-column gap-2 position-relative z-1">
-											<Link href="tel:+12345678901">
-												<i className="ri-phone-fill text-primary-3 h6 fw-medium" />
-												<span className="text-300 fs-6 ms-2">+1-234-567-8901</span>
-											</Link>
-											<Link href="mailto:meisa.rosie@gmail.com">
-												<i className="ri-mail-fill text-primary-3 h6 fw-medium" />
-												<span className="text-300 fs-6 ms-2">meisa.rosie@gmail.com</span>
-											</Link>
-										</div>
-										<div className="d-flex flex-column gap-2 position-relative z-1">
-											<Link href="#">
-												<i className="ri-skype-fill text-primary-3 h6 fw-medium" />
-												<span className="text-300 fs-6 ms-https://www.google.com/maps/place/1st+Ave.,+New+York,+NY,+Hoa+K%E1%BB%B3/@40.7630169,-73.9594939,17z/data=!4m6!3m5!1s0x89c258c29e084453:0x2bf768350d30b89e!8m2!3d40.7630169!4d-73.9594939!16zL20vMDV3Z2tm?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D">meisa.rosie</span>
-											</Link>
-											<Link href="#">
-												<i className="ri-map-2-fill text-primary-3 h6 fw-medium" />
-												<span className="text-300 fs-6 ms-2">0811 Erdman Prairie, Joaville CA</span>
-											</Link>
-										</div>
-									</div>
-									<div className="position-relative z-2 mt-4">
-										<h5 className="text-dark mb-3">Let’s connect</h5>
-										<form action="#">
-											<div className="row g-3">
-												<div className="col-md-6 ">
-													<input type="text" className="form-control bg-3 border border-secondary-3 rounded-3" id="name" name="name" placeholder="Your name" aria-label="username" />
-												</div>
-												<div className="col-md-6">
-													<input type="text" className="form-control bg-3 border border-secondary-3 rounded-3" id="phone" name="phone" placeholder="Phone" aria-label="phone" />
-												</div>
-												<div className="col-md-6">
-													<input type="text" className="form-control bg-3 border border-secondary-3 rounded-3" id="email" name="email" placeholder="Emaill" aria-label="email" />
-												</div>
-												<div className="col-md-6">
-													<input type="text" className="form-control bg-3 border border-secondary-3 rounded-3" id="subject" name="subject" placeholder="Subject" aria-label="subject" />
-												</div>
-												<div className="col-12">
-													<textarea className="form-control bg-3 border border-secondary-3 rounded-3" id="message" name="message" placeholder="Message" aria-label="With textarea" defaultValue={""} />
-												</div>
-												<div className="col-12">
-													<button type="submit" className="btn btn-secondary-3 fw-medium">
-														Send Message
-														<i className="ri-arrow-right-up-line fw-medium" />
-													</button>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
+								<Contacto />
 							</div>
 						</div>
 					</div>
 				</section>
-
 			</Layout>
 		</>
 	)
