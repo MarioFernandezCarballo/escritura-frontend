@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "title": "The Power of Storytelling: How to Create Engaging Narratives",
+        "img": "assets/imgs/home-page-3/blog/img-1.png",
+        "category": "Inspiration",
+        "author": "Mario Carballo",
+        "date": "25 April 2023",
+        "excerpt": "Storytelling is at the heart of human experience. In this post, I delve into the key elements that make a story compelling and share techniques to enhance your narrative skills."
+    },
+    {
+        "id": 2,
+        "title": "Overcoming Writer's Block: Tips and Strategies",
+        "img": "assets/imgs/home-page-3/blog/img-2.png",
+        "category": "Author Insights",
+        "author": "Mario Carballo",
+        "date": "20 April 2023",
+        "excerpt": "Every writer faces writer's block at some point. Here, I explore effective methods to overcome this common challenge and reignite your creative spark."
+    },
+    {
+        "id": 3,
+        "title": "The Art of Character Development",
+        "img": "assets/imgs/home-page-3/blog/img-1.png",
+        "category": "Writing Tips",
+        "author": "Mario Carballo",
+        "date": "15 April 2023",
+        "excerpt": "Learn how to create memorable characters that resonate with readers. Discover techniques for developing complex personalities and compelling backstories."
+    },
+    {
+        "id": 4,
+        "title": "Finding Your Voice as a Writer",
+        "img": "assets/imgs/home-page-3/blog/img-2.png",
+        "category": "Writing Craft",
+        "author": "Mario Carballo",
+        "date": "10 April 2023",
+        "excerpt": "Developing your unique writing voice is crucial for standing out. This post explores ways to discover and refine your authentic writing style."
+    },
+    {
+        "id": 5,
+        "title": "The Impact of Digital Media on Modern Storytelling",
+        "img": "assets/imgs/home-page-3/blog/img-1.png",
+        "category": "Digital Writing",
+        "author": "Mario Carballo",
+        "date": "5 April 2023",
+        "excerpt": "Explore how digital platforms are transforming the way we tell and consume stories in the modern age."
+    },
+    {
+        "id": 6,
+        "title": "Writing for Different Audiences",
+        "img": "assets/imgs/home-page-3/blog/img-2.png",
+        "category": "Writing Skills",
+        "author": "Mario Carballo",
+        "date": "1 April 2023",
+        "excerpt": "Understanding your audience is key to effective writing. Learn strategies for adapting your writing style to different readers and purposes."
+    }
+]
