@@ -33,7 +33,7 @@ export default function CreatePost() {
     onSubmit: async (values) => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/blog/posts', {
+        const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default function CreatePost() {
           },
           body: JSON.stringify({
             ...values,
-            tags: values.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
+            tags: values.tags.trim() // Send tags as a string directly
           }),
         });
 

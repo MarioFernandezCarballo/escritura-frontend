@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout"
 import Link from 'next/link'
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { useState, useEffect } from 'react'
 
 const swiperOptions = {
 	modules: [Autoplay, Pagination, Navigation],
@@ -53,7 +54,34 @@ const swiperOptions2 = {
 }
 
 
+interface BlogPost {
+    id: number;
+    title: string;
+    content: string;
+    image_url: string;
+    tags: string[];
+    created_at?: string;
+}
+
 export default function Home3() {
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch posts');
+                }
+                const data = await response.json();
+                setPosts(data);
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+            }
+        };
+
+        fetchPosts();
+    }, []);
 
 	return (
 		<>
@@ -314,84 +342,28 @@ export default function Home3() {
 									<div className="position-relative pt-4">
 										<Swiper {...swiperOptions2} className="swiper slider-two pb-6 position-relative">
 											<div className="swiper-wrapper">
-												<SwiperSlide>
-													<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3">
-														<p className="fs-18 text-primary-3">Inspiration</p>
-														<div className="d-flex align-items-center gap-5">
-															<div>
-																<p className="fs-26 text-dark">The Power of Storytelling: How to Create Engaging Narratives</p>
-																<p className="mb-0">Storytelling is at the heart of human experience. In this post, I delve into the key elements that make a story compelling and share techniques to enhance your narrative skills.</p>
+												{posts.map((post, index) => (
+													<SwiperSlide key={post.id}>
+														<Link href={`/blog/${post.id}`}>
+															<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3 zoom-img">
+																<p className="fs-18 text-primary-3">{Array.isArray(post.tags) ? post.tags.join(', ') : 'Blog'}</p>
+																<div className="d-flex align-items-center gap-5">
+																	<div>
+																		<p className="fs-26 text-dark">{post.title}</p>
+																		<p className="mb-0">{post.content.replace(/<[^>]*>/g, '').substring(0, 200)}...</p>
+																	</div>
+																	<div className="image-right">
+																		<img 
+																			className="rounded-3 w-100 h-100" 
+																			src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
+																			alt={post.title} 
+																		/>
+																	</div>
+																</div>
 															</div>
-															<div className="image-right">
-																<img className="rounded-3 w-100 h-100" src="assets/imgs/home-page-3/blog/img-1.png" alt="zelio" />
-															</div>
-														</div>
-													</div>
-													<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3">
-														<p className="fs-18 text-primary-3">Author Insights</p>
-														<div className="d-flex align-items-center gap-5">
-															<div>
-																<p className="fs-26 text-dark">Overcoming Writer's Block: Tips and Strategies</p>
-																<p className="mb-0">Eery writer faces writer's block at some point. Here, I explore effective methods to overcome this common challenge and reignite your creative spark</p>
-															</div>
-															<div className="image-right">
-																<img className="rounded-3 w-100 h-100" src="assets/imgs/home-page-3/blog/img-2.png" alt="zelio" />
-															</div>
-														</div>
-													</div>
-												</SwiperSlide>
-												<SwiperSlide>
-													<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3">
-														<p className="fs-18 text-primary-3">Inspiration</p>
-														<div className="d-flex align-items-center gap-5">
-															<div>
-																<p className="fs-26 text-dark">The Power of Storytelling: How to Create Engaging Narratives</p>
-																<p className="mb-0">Storytelling is at the heart of human experience. In this post, I delve into the key elements that make a story compelling and share techniques to enhance your narrative skills.</p>
-															</div>
-															<div className="image-right">
-																<img className="rounded-3 w-100 h-100" src="assets/imgs/home-page-3/blog/img-1.png" alt="zelio" />
-															</div>
-														</div>
-													</div>
-													<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3">
-														<p className="fs-18 text-primary-3">Author Insights</p>
-														<div className="d-flex align-items-center gap-5">
-															<div>
-																<p className="fs-26 text-dark">Overcoming Writer's Block: Tips and Strategies</p>
-																<p className="mb-0">Every writer faces writer's block at some point. Here, I explore effective methods to overcome this common challenge and reignite your creative spark</p>
-															</div>
-															<div className="image-right">
-																<img className="rounded-3 w-100 h-100" src="assets/imgs/home-page-3/blog/img-2.png" alt="zelio" />
-															</div>
-														</div>
-													</div>
-												</SwiperSlide>
-												<SwiperSlide>
-													<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3">
-														<p className="fs-18 text-primary-3">Inspiration</p>
-														<div className="d-flex align-items-center gap-5">
-															<div>
-																<p className="fs-26 text-dark">The Power of Storytelling: How to Create Engaging Narratives</p>
-																<p className="mb-0">Storytelling is at the heart of human experience. In this post, I delve into the key elements that make a story compelling and share techniques to enhance your narrative skills.</p>
-															</div>
-															<div className="image-right">
-																<img className="rounded-3 w-100 h-100" src="assets/imgs/home-page-3/blog/img-1.png" alt="zelio" />
-															</div>
-														</div>
-													</div>
-													<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3">
-														<p className="fs-18 text-primary-3">Author Insights</p>
-														<div className="d-flex align-items-center gap-5">
-															<div>
-																<p className="fs-26 text-dark">Overcoming Writer's Block: Tips and Strategies</p>
-																<p className="mb-0">Every writer faces writer's block at some point. Here, I explore effective methods to overcome this common challenge and reignite your creative spark</p>
-															</div>
-															<div className="image-right">
-																<img className="rounded-3 w-100 h-100" src="assets/imgs/home-page-3/blog/img-2.png" alt="zelio" />
-															</div>
-														</div>
-													</div>
-												</SwiperSlide>
+														</Link>
+													</SwiperSlide>
+												))}
 											</div>
 										</Swiper>
 										<div className="swiper-pagination" />
