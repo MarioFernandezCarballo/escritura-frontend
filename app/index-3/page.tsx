@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Podcast from "./podcast/page"
 import Publicaciones from "./publicaciones/page"
 import Contacto from "./contact/page"
@@ -41,7 +42,6 @@ const swiperOptions = {
 const swiperOptions2 = {
 	modules: [Autoplay, Pagination, Navigation],
 	slidesPerView: 1,
-	// spaceBetween: 20,
 	slidesPerGroup: 1,
 	centeredSlides: false,
 	loop: true,
@@ -57,7 +57,6 @@ const swiperOptions2 = {
 	},
 }
 
-
 interface BlogPost {
     id: number;
     title: string;
@@ -72,7 +71,6 @@ export default function Home3() {
 
     useEffect(() => {
         const fetchData = async () => {
-            // Fetch blog posts
             try {
                 const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts');
                 if (!response.ok) {
@@ -95,80 +93,184 @@ export default function Home3() {
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-4 offset-lg-1">
-								<div className="position-relative d-inline-block">
-									<img className="rounded-5" src="assets/imgs/home-page-3/hero/img-1.png" alt="zelio" />
-									<p style={{ fontFamily: "'Joland Colline', sans-serif" }} className="h1 text-primary-3 position-absolute top-100 start-50 mt-3 translate-middle pt-8 ">MarioCarballo</p>
-								</div>
-								<div className="d-flex flex-column gap-2 mt-9 position-relative z-1">
-									<Link href="mailto:mariofernandezcarballo@gmail.com">
-										<i className="ri-mail-fill text-primary-3 fs-7" />
-										<span className="text-300 fs-6 ms-2">mariofernandezcarballo@gmail.com</span>
-									</Link>
-									<Link href="https://x.com/MarioFCarballo">
-										<i className="ri-twitter-x-line text-primary-3 fs-7" />
-										<span className="text-300 fs-6 ms-2">@MarioFCarballo</span>
-									</Link>
-									<Link href="https://bsky.app/profile/mariocarballo.bsky.social">
-										<i className="ri-bluesky-fill text-primary-3 fs-7" />
-										<span className="text-300 fs-6 ms-2">@mariocarballo.bsky.social</span>
-									</Link>
-									
-								</div>
+								<motion.div 
+									className="position-relative d-inline-block"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.6 }}
+								>
+									<motion.img 
+										className="rounded-5" 
+										src="assets/imgs/home-page-3/hero/img-1.png" 
+										alt="zelio"
+										whileHover={{ scale: 1.05 }}
+										transition={{ type: "spring", stiffness: 300 }}
+									/>
+									<motion.p 
+										style={{ fontFamily: "'Joland Colline', sans-serif" }} 
+										className="h1 text-primary-3 position-absolute top-100 start-50 mt-3 translate-middle pt-8"
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.6, delay: 0.2 }}
+									>
+										MarioCarballo
+									</motion.p>
+								</motion.div>
+								<motion.div 
+									className="d-flex flex-column gap-2 mt-9 position-relative z-1"
+									initial={{ opacity: 0, x: -20 }}
+									animate={{ opacity: 1, x: 0 }}
+									transition={{ duration: 0.6, delay: 0.4 }}
+								>
+									<motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
+										<Link href="mailto:mariofernandezcarballo@gmail.com">
+											<i className="ri-mail-fill text-primary-3 fs-7" />
+											<span className="text-300 fs-6 ms-2">mariofernandezcarballo@gmail.com</span>
+										</Link>
+									</motion.div>
+									<motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
+										<Link href="https://x.com/MarioFCarballo">
+											<i className="ri-twitter-x-line text-primary-3 fs-7" />
+											<span className="text-300 fs-6 ms-2">@MarioFCarballo</span>
+										</Link>
+									</motion.div>
+									<motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
+										<Link href="https://bsky.app/profile/mariocarballo.bsky.social">
+											<i className="ri-bluesky-fill text-primary-3 fs-7" />
+											<span className="text-300 fs-6 ms-2">@mariocarballo.bsky.social</span>
+										</Link>
+									</motion.div>
+								</motion.div>
 							</div>
 							<div className="col-lg-7 pt-lg-0 pt-8">
-								<div id="about" className="hero-3 pe-lg-5 border-bottom pb-7">
-									<span className="text-primary-3">Shaping Narratives, Igniting Minds</span>
-									<h2 className="text-300 my-3">Crafting Stories <span className="text-dark">with Passion: Discover the Work</span> of Meisa</h2>
-									<p className="mb-8">Welcome to the creative world of Meisa Rosie, where words are crafted into captivating stories and insightful content. Explore her journey as an award-winning writer and discover how she brings imagination to life through her unique voice and compelling narratives.</p>
-									<Link href="assets/resume.pdf" className="btn btn-secondary-3 me-2" target="_blank">
-										Download CV
-										<i className="ri-download-line ms-2" />
-									</Link>
-									<Link href="#contact" className="btn btn-outline-secondary-3 d-inline-flex align-items-center">
-										<span>Hire me</span>
-										<i className="ri-arrow-right-line ms-2" />
-									</Link>
-								</div>
+								<motion.div 
+									id="about" 
+									className="hero-3 pe-lg-5 border-bottom pb-7"
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.6, delay: 0.2 }}
+								>
+									<motion.span 
+										className="text-primary-3"
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: 0.3 }}
+									>
+										Shaping Narratives, Igniting Minds
+									</motion.span>
+									<motion.h2 
+										className="text-300 my-3"
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: 0.4 }}
+									>
+										Crafting Stories <span className="text-dark">with Passion: Discover the Work</span> of Meisa
+									</motion.h2>
+									<motion.p 
+										className="mb-8"
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: 0.5 }}
+									>
+										Welcome to the creative world of Meisa Rosie, where words are crafted into captivating stories and insightful content. Explore her journey as an award-winning writer and discover how she brings imagination to life through her unique voice and compelling narratives.
+									</motion.p>
+									<motion.div
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: 0.6 }}
+									>
+										<motion.div 
+											className="d-inline-block"
+											whileHover={{ scale: 1.05 }}
+											whileTap={{ scale: 0.95 }}
+										>
+											<Link href="assets/resume.pdf" className="btn btn-secondary-3 me-2" target="_blank">
+												Download CV
+												<i className="ri-download-line ms-2" />
+											</Link>
+										</motion.div>
+										<motion.div 
+											className="d-inline-block"
+											whileHover={{ scale: 1.05 }}
+											whileTap={{ scale: 0.95 }}
+										>
+											<Link href="#contact" className="btn btn-outline-secondary-3 d-inline-flex align-items-center">
+												<span>Hire me</span>
+												<i className="ri-arrow-right-line ms-2" />
+											</Link>
+										</motion.div>
+									</motion.div>
+								</motion.div>
 								<Publicaciones />
 								<Podcast />
 								<Premios />
 								<div id="blog" className="blog pt-70">
-									<h3>From Blog</h3>
+									<motion.h3
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4 }}
+									>
+										From Blog
+									</motion.h3>
 									<div className="position-relative pt-4">
 										<Swiper {...swiperOptions2} className="swiper slider-two pb-6 position-relative">
-											<div className="swiper-wrapper">
-												{posts.map((post, index) => (
-													<SwiperSlide key={post.id}>
-														<Link href={`/blog/${post.id}`}>
-															<div className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3 zoom-img">
-																<p className="fs-18 text-primary-3">{Array.isArray(post.tags) ? post.tags.join(', ') : 'Blog'}</p>
-																<div className="d-flex align-items-center gap-5">
-																	<div>
-																		<p className="fs-26 text-dark">{post.title}</p>
-																		<p className="mb-0">{post.content.replace(/<[^>]*>/g, '').substring(0, 200)}...</p>
-																	</div>
-																	<div className="image-right">
-																		<img 
-																			className="rounded-3 w-100 h-100" 
-																			src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
-																			alt={post.title} 
-																		/>
-																	</div>
+											{posts.map((post, index) => (
+												<SwiperSlide key={post.id}>
+													<Link href={`/blog/${post.id}`}>
+														<motion.div 
+															className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3 zoom-img"
+															initial={{ opacity: 0, y: 20 }}
+															animate={{ opacity: 1, y: 0 }}
+															transition={{ duration: 0.4, delay: index * 0.1 }}
+															whileHover={{ 
+																scale: 1.02,
+																boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)"
+															}}
+														>
+															<motion.p 
+																className="fs-18 text-primary-3"
+																initial={{ opacity: 0 }}
+																animate={{ opacity: 1 }}
+																transition={{ duration: 0.3, delay: 0.1 }}
+															>
+																{Array.isArray(post.tags) ? post.tags.join(', ') : 'Blog'}
+															</motion.p>
+															<motion.div 
+																className="d-flex align-items-center gap-5"
+																initial={{ opacity: 0 }}
+																animate={{ opacity: 1 }}
+																transition={{ duration: 0.3, delay: 0.2 }}
+															>
+																<div>
+																	<p className="fs-26 text-dark">{post.title}</p>
+																	<p className="mb-0">{post.content.replace(/<[^>]*>/g, '').substring(0, 200)}...</p>
 																</div>
-															</div>
-														</Link>
-													</SwiperSlide>
-												))}
-											</div>
+																<div className="image-right">
+																	<img 
+																		className="rounded-3 w-100 h-100" 
+																		src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
+																		alt={post.title} 
+																	/>
+																</div>
+															</motion.div>
+														</motion.div>
+													</Link>
+												</SwiperSlide>
+											))}
 										</Swiper>
 										<div className="swiper-pagination" />
 									</div>
-									<div className="text-center mt-4">
+									<motion.div 
+										className="text-center mt-4"
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: 0.3 }}
+									>
 										<Link href="/blog" className="btn btn-secondary-3">
 											View All Posts
 											<i className="ri-arrow-right-line ms-2" />
 										</Link>
-									</div>
+									</motion.div>
 								</div>
 								<Contacto />
 							</div>
