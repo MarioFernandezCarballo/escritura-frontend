@@ -1,7 +1,6 @@
 
 'use client'
 import React, { useEffect, useState } from "react"
-import data from "../../util/blog.json"
 import BlogCard1 from "./BlogCard1"
 import BlogCard2 from "./BlogCard2"
 import BlogCard3 from "./BlogCard3"
@@ -15,31 +14,52 @@ interface BlogPostProps {
 }
 
 export default function BlogPost({ style, showItem, showPagination }: BlogPostProps) {
+    const [posts, setPosts] = useState<any[]>([])
+    const [loading, setLoading] = useState<boolean>(true)
+    const [error, setError] = useState<string>("")
     const [currentPage, setCurrentPage] = useState<number>(1)
-    // const showLimit = showItem 
     const paginationItem: number = 4
-
     const [pagination, setPagination] = useState<number[]>([])
     const [limit, setLimit] = useState<number>(showItem || 0)
-    const [pages, setPages] = useState<number>(Math.ceil(data.length / limit))
+    const [pages, setPages] = useState<number>(0)
 
     useEffect(() => {
-        createPagination()
-    }, [limit, pages, data.length])
+        const fetchPosts = async () => {
+            try {
+                const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts')
+                if (!response.ok) {
+                    throw new Error('Error al obtener los posts')
+                }
+                const data = await response.json()
+                setPosts(data)
+                setPages(Math.ceil(data.length / limit))
+                setLoading(false)
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'Error desconocido')
+                setLoading(false)
+            }
+        }
+        fetchPosts()
+    }, [limit])
+
+    useEffect(() => {
+        if (posts.length > 0) {
+            createPagination()
+        }
+    }, [limit, pages, posts.length])
 
     const createPagination = (): void => {
-        // set pagination
-        const arr: number[] = new Array(Math.ceil(data.length / limit))
+        const arr: number[] = new Array(Math.ceil(posts.length / limit))
             .fill(undefined)
             .map((_, idx) => idx + 1)
 
         setPagination(arr)
-        setPages(Math.ceil(data.length / limit))
+        setPages(Math.ceil(posts.length / limit))
     }
 
     const startIndex: number = currentPage * limit - limit
     const endIndex: number = startIndex + limit
-    const getPaginatedProducts: any[] = data.slice(startIndex, endIndex)
+    const getPaginatedProducts: any[] = posts.slice(startIndex, endIndex)
 
     const start: number = Math.floor((currentPage - 1) / paginationItem) * paginationItem
     const end: number = start + paginationItem
@@ -60,8 +80,10 @@ export default function BlogPost({ style, showItem, showPagination }: BlogPostPr
         <>
 
 
-            {getPaginatedProducts.length === 0 && (
-                <h3>No Products Found </h3>
+            {loading && <h3>Cargando posts...</h3>}
+            {error && <h3>Error: {error}</h3>}
+            {!loading && !error && getPaginatedProducts.length === 0 && (
+                <h3>No se encontraron posts</h3>
             )}
 
             {getPaginatedProducts.map(item => (

@@ -179,26 +179,44 @@ export default function Home3() {
 										animate={{ opacity: 1, y: 0 }}
 										transition={{ duration: 0.4, delay: 0.6 }}
 									>
-										<motion.div 
-											className="d-inline-block"
-											whileHover={{ scale: 1.05 }}
-											whileTap={{ scale: 0.95 }}
+										<form 
+											className="d-inline-block d-flex"
+											onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
+												e.preventDefault();
+												const form = e.currentTarget;
+												const email = form.email.value;
+												try {
+													const response = await fetch('https://mariocarballo.pythonanywhere.com/mailing/subscribers', {
+														method: 'POST',
+														headers: {
+															'Content-Type': 'application/json',
+														},
+														body: JSON.stringify({ email }),
+													});
+													if (!response.ok) {
+														throw new Error('Failed to subscribe');
+													}
+													alert('Subscribed successfully!');
+												} catch (error) {
+													console.error('Error subscribing:', error);
+													alert('Subscription failed. Please try again.');
+												}
+											}}
 										>
-											<Link href="assets/resume.pdf" className="btn btn-secondary-3 me-2" target="_blank">
-												Download CV
-												<i className="ri-download-line ms-2" />
-											</Link>
-										</motion.div>
-										<motion.div 
+											<input type="email" name="email" placeholder="Enter your email" required className="form-control me-2" />
+											<motion.div 
 											className="d-inline-block"
 											whileHover={{ scale: 1.05 }}
 											whileTap={{ scale: 0.95 }}
 										>
 											<Link href="#contact" className="btn btn-outline-secondary-3 d-inline-flex align-items-center">
-												<span>Hire me</span>
-												<i className="ri-arrow-right-line ms-2" />
+												<button type="submit" className="btn btn-secondary-3">
+													Subscribe to Newsletter
+													<i className="ri-mail-line ms-2" />
+												</button>
 											</Link>
-										</motion.div>
+											</motion.div>
+										</form>
 									</motion.div>
 								</motion.div>
 								<Publicaciones />
