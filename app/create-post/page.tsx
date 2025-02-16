@@ -2,21 +2,13 @@
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import { useRouter } from 'next/navigation';
+import { useCreatePost } from '@/util/api';
 import Layout from "@/components/layout/Layout";
 
 export default function CreatePost() {
-  const [error, setError] = useState('');
-  const router = useRouter();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.push('/login');
-    }
-  }, [router]);
+  const { createPost, error, loading } = useCreatePost();
 
   const formik = useFormik({
     initialValues: {
@@ -31,30 +23,11 @@ export default function CreatePost() {
       tags: Yup.string(),
       image_url: Yup.string().url('Must be a valid URL')
     }),
-    onSubmit: async (values) => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            ...values,
-            tags: values.tags.trim()
-          }),
-        });
-
-        if (response.ok) {
-          router.push('/blog');
-        } else {
-          const data = await response.json();
-          setError(data.error || 'Failed to create post');
-        }
-      } catch (err) {
-        setError('An error occurred. Please try again.');
-      }
+    onSubmit: (values) => {
+      createPost({
+        ...values,
+        tags: values.tags.split(',').map(tag => tag.trim())
+      });
     },
   });
 

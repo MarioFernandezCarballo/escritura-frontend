@@ -1,25 +1,8 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useTheme } from "@/util/useTheme"
 
 export default function ThemeSwitch() {
-	const [theme, setTheme] = useState<string>("dark")
-
-	useEffect(() => {
-		// Access localStorage only on the client-side
-		const savedTheme = localStorage?.getItem("theme") || "dark"
-		setTheme(savedTheme)
-		document.documentElement.setAttribute("data-bs-theme", savedTheme)
-	}, [])
-
-	useEffect(() => {
-		// Update localStorage and HTML tag when theme changes
-		localStorage.setItem("theme", theme)
-		document.documentElement.setAttribute("data-bs-theme", theme)
-	}, [theme])
-
-	const toggleTheme = () => {
-		setTheme(prevTheme => (prevTheme === "light" ? "dark" : "light"))
-	}
+	const { theme, toggleTheme } = useTheme()
 
 	return (
 		<>

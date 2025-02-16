@@ -1,42 +1,15 @@
 'use client'
 import Layout from "@/components/layout/Layout"
 import { useParams } from "next/navigation"
-import { useEffect, useState } from "react"
-
-interface Post {
-    id: number;
-    title: string;
-    content: string;
-    tags: string | null;
-    image_url: string | null;
-    created_at: string;
-}
+import { useEffect } from "react"
+import { useSinglePost } from "@/util/api"
 
 export default function BlogDetails() {
     const Router = useParams();
-    const [blogPost, setBlogPost] = useState<Post | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const id = Router?.id;
+    const id = Router?.id as string;
+    const { post: blogPost, loading, error, fetchPost } = useSinglePost(id);
 
     useEffect(() => {
-        const fetchPost = async () => {
-            if (!id) return;
-            
-            try {
-                const response = await fetch(`https://mariocarballo.pythonanywhere.com//blog/posts/${id}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch post');
-                }
-                const data = await response.json();
-                setBlogPost(data);
-            } catch (err) {
-                setError(err instanceof Error ? err.message : 'An error occurred');
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchPost();
     }, [id]);
 
@@ -70,10 +43,10 @@ export default function BlogDetails() {
                             )}
                             <h1 className="display-4 fw-bold mb-4">{blogPost.title}</h1>
                             <div className="mb-4 text-muted">
-                                <time>{new Date(blogPost.created_at).toLocaleDateString()}</time>
-                                {blogPost.tags && (
+                                <time>{blogPost.created_at ? new Date(blogPost.created_at).toLocaleDateString() : ''}</time>
+                                {blogPost.tags && blogPost.tags.length > 0 && (
                                     <div className="mt-2 d-flex gap-2 flex-wrap">
-                                        {blogPost.tags.split(',').map((tag: string, index: number) => (
+                                        {blogPost.tags.map((tag: string, index: number) => (
                                             <span 
                                                 key={index}
                                                 className="badge bg-light text-dark"

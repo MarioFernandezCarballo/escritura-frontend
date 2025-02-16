@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import NavSocial from '../NavSocial'
 
 export default function Footer3() {
 	return (
@@ -19,20 +20,7 @@ export default function Footer3() {
 								<a href="/#blog" className="fs-6"> Blog </a>
 								<a href="/#contact" className="fs-6"> Contacto </a>
 							</div>
-							<div className="navbar-social d-flex justify-content-center gap-3">
-								<a href="http://facebook.com">
-									<i className="ri-facebook-circle-fill fs-18" />
-								</a>
-								<a href="http://twitter.com">
-									<i className="ri-twitter-x-fill fs-18" />
-								</a>
-								<a href="http://linkedin.com">
-									<i className="ri-linkedin-fill fs-18" />
-								</a>
-								<a href="http://github.com">
-									<i className="ri-github-fill fs-18" />
-								</a>
-							</div>
+							<NavSocial />
 						</div>
 					</div>
 				</div>

@@ -2,13 +2,11 @@
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@/util/api';
 import Layout from "@/components/layout/Layout";
 
 export default function Login() {
-  const [error, setError] = useState('');
-  const router = useRouter();
+  const { login, error, loading } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -19,26 +17,8 @@ export default function Login() {
       username: Yup.string().required('Required'),
       password: Yup.string().required('Required'),
     }),
-    onSubmit: async (values) => {
-      try {
-        const response = await fetch('https://mariocarballo.pythonanywhere.com/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          localStorage.setItem('token', data.access_token);
-          router.push('/create-post');
-        } else {
-          setError('Invalid credentials');
-        }
-      } catch (err) {
-        setError('An error occurred. Please try again.');
-      }
+    onSubmit: (values) => {
+      login(values);
     },
   });
 

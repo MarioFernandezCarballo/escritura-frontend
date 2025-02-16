@@ -1,10 +1,14 @@
 import ThemeSwitch from '@/components/elements/ThemeSwitch'
 import Link from 'next/link'
+import { useTheme } from '@/util/useTheme'
 import OffCanvas from '../OffCanvas'
 import MobileMenu from '../MobileMenu'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import NavSocial from '../NavSocial'
+
 
 export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffCanvas, handleOffCanvas }: any) {
+	const { theme } = useTheme()
 	return (
 		<>
 			<motion.header
@@ -24,7 +28,7 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 							whileHover={{ scale: 1.05 }}
 							transition={{ type: "spring", stiffness: 300 }}
 						>
-							<Link className="navbar-brand d-flex main-logo align-items-center ms-lg-0 ms-md-5 ms-3" href="/index-3">
+							<Link className="d-flex main-logo align-items-center justify-content-center ms-lg-0 ms-md-5 ms-3" href="/index-3">
 								<h1 className="fs-28 mb-0 me-2">Mario Carballo</h1>
 								<img src="assets/imgs/home-page-3/template/favicon.svg" alt="zelio" />
 							</Link>
@@ -53,34 +57,8 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 								</ul>
 							</div>
 						</div>
-						<div className="navbar-social d-flex align-items-center">
-							<motion.div 
-								className="d-md-flex d-none gap-3"
-								initial={{ opacity: 0, x: 20 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.5, delay: 0.2 }}
-							>
-								<motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-									<Link href="http://facebook.com">
-										<i className="ri-facebook-circle-fill fs-18" />
-									</Link>
-								</motion.div>
-								<motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-									<Link href="http://twitter.com">
-										<i className="ri-twitter-x-fill fs-18" />
-									</Link>
-								</motion.div>
-								<motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-									<Link href="http://linkedin.com">
-										<i className="ri-linkedin-fill fs-18" />
-									</Link>
-								</motion.div>
-								<motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-									<Link href="http://github.com">
-										<i className="ri-github-fill fs-18" />
-									</Link>
-								</motion.div>
-							</motion.div>
+						<div className="navbar-social d-flex align-items-center d-md-flex d-none gap-3">
+							<NavSocial />
 							<motion.div 
 								className="burger-icon burger-icon-white border rounded-3"
 								onClick={handleOffCanvas}

@@ -1,132 +1,43 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { Editor } from '@tinymce/tinymce-react';
-
-interface Newsletter {
-    id: number;
-    subject: string;
-    content: string;
-    scheduled_for: string;
-    status: string;
-    sent_at: string | null;
-}
+import { useNewsletters } from '@/util/api';
 
 export default function NewsletterManager() {
-    const [newsletters, setNewsletters] = useState<Newsletter[]>([]);
     const [newNewsletter, setNewNewsletter] = useState({
         subject: '',
         content: '',
         scheduled_for: ''
     });
-    const router = useRouter();
+
+    const {
+        newsletters,
+        loading,
+        error,
+        fetchNewsletters,
+        createNewsletter,
+        sendNewsletter,
+        deleteNewsletter
+    } = useNewsletters();
 
     useEffect(() => {
         fetchNewsletters();
     }, []);
 
-    const fetchNewsletters = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                router.push('/login');
-                return;
-            }
-            const response = await fetch('https://mariocarballo.pythonanywhere.com/newsletters', {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch newsletters');
-            }
-            const data = await response.json();
-            setNewsletters(data);
-        } catch (error) {
-            console.error('Error fetching newsletters:', error);
-        }
-    };
-
     const handleCreateNewsletter = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                router.push('/login');
-                return;
-            }
-            const response = await fetch('https://mariocarballo.pythonanywhere.com/newsletters', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(newNewsletter),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to create newsletter');
-            }
-
-            setNewNewsletter({
-                subject: '',
-                content: '',
-                scheduled_for: ''
-            });
-            fetchNewsletters();
-        } catch (error) {
-            console.error('Error creating newsletter:', error);
-        }
+        await createNewsletter(newNewsletter);
+        setNewNewsletter({
+            subject: '',
+            content: '',
+            scheduled_for: ''
+        });
     };
 
-    const handleSendNow = async (id: number) => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                router.push('/login');
-                return;
-            }
-            const response = await fetch(`https://mariocarballo.pythonanywhere.com/newsletters/${id}/send`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to send newsletter');
-            }
-
-            fetchNewsletters();
-        } catch (error) {
-            console.error('Error sending newsletter:', error);
-        }
-    };
-
-    const handleDelete = async (id: number) => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                router.push('/login');
-                return;
-            }
-            const response = await fetch(`https://mariocarballo.pythonanywhere.com/newsletters/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to delete newsletter');
-            }
-
-            fetchNewsletters();
-        } catch (error) {
-            console.error('Error deleting newsletter:', error);
-        }
-    };
+    if (error) {
+        console.error('Error:', error);
+    }
 
     return (
         <div className="card border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-4">
@@ -210,14 +121,14 @@ export default function NewsletterManager() {
                             <div className="d-flex gap-2">
                                 {newsletter.status === 'scheduled' && (
                                     <button
-                                        onClick={() => handleSendNow(newsletter.id)}
+                                        onClick={() => sendNewsletter(newsletter.id)}
                                         className="btn btn-success btn-sm"
                                     >
                                         Send Now
                                     </button>
                                 )}
                                 <button
-                                    onClick={() => handleDelete(newsletter.id)}
+                                    onClick={() => deleteNewsletter(newsletter.id)}
                                     className="btn btn-danger btn-sm"
                                 >
                                     Delete

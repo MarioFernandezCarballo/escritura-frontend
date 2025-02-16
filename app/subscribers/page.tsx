@@ -1,81 +1,68 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import NewsletterManager from './NewsletterManager';
 import Layout from "@/components/layout/Layout";
-
-interface Subscriber {
-    id: number;
-    email: string;
-    subscribed_at: string;
-}
+import { useSubscribers } from '@/util/api';
 
 export default function SubscribersPage() {
-    const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
-    const [newEmail, setNewEmail] = useState('');
+    const { 
+        subscribers, 
+        loading, 
+        error,
+        fetchSubscribers, 
+        addSubscriber, 
+        deleteSubscriber 
+    } = useSubscribers();
 
     useEffect(() => {
         fetchSubscribers();
     }, []);
 
-    const fetchSubscribers = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            const response = await fetch('https://mariocarballo.pythonanywhere.com/mailing/subscribers', {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Failed to fetch subscribers');
-            }
-            const data = await response.json();
-            setSubscribers(data);
-        } catch (error) {
-            console.error('Error fetching subscribers:', error);
-        }
-    };
-
-    const handleDelete = async (id: number) => {
-        try {
-            const token = localStorage.getItem('token');
-            const response = await fetch(`https://mariocarballo.pythonanywhere.com/mailing/subscribers/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Failed to delete subscriber');
-            }
-            setSubscribers(subscribers.filter(subscriber => subscriber.id !== id));
-        } catch (error) {
-            console.error('Error deleting subscriber:', error);
-        }
-    };
-
     const handleAddSubscriber = async (e: React.FormEvent) => {
         e.preventDefault();
+        const form = e.target as HTMLFormElement;
+        const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+        
         try {
-            const token = localStorage.getItem('token');
-            const response = await fetch('https://mariocarballo.pythonanywhere.com/mailing/subscribers', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ email: newEmail }),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to add subscriber');
-            }
-            const data = await response.json();
-            setSubscribers([...subscribers, data]);
-            setNewEmail('');
+            await addSubscriber(emailInput.value, true);
+            emailInput.value = '';
         } catch (error) {
             console.error('Error adding subscriber:', error);
         }
     };
+
+    if (loading) {
+        return (
+            <Layout headerStyle={3} footerStyle={3}>
+                <section className="section-home-3 bg-1000 pb-130 pt-96">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <div>Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </Layout>
+        );
+    }
+
+    if (error) {
+        return (
+            <Layout headerStyle={3} footerStyle={3}>
+                <section className="section-home-3 bg-1000 pb-130 pt-96">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <div>Error: {error}</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </Layout>
+        );
+    }
 
     return (
         <Layout headerStyle={3} footerStyle={3}>
@@ -91,8 +78,7 @@ export default function SubscribersPage() {
                                     <div className="d-flex gap-2">
                                         <input
                                             type="email"
-                                            value={newEmail}
-                                            onChange={(e) => setNewEmail(e.target.value)}
+                                            name="email"
                                             placeholder="Enter email address"
                                             className="form-control"
                                             required
@@ -116,7 +102,7 @@ export default function SubscribersPage() {
                                                 </p>
                                             </div>
                                             <button
-                                                onClick={() => handleDelete(subscriber.id)}
+                                                onClick={() => deleteSubscriber(subscriber.id)}
                                                 className="btn btn-danger btn-sm"
                                             >
                                                 Delete
