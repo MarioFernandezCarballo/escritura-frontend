@@ -1,8 +1,34 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { FormEvent, useState } from 'react'
+import { useContact } from '@/util/api'
 
 export default function Contacto () {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const { sendContactForm, status } = useContact();
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        const success = await sendContactForm(formData);
+        if (success) {
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
     return (
         <div id="contact" className="contact pt-70">
             <motion.h3
@@ -64,7 +90,7 @@ export default function Contacto () {
                 >
                     Hablemos
                 </motion.h5>
-                <form action="#">
+                <form onSubmit={handleSubmit}>
                     <div className="row g-3">
                         <div className="col-md-6">
                             <motion.input 
@@ -74,6 +100,9 @@ export default function Contacto () {
                                 name="name" 
                                 placeholder="Nombre" 
                                 aria-label="username"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -83,12 +112,15 @@ export default function Contacto () {
                         </div>
                         <div className="col-md-6">
                             <motion.input 
-                                type="text" 
+                                type="email" 
                                 className="form-control bg-3 border border-secondary-3 rounded-3" 
                                 id="email" 
                                 name="email" 
                                 placeholder="Email" 
                                 aria-label="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -104,6 +136,9 @@ export default function Contacto () {
                                 name="subject" 
                                 placeholder="Asunto" 
                                 aria-label="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -118,6 +153,9 @@ export default function Contacto () {
                                 name="message" 
                                 placeholder="Mensaje" 
                                 aria-label="With textarea"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -129,6 +167,7 @@ export default function Contacto () {
                             <motion.button 
                                 type="submit" 
                                 className="btn btn-secondary-3 fw-medium"
+                                disabled={status === 'sending'}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -139,7 +178,9 @@ export default function Contacto () {
                                 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                Enviar mensaje
+                                {status === 'sending' ? 'Enviando...' : 
+                                 status === 'success' ? 'Mensaje enviado!' :
+                                 status === 'error' ? 'Error al enviar' : 'Enviar mensaje'}
                                 <motion.i 
                                     className="ri-arrow-right-up-line fw-medium"
                                     whileHover={{ x: 5, y: -5 }}

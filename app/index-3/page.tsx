@@ -22,7 +22,7 @@ export default function Home3() {
 								<Hero />
 							</div>
 						</div>
-						<div className="col-12 mt-4">
+						<div className="col-8 mt-4 mx-auto">
 							<Publicaciones />
 							<Podcast />
 							<Premios />

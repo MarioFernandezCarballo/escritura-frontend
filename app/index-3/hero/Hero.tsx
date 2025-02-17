@@ -18,21 +18,22 @@ export default function Hero() {
         }
     };
     return (
-        <motion.div 
+        <motion.section 
             id="about" 
             className="hero-3 pe-lg-5 border-bottom pb-7"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            aria-label="Sección de introducción"
         >
-            <motion.span 
-                className="text-primary-3"
+            <motion.h1 
+                className="text-primary-3 h4"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
             >
                 Transformando Ideas en Historias Inolvidables
-            </motion.span>
+            </motion.h1>
             <motion.h2 
                 className="text-300 my-3"
                 initial={{ opacity: 0, y: 10 }}
@@ -57,7 +58,11 @@ export default function Hero() {
                 <form 
                     className="d-flex flex-column"
                     onSubmit={handleAddSubscriber}
+                    aria-label="Formulario de suscripción al boletín"
                 >
+                    <div className="visually-hidden" aria-live="polite" role="status" id="form-status">
+                        {newEmail ? 'Email ingresado' : 'Formulario de suscripción listo'}
+                    </div>
                     <motion.input 
                         className="d-inline-block form-control me-2"
                         whileHover={{ scale: 1.02 }}
@@ -69,6 +74,9 @@ export default function Hero() {
                         placeholder="Ingresa tu correo electrónico" 
                         required 
                         style={{maxHeight: 30, margin: 'auto'}}
+                        aria-label="Correo electrónico para suscripción"
+                        aria-required="true"
+                        aria-describedby="form-status"
                     />
                     <motion.button 
                         type="submit" 
@@ -82,6 +90,6 @@ export default function Hero() {
                     </motion.button>
                 </form>
             </motion.div>
-        </motion.div>
+        </motion.section>
     )
 }

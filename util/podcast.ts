@@ -5,6 +5,7 @@ export interface PodcastEpisode {
     description: string;
     link: string;
     pubDate: string;
+    image: string;
 }
 
 export async function fetchPodcastEpisodes(): Promise<PodcastEpisode[]> {
@@ -19,7 +20,8 @@ export async function fetchPodcastEpisodes(): Promise<PodcastEpisode[]> {
             title: item.title,
             description: item.description,
             link: item.link,
-            pubDate: item.pubDate
+            pubDate: item.pubDate,
+            image: result.rss.channel.image?.url || '/assets/imgs/home-page-3/podcast-default.jpg'
         }));
         
         return episodes;

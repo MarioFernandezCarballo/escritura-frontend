@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import Award from './Award'
 
 export default function Premios () {
     return (
@@ -31,136 +32,31 @@ export default function Premios () {
                     >
                         <div className="position-relative h-100 align-self-stretch align-items-center">
                             <ul className="list-style-1 d-flex ps-3 flex-column mb-0">
-                                <motion.li 
-                                    className="position-relative z-1"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: 0.2 }}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    <motion.p 
-                                        className="fs-5 text-dark mb-2"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 0.3 }}
-                                    >
-                                        Columnist for The New Yorker
-                                    </motion.p>
-                                    <motion.ul 
-                                        className="list-style-2 d-flex gap-4 ps-3"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 0.4 }}
-                                    >
-                                        <li>
-                                            <p className="text-primary-3 mb-0">NY Times</p>
-                                        </li>
-                                        <li>
-                                            <p className="mb-2">2018 - 2020</p>
-                                        </li>
-                                    </motion.ul>
-                                    <motion.p 
-                                        className="mb-4"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 0.5 }}
-                                    >
-                                        Worked with various clients, including magazines, websites, and publishing houses, to produce high-quality content across multiple genres.
-                                    </motion.p>
-                                </motion.li>
-                                <motion.li 
-                                    className="position-relative z-1"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: 0.6 }}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    <motion.p 
-                                        className="fs-5 text-dark mb-2"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 0.7 }}
-                                    >
-                                        Content Writer at LitHub
-                                    </motion.p>
-                                    <motion.ul 
-                                        className="list-style-2 d-flex gap-4 ps-3"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 0.8 }}
-                                    >
-                                        <li>
-                                            <p className="text-primary-3 mb-0">GitHub</p>
-                                        </li>
-                                        <li>
-                                            <p className="mb-2">2018 - 2020</p>
-                                        </li>
-                                    </motion.ul>
-                                    <motion.p 
-                                        className="mb-6"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 0.9 }}
-                                    >
-                                        Created engaging articles, blog posts, and features for one of the leading literary websites.
-                                    </motion.p>
-                                </motion.li>
-                                <motion.li 
-                                    className="position-relative z-1"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: 1.0 }}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    <motion.p 
-                                        className="fs-5 text-dark mb-2"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 1.1 }}
-                                    >
-                                        Editor at The Write Stuff
-                                    </motion.p>
-                                    <motion.ul 
-                                        className="list-style-2 d-flex gap-4 ps-3"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 1.2 }}
-                                    >
-                                        <li>
-                                            <p className="text-primary-3 mb-0">A.Lecturer</p>
-                                        </li>
-                                        <li>
-                                            <p className="mb-2">2018 - 2020</p>
-                                        </li>
-                                    </motion.ul>
-                                    <motion.p
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3, delay: 1.3 }}
-                                    >
-                                        Overseeing the editorial process, providing guidance, and ensuring the highest standards of content.
-                                    </motion.p>
-                                </motion.li>
+                                <Award
+                                    title='Finalista Relatos Caseros'
+                                    organization='Editorial Autografía'
+                                    date='2020'
+                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
+                                />
+                                <Award
+                                    title='Finalista Relatos Caseros'
+                                    organization='Editorial Autografía'
+                                    date='2020'
+                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
+                                />
+                                <Award
+                                    title='Finalista Relatos Caseros'
+                                    organization='Editorial Autografía'
+                                    date='2020'
+                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
+                                />
+                                <Award
+                                    title='Finalista Relatos Caseros'
+                                    organization='Editorial Autografía'
+                                    date='2020'
+                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
+                                />                                
                             </ul>
-                            <motion.div 
-                                className="line-left position-absolute top-0 border-start h-md-100 z-0"
-                                initial={{ height: 0 }}
-                                whileInView={{ height: "100%" }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1.0 }}
-                            />
                         </div>
                     </motion.div>
                 </div>

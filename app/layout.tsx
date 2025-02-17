@@ -28,8 +28,81 @@ const dmMono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-	title: "Zelio - Personal Portfolio Template",
-	description: "Zelio - Personal Portfolio Template",
+	metadataBase: new URL('https://mariocarballo.es'),
+	title: {
+		default: "Mario Carballo | Escritor de Ciencia Ficción y Fantasía",
+		template: "%s | Mario Carballo"
+	},
+	description: "Mario Carballo - Escritor de ciencia ficción y fantasía, especializado en novelas, relatos cortos y sagas. Creador de mundos imaginarios e historias especulativas.",
+	keywords: [
+		"Mario Carballo",
+		"escritor",
+		"ciencia ficción",
+		"fantasía",
+		"novelas",
+		"relatos cortos",
+		"sagas fantásticas",
+		"literatura especulativa",
+		"worldbuilding",
+		"ficción especulativa",
+		"España"
+	],
+	authors: [{ name: "Mario Carballo" }],
+	creator: "Mario Carballo",
+	publisher: "Mario Carballo",
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			'max-video-preview': -1,
+			'max-image-preview': 'large',
+			'max-snippet': -1,
+		},
+	},
+	openGraph: {
+		type: 'website',
+		locale: 'es_ES',
+		url: 'https://mariocarballo.es',
+		siteName: 'Mario Carballo',
+		title: 'Mario Carballo | Escritor de Ciencia Ficción y Fantasía',
+		description: 'Mario Carballo - Escritor de ciencia ficción y fantasía, especializado en novelas, relatos cortos y sagas. Creador de mundos imaginarios e historias especulativas.',
+		images: [
+			{
+				url: '/assets/imgs/hero/hero-1/profile.jpg',
+				width: 1200,
+				height: 630,
+				alt: 'Mario Carballo - Escritor de Ciencia Ficción y Fantasía',
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Mario Carballo | Escritor de Ciencia Ficción y Fantasía',
+		description: 'Mario Carballo - Escritor de ciencia ficción y fantasía, especializado en novelas, relatos cortos y sagas. Creador de mundos imaginarios e historias especulativas.',
+		images: ['/assets/imgs/hero/hero-1/profile.jpg'],
+		creator: '@mariocarballo',
+	},
+	viewport: {
+		width: 'device-width',
+		initialScale: 1,
+		maximumScale: 1,
+	},
+	verification: {
+		google: 'add-your-verification-code',
+	},
+	alternates: {
+		canonical: 'https://mariocarballo.es',
+	},
+	other: {
+		'schema:type': 'Person',
+		'schema:name': 'Mario Carballo',
+		'schema:description': 'Escritor de ciencia ficción y fantasía, especializado en novelas, relatos cortos y sagas.',
+		'schema:url': 'https://mariocarballo.es',
+		'schema:jobTitle': 'Escritor de Ciencia Ficción y Fantasía',
+		'schema:genre': JSON.stringify(['Science Fiction', 'Fantasy', 'Speculative Fiction'])
+	}
 }
 
 export default function RootLayout({
@@ -38,7 +111,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en" data-bs-theme="dark" className="zelio">
+		<html lang="es" data-bs-theme="dark" className="zelio">
 			<body className={`${urbanist.variable} ${playfair_display.variable} ${dmMono.variable}`}>{children}</body>
 		</html>
 	)

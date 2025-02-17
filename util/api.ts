@@ -3,6 +3,14 @@ import { useRouter } from 'next/navigation';
 
 const API_BASE_URL = 'https://mariocarballo.pythonanywhere.com';
 
+export async function getBlogPost(id: string): Promise<BlogPost> {
+    const response = await fetch(`${API_BASE_URL}/blog/posts/${id}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch post');
+    }
+    return response.json();
+}
+
 interface Subscriber {
     id: number;
     email: string;
@@ -31,6 +39,45 @@ interface LoginCredentials {
     username: string;
     password: string;
 }
+
+interface ContactFormData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+// Contact Hook
+export const useContact = () => {
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+    const sendContactForm = async (formData: ContactFormData) => {
+        setStatus('sending');
+        try {
+            const response = await fetch(`${API_BASE_URL}/contact`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al enviar el mensaje');
+            }
+
+            setStatus('success');
+            setTimeout(() => setStatus('idle'), 3000);
+            return true;
+        } catch (error) {
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 3000);
+            return false;
+        }
+    };
+
+    return { sendContactForm, status };
+};
 
 // Blog Hooks
 export const useBlogPosts = () => {
