@@ -12,12 +12,13 @@ interface PublicacionProps {
 	title?: string
 	desc1?: string
 	desc2?: string
+    desc3?: string
     year?: string
     amazon?: boolean
     webEbook?: boolean
 }
 
-export default function Publicacion({link, img, title, desc1, desc2, year, amazon, webEbook, post}:PublicacionProps ) {
+export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webEbook, post}:PublicacionProps ) {
     const [isHovered, setIsHovered] = useState(false)
     const router = useRouter()
     return (
@@ -32,8 +33,8 @@ export default function Publicacion({link, img, title, desc1, desc2, year, amazo
                     transition={{ duration: 0.6 }}
                 >
                     <motion.div 
-                        className="card__inner rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3 d-flex gap-4 position-relative"
-                        style={{height: 550}}
+                        className="card__inner rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3 d-flex gap-4 position-relative flex-column flex-lg-row"
+                        style={{minHeight: 550}}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         whileHover={{ 
@@ -146,12 +147,12 @@ export default function Publicacion({link, img, title, desc1, desc2, year, amazo
                             className="object-fit-contain m-auto" 
                             src={img}
                             alt="cover" 
-                            style={{ objectFit: 'cover',height: 400 }}
+                            style={{ objectFit: 'cover', maxHeight: 'auto', maxWidth: 250 }}
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
                         />                        
                         <motion.div 
-                            className="card__content px-md-4 px-3 pt-lg-0 pb-lg-8 pb-5"
+                            className="card__content px-md-4 px-3 pt-4 pt-lg-0 pb-lg-8 pb-5"
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -192,6 +193,15 @@ export default function Publicacion({link, img, title, desc1, desc2, year, amazo
                                 transition={{ duration: 0.4, delay: 0.6 }}
                             >
                                 {desc2}
+                            </motion.p>
+                            <motion.p 
+                                className="text-300 mb-lg-auto mb-md-4 mb-3 mt-3"
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: 0.6 }}
+                            >
+                                {desc3}
                             </motion.p>
                         </motion.div>
                     </motion.div>

@@ -40,41 +40,6 @@ export default function Contacto () {
                 Contacto
             </motion.h3>
             <motion.div 
-                className="d-flex d-flex-column align-items-center gap-5 mt-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
-                <motion.div
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <Link href="mailto:mariofernandezcarballo@gmail.com">
-                        <i className="ri-mail-fill text-primary-3 fs-7" />
-                        <span className="text-300 fs-6 ms-2">mariofernandezcarballo@gmail.com</span>
-                    </Link>
-                </motion.div>
-                <motion.div
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <Link href="https://x.com/MarioFCarballo">
-                        <i className="ri-twitter-x-line text-primary-3 fs-7" />
-                        <span className="text-300 fs-6 ms-2">@MarioFCarballo</span>
-                    </Link>
-                </motion.div>
-                <motion.div
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.2 }}
-                >
-                    <Link href="https://bsky.app/profile/mariocarballo.bsky.social">
-                        <i className="ri-bluesky-fill text-primary-3 fs-7" />
-                        <span className="text-300 fs-6 ms-2">@mariocarballo.bsky.social</span>
-                    </Link>
-                </motion.div>
-            </motion.div>
-            <motion.div 
                 className="position-relative z-2 mt-4"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
