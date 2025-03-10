@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
+import { API_BASE_URL } from '../util/config';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://mariocarballo.es';
 
     // Fetch blog posts for dynamic routes
-    const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts');
+    const response = await fetch(`${API_BASE_URL}/blog/posts`);
     const posts = await response.json();
 
     // Static routes

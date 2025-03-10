@@ -1879,6 +1879,7 @@ textarea {
 :root {
   --bs-primary-rgb: #6E4EF2;
   --bs-dark-rgb: #1F1F24;
+  --bs-heading-color: #000000;
 }
 
 .shadow-1 {

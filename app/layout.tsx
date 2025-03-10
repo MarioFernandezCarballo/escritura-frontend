@@ -5,7 +5,7 @@ import "/public/assets/css/vendors/magnific-popup.css"
 import "/public/assets/fonts/remixicon/remixicon.css"
 import "/public/assets/css/main.css"
 
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Urbanist, Playfair_Display, DM_Mono } from "next/font/google"
 
 const urbanist = Urbanist({
@@ -26,6 +26,12 @@ const dmMono = DM_Mono({
 	variable: "--dmMono",
 	display: 'swap',
 })
+
+export const viewport: Viewport = {
+	width: 'device-width',
+	initialScale: 1,
+	maximumScale: 1,
+}
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://mariocarballo.es'),
@@ -83,11 +89,6 @@ export const metadata: Metadata = {
 		description: 'Mario Carballo - Escritor de ciencia ficción y fantasía, especializado en novelas, relatos cortos y sagas. Creador de mundos imaginarios e historias especulativas.',
 		images: ['/assets/imgs/hero/hero-1/profile.jpg'],
 		creator: '@mariocarballo',
-	},
-	viewport: {
-		width: 'device-width',
-		initialScale: 1,
-		maximumScale: 1,
 	},
 	verification: {
 		google: 'add-your-verification-code',

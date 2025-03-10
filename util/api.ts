@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
-const API_BASE_URL = 'https://mariocarballo.pythonanywhere.com';
+import { API_BASE_URL } from './config';
 
 export async function getBlogPost(id: string): Promise<BlogPost> {
     const response = await fetch(`${API_BASE_URL}/blog/posts/${id}`);
@@ -214,7 +213,7 @@ export const useSubscribers = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${API_BASE_URL}/mailing/subscribers`, {
+            const response = await fetch(`${API_BASE_URL}/subscriber`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -246,7 +245,7 @@ export const useSubscribers = () => {
                 headers['Authorization'] = `Bearer ${token}`;
             }
 
-            const response = await fetch(`${API_BASE_URL}/mailing/subscribers`, {
+            const response = await fetch(`${API_BASE_URL}/subscriber`, {
                 method: 'POST',
                 headers,
                 body: JSON.stringify({ email }),
@@ -275,7 +274,7 @@ export const useSubscribers = () => {
                 return;
             }
 
-            const response = await fetch(`${API_BASE_URL}/mailing/subscribers/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/subscriber/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

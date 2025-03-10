@@ -17,7 +17,7 @@ export default function Publicaciones() {
 				<Publicacion
 					link='https://amzn.eu/d/jjMO8ho'
 					post='/el-archivo-de-los-olvidados'
-					img='assets/imgs/home-page-3/typical/archivo.png'
+					img='assets/imgs/home-page-3/typical/Archivo.png'
 					title='El archivo de los olvidados'
 					year='2025'
 					desc1='Una nave milenaria que ha olvidado su propósito. La carta de un padre a su hijo explicando cómo es el Cielo. El ocupante de una tumba sin nombre esperando a que alguien por fin llore por él.'

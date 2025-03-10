@@ -24,7 +24,6 @@ export default function Home3() {
 						</div>
 						<div className="col-xl-8 col-md-12 mt-4 mx-auto">
 							<Publicaciones />
-							<Podcast />
 							<Premios />
 							<Blog />
 							<Contacto />

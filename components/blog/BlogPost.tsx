@@ -5,6 +5,7 @@ import BlogCard1 from "./BlogCard1"
 import BlogCard2 from "./BlogCard2"
 import BlogCard3 from "./BlogCard3"
 import Pagination from "./Pagination"
+import { API_BASE_URL } from "../../util/config"
 
 interface BlogPostProps {
     style?: number
@@ -26,7 +27,7 @@ export default function BlogPost({ style, showItem, showPagination }: BlogPostPr
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('https://mariocarballo.pythonanywhere.com/blog/posts')
+                const response = await fetch(`${API_BASE_URL}/blog/posts`)
                 if (!response.ok) {
                     throw new Error('Error al obtener los posts')
                 }
