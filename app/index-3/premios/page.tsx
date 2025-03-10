@@ -33,28 +33,28 @@ export default function Premios () {
                         <div className="position-relative h-100 align-self-stretch align-items-center">
                             <ul className="list-style-1 d-flex ps-3 flex-column mb-0">
                                 <Award
-                                    title='Finalista Relatos Caseros'
-                                    organization='Editorial Autografía'
-                                    date='2020'
-                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
+                                    title='Finalista de El Yunque Literario'
+                                    organization='El yunque de Hefesto'
+                                    date='2024'
+                                    description='Finalista de la III edición con el relato "La bóveda"'
+                                />
+                                <Award
+                                    title='Ganador Premios Talavera'
+                                    organization='Concurso de relatos gran premio de Talavera'
+                                    date='2022'
+                                    description='Ganador del certamen del torneo más importante en español sobre Warhammer 40K con "El vuelo del poeta"'
+                                />
+                                <Award
+                                    title='Finalista Wikihhamer'
+                                    organization='Wikihhamer y la Voz de Horus'
+                                    date='2022'
+                                    description='Finalista con el relato "La pregunta"'
                                 />
                                 <Award
                                     title='Finalista Relatos Caseros'
                                     organization='Editorial Autografía'
                                     date='2020'
-                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
-                                />
-                                <Award
-                                    title='Finalista Relatos Caseros'
-                                    organization='Editorial Autografía'
-                                    date='2020'
-                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
-                                />
-                                <Award
-                                    title='Finalista Relatos Caseros'
-                                    organization='Editorial Autografía'
-                                    date='2020'
-                                    description='Ganador del certámen Relatos Caseros con "La bóveda"'
+                                    description='Ganador del certamen Relatos Caseros con "La bóveda"'
                                 />                                
                             </ul>
                         </div>

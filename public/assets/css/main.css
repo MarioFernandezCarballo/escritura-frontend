@@ -917,7 +917,7 @@ img {
   visibility: hidden;
   transform: translateY(0.75rem);
   transition: all 0.2s linear, margin-right 0s;
-  background-color: #6e4ef2;
+  background-color: rgb(190, 104, 149);
 }
 .btn-scroll-top:after {
   position: absolute;

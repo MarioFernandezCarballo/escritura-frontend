@@ -20,35 +20,35 @@ export default function Hero() {
     return (
         <motion.section 
             id="about" 
-            className="hero-3 pe-lg-5 border-bottom pb-7"
+            className="hero-3 pe-lg-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             aria-label="Sección de introducción"
         >
-            <motion.h1 
-                className="text-primary-3 h4"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-            >
-                Transformando Ideas en Historias Inolvidables
-            </motion.h1>
             <motion.h2 
                 className="text-300 my-3"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 }}
             >
-                Mundos que <span className="text-dark">Inspiran.</span> Palabras que <span className="text-dark">Transforman</span>
+                Mundos que <span className="text-primary-3">Inspiran.</span> Palabras que <span className="text-primary-3">Transforman</span>
             </motion.h2>
             <motion.p 
-                className="mb-8"
+                className="mb-4"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.5 }}
             >
-                Bienvenidos al universo de la narrativa excepcional. Como escritor galardonado y periodista de élite, transformo ideas en historias que cautivan, inspiran y perduran. Mi pluma da vida a relatos que conectan con el corazón de los lectores, mientras mi experiencia periodística aporta la profundidad y credibilidad que tu mensaje merece.
+                Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.
+            </motion.p>
+            <motion.p 
+                className="mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+            >
+                Realidades que inspiran, emocionan, y dejan huella.
             </motion.p>
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -71,7 +71,7 @@ export default function Hero() {
                         name="email" 
                         value={newEmail}
                         onChange={(e) => setNewEmail(e.target.value)}
-                        placeholder="Ingresa tu correo electrónico" 
+                        placeholder="Escribe tu email y no te pierdas nada" 
                         required 
                         style={{maxHeight: 30, margin: 'auto'}}
                         aria-label="Correo electrónico para suscripción"
@@ -80,13 +80,22 @@ export default function Hero() {
                     />
                     <motion.button 
                         type="submit" 
-                        className="btn btn-secondary-3 d-inline-flex align-items-center mt-3"
-                        style={{padding: 3}}
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        Suscríbete para estar al día
-                        <i className="ri-mail-line ms-2" />
+                        style={{width: 'fit-content'}}
+                        className="btn btn-secondary-3 fw-medium mt-2"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2, delay: 0 }}
+                        whileHover={{ 
+                            scale: 1.05,
+                            boxShadow: "0px 4px 15px rgba(0,0,0,0.1)"
+                        }}
+                        whileTap={{ scale: 0.95 }}>
+
+                        Únete a la comunidad
+                        <motion.i 
+                            className="ri-arrow-right-up-line fw-medium"
+                            whileHover={{ x: 5, y: -5 }}
+                        />
                     </motion.button>
                 </form>
             </motion.div>

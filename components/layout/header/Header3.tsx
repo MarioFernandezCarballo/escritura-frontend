@@ -63,9 +63,6 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 										<Link className="nav-link" href="/#publicaciones">Publicaciones</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className="nav-link" href="/#services">Podcast</Link>
-									</motion.li>
-									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
 										<Link className="nav-link" href="/#resume">Premios</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
@@ -79,9 +76,6 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 							</div>
 							
 							<div className="d-flex align-items-center gap-3">
-								<div className="navbar-social d-md-flex d-none">
-									<NavSocial />
-								</div>
 								
 								{/* Mobile menu toggle */}
 								<motion.div 

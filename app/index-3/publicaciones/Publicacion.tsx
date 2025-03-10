@@ -139,7 +139,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 }}
                                 transition={{ duration: 0.1 }}
                             >
-                                <i className="ri-download-cloud-2-line ri-lg text-primary-3"></i>
+                                <i className="ri-shopping-cart-line ri-lg text-primary-3"></i>
                             </motion.button>
                             }
                         </motion.div>
