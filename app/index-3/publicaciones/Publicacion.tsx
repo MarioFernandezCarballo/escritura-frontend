@@ -1,4 +1,3 @@
-
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
@@ -15,10 +14,10 @@ interface PublicacionProps {
     desc3?: string
     year?: string
     amazon?: boolean
-    webEbook?: boolean
+    webBuy?: boolean
 }
 
-export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webEbook, post}:PublicacionProps ) {
+export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webBuy, post}:PublicacionProps ) {
     const [isHovered, setIsHovered] = useState(false)
     const router = useRouter()
     return (
@@ -76,26 +75,25 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                             }}
                         >
                             <motion.button 
-                                    className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
-                                    style={{
-                                        width: '60px',
-                                        height: '60px',
-                                        borderRadius: '50%',
-                                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
-                                    }}
-                                    whileHover={{ 
-                                        scale: 1.1,
-                                        boxShadow: '0 6px 25px rgba(0, 0, 0, 0.25)'
-                                    }}
-                                    onClick={(e) => {
-                                        e.stopPropagation()
-                                        router.push(post)
-                                    }}
-                                    transition={{ duration: 0.1 }}
-                                >
-                                    <i className="ri-info-i ri-lg text-primary-3"></i>
-                                
-                                </motion.button>
+                                className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
+                                style={{
+                                    width: '60px',
+                                    height: '60px',
+                                    borderRadius: '50%',
+                                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+                                }}
+                                whileHover={{ 
+                                    scale: 1.1,
+                                    boxShadow: '0 6px 25px rgba(0, 0, 0, 0.25)'
+                                }}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    router.push(post)
+                                }}
+                                transition={{ duration: 0.1 }}
+                            >
+                                <i className="ri-information-line ri-lg text-primary-3"></i>
+                            </motion.button>
                             { amazon &&
                                 <motion.button 
                                     className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
@@ -116,11 +114,10 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                     transition={{ duration: 0.1 }}
                                 >
                                     <i className="ri-amazon-fill ri-lg text-primary-3"></i>
-                                
                                 </motion.button>
                             }
                             {
-                            webEbook &&
+                            webBuy &&
                             <motion.button 
                                 className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
                                 style={{
@@ -135,7 +132,8 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 }}
                                 onClick={(e) => {
                                     e.stopPropagation()
-                                    // Add digital purchase logic here
+                                    // Navigate to the publication detail page for web purchase
+                                    router.push(post)
                                 }}
                                 transition={{ duration: 0.1 }}
                             >
