@@ -289,8 +289,14 @@ export default function PublicacionDetalle() {
                         aria-label="Close"
                       ></button>
                     </div>
-                    <div className="modal-body">                                     
+                    <div className="modal-body">                                 
                       <div className="mt-4">
+                        <h6>¿Cómo funciona?</h6>
+                        <p>Usando esta vía harás un pago directamente a la cuenta de Paypal de Mario Carballo. Cuando el autor reciba los datos, pedirá copias a Amazon para que lleguen a tu casa.</p>
+                        <h6>¿Qué son las copias de autor?</h6>
+                        <p>Son ejemplares que Amazon proporciona al autor de la obra a precio de coste para que puedan venderse por otras vías. Hace, de alguna forma, las veces de imprenta.</p>
+                        <p>Si no te importa esperar un par de días más para tener tu libro disponible, comprando de esta forma maximizarás las ganacias del autor de la obra.</p>
+                        <p className="mb-4">Muchísimas gracias por tu interés.</p>
                         {publication.buyingOptions.paypalButtonId ? (
                           <div id={`paypal-container-${publication.buyingOptions.paypalButtonId}`} className="d-flex justify-content-center">
                             {/* PayPal button will be rendered here */}
