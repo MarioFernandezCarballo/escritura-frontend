@@ -106,6 +106,7 @@ export default function PublicacionDetalle() {
               transition={{ duration: 0.5 }}
             >
               <div className="text-center">
+                <source srcSet={publication.coverImage?.replace(".jpg", "/webp")} type="image/webp"></source>
                 <img 
                   src={publication.coverImage} 
                   alt={publication.title} 
@@ -122,20 +123,20 @@ export default function PublicacionDetalle() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="display-5 fw-bold mb-2">{publication.title}</h1>
+              <h2 className="display-5 fw-bold mb-2">{publication.title}</h2>
               <p className="text-primary-3 fs-5 mb-4">{publication.year}</p>
 
               {/* Description */}
               <div className="mb-4">
                 {publication.description.map((paragraph, index) => (
-                  <p key={index} className="mb-3">{paragraph}</p>
+                  <p key={index} className="mb-3 text-dark">{paragraph}</p>
                 ))}
               </div>
 
               {/* Book Details */}
               <div className="card mb-4 border-light">
                 <div className="card-header bg-light">
-                  <h3 className="h5 mb-0">Detalles del libro</h3>
+                  <h3 className="h5 mb-0 text-dark">Detalles del libro</h3>
                 </div>
                 <div className="card-body">
                   <div className="row">
@@ -176,7 +177,7 @@ export default function PublicacionDetalle() {
               {/* Prices */}
               <div className="card mb-4 border-light">
                 <div className="card-header bg-light">
-                  <h3 className="h5 mb-0">Precios por formato</h3>
+                  <h3 className="h5 mb-0 text-dark">Precios por formato</h3>
                 </div>
                 <div className="card-body">
                   <div className="table-responsive">
@@ -218,17 +219,17 @@ export default function PublicacionDetalle() {
 
               {/* Buying Options */}
               <div className="mb-4">
-                <h3 className="h4 mb-3">Opciones de compra</h3>
+                <h3 className="h4 mb-3 text-dark">Opciones de compra</h3>
                 <div className="d-flex flex-wrap gap-3">
                   {publication.buyingOptions.amazon && (
                     <motion.a 
                       href={publication.buyingOptions.amazon}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{background: '#ff9900'}}
-                      className="btn btn-lg d-flex align-items-center gap-2"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
+                      style={{background: '#ff990080'}}
+                      className="btn btn-lg d-flex align-items-center gap-2 text-dark"
+                      whileHover={{ scale: 1.02, background: '#ff9900' }}
+                      transition={{ duration: 0.1 }}
                     >
                       <i className="ri-amazon-fill"></i>
                       <span>Comprar en Amazon</span>
@@ -244,10 +245,10 @@ export default function PublicacionDetalle() {
                         document.body.classList.add('modal-open');
                         document.body.setAttribute('style', 'overflow: hidden; padding-right: 17px;');
                       }}
-                      style={{background: '#fcc6e2'}}
-                      className="btn btn-lg btn-outline-primary d-flex align-items-center gap-2"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
+                      style={{background: '#627fc280'}}
+                      className="btn btn-lg btn-outline-primary d-flex align-items-center gap-2 text-dark"
+                      whileHover={{ scale: 1.02, background: '#627fc2'}}
+                      transition={{ duration: 0.1 }}
                     >
                       <i className="ri-shopping-cart-line"></i>
                       <span>Comprar en Web</span>

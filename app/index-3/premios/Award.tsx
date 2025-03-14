@@ -34,11 +34,11 @@ export default function Award({title, organization, date, description} : AwardPr
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.4 }}
             >
-                <p className="mb-2">{date}</p>         
+                <p className="mb-2 text-primary-3">{date}</p>         
                 <p className="text-primary-3 mb-0">{organization}</p>
             </motion.div>
             <motion.p 
-                className="mb-4"
+                className="mb-4 text-dark"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

@@ -45,7 +45,7 @@ export default function Premios () {
                                     description='Ganador del certamen del torneo más importante en español sobre Warhammer 40K con "El vuelo del poeta"'
                                 />
                                 <Award
-                                    title='Finalista Wikihhamer'
+                                    title='Finalista Wikihammer'
                                     organization='Wikihhamer y la Voz de Horus'
                                     date='2022'
                                     description='Finalista con el relato "La pregunta"'

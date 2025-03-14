@@ -12,14 +12,14 @@ export default function HeadCard() {
             >
                 <motion.img 
                     className="rounded-5" 
-                    src="assets/imgs/home-page-3/hero/img-1.png" 
+                    src="assets/imgs/home-page-3/hero/img-1.webp" 
                     alt="Mario Carballo - Escritor"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
                 />
                 <motion.p 
                     style={{ fontFamily: "'Joland Colline', sans-serif" }} 
-                    className="h1 text-primary-3 position-absolute top-100 start-50 mt-3 translate-middle pt-8"
+                    className="h2 text-primary-3 position-absolute top-100 start-50 mt-3 translate-middle pt-8"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
@@ -40,7 +40,7 @@ export default function HeadCard() {
                             aria-label="Enviar email a Mario Carballo"
                         >
                             <i className="ri-mail-fill text-primary-3 fs-7" aria-hidden="true" />
-                            <span className="text-300 fs-6 ms-2">mariofernandezcarballo@gmail.com</span>
+                            <span className="text-dark fs-6 ms-2">mariofernandezcarballo@gmail.com</span>
                         </Link>
                     </motion.div>
                     <motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
@@ -51,7 +51,7 @@ export default function HeadCard() {
                             rel="noopener noreferrer"
                         >
                             <i className="ri-twitter-x-line text-primary-3 fs-7" aria-hidden="true" />
-                            <span className="text-300 fs-6 ms-2">@MarioFCarballo</span>
+                            <span className="text-dark fs-6 ms-2">@MarioFCarballo</span>
                         </Link>
                     </motion.div>
                     <motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
@@ -62,7 +62,7 @@ export default function HeadCard() {
                             rel="noopener noreferrer"
                         >
                             <i className="ri-bluesky-fill text-primary-3 fs-7" aria-hidden="true" />
-                            <span className="text-300 fs-6 ms-2">@mariocarballo.bsky.social</span>
+                            <span className="text-dark fs-6 ms-2">@mariocarballo.bsky.social</span>
                         </Link>
                     </motion.div>
                 </nav>

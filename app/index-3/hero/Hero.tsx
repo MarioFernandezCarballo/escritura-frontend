@@ -27,7 +27,8 @@ export default function Hero() {
             aria-label="Sección de introducción"
         >
             <motion.h2 
-                className="text-300 my-3"
+                className="text-dark my-3 responsive-heading"
+                style={{ fontSize: '52px' }}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 }}
@@ -35,7 +36,7 @@ export default function Hero() {
                 Mundos que <span className="text-primary-3">Inspiran.</span> Palabras que <span className="text-primary-3">Transforman</span>
             </motion.h2>
             <motion.p 
-                className="mb-4"
+                className="mb-4 text-dark fs-6 fs-md-5"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.5 }}
@@ -43,7 +44,7 @@ export default function Hero() {
                 Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.
             </motion.p>
             <motion.p 
-                className="mb-4"
+                className="mb-4 text-dark fs-6 fs-md-5"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.5 }}
@@ -54,9 +55,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.6 }}
+                className="w-100 w-md-75 w-lg-50"
             >
                 <form 
-                    className="d-flex flex-column"
+                    className="d-flex flex-column flex-md-row align-items-md-center gap-2"
                     onSubmit={handleAddSubscriber}
                     aria-label="Formulario de suscripción al boletín"
                 >
@@ -64,7 +66,7 @@ export default function Hero() {
                         {newEmail ? 'Email ingresado' : 'Formulario de suscripción listo'}
                     </div>
                     <motion.input 
-                        className="d-inline-block form-control me-2"
+                        className="d-inline-block form-control text-dark"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         type="email" 
@@ -73,7 +75,7 @@ export default function Hero() {
                         onChange={(e) => setNewEmail(e.target.value)}
                         placeholder="Escribe tu email y no te pierdas nada" 
                         required 
-                        style={{maxHeight: 30, margin: 'auto'}}
+                        style={{height: '38px', width: '100%'}}
                         aria-label="Correo electrónico para suscripción"
                         aria-required="true"
                         aria-describedby="form-status"
@@ -81,7 +83,7 @@ export default function Hero() {
                     <motion.button 
                         type="submit" 
                         style={{width: 'fit-content'}}
-                        className="btn btn-secondary-3 fw-medium mt-2"
+                        className="btn btn-secondary-3 fw-medium mx-auto mx-md-0"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2, delay: 0 }}
@@ -101,4 +103,35 @@ export default function Hero() {
             </motion.div>
         </motion.section>
     )
+}
+
+// Add responsive styles
+const responsiveStyles = `
+    @media (max-width: 992px) {
+        .responsive-heading {
+            font-size: 42px !important;
+        }
+    }
+    @media (max-width: 768px) {
+        .responsive-heading {
+            font-size: 36px !important;
+        }
+    }
+    @media (max-width: 576px) {
+        .responsive-heading {
+            font-size: 28px !important;
+        }
+    }
+`;
+
+// Add the styles to the document
+if (typeof document !== 'undefined') {
+    // Check if the style element already exists
+    const existingStyle = document.getElementById('hero-responsive-styles');
+    if (!existingStyle) {
+        const styleElement = document.createElement('style');
+        styleElement.id = 'hero-responsive-styles';
+        styleElement.innerHTML = responsiveStyles;
+        document.head.appendChild(styleElement);
+    }
 }

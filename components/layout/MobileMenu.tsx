@@ -20,8 +20,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 				<div className="mobile-header-wrapper-inner">
 					<div className="mobile-header-logo">
 						<Link className="d-flex main-logo align-items-center justify-content-center" href="/index-3">
-							<h1 className="fs-28 mb-0 me-2">Mario Carballo</h1>
-							<img src="assets/imgs/home-page-3/template/favicon.svg" alt="zelio" />
+							<h2 className="fs-28 mb-0 me-2">Mario Carballo</h2>
 						</Link>
 						<div className={`burger-icon burger-icon-white border rounded-3 ${isMobileMenu ? 'burger-close' : ''}`} onClick={handleMobileMenu}>
 							<span className="burger-icon-top" />

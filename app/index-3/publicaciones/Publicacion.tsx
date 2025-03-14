@@ -141,10 +141,11 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                             </motion.button>
                             }
                         </motion.div>
+                        <source srcSet={img?.replace(".jpg", "/webp")} type="image/webp"></source>
                         <motion.img 
                             className="object-fit-contain m-auto" 
                             src={img}
-                            alt="cover" 
+                            alt={title} 
                             style={{ objectFit: 'cover', maxHeight: 'auto', maxWidth: 250 }}
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
@@ -175,7 +176,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 </Link>
                             </motion.div>
                             <motion.p 
-                                className="text-300 mb-lg-auto mb-md-4 mb-3"
+                                className="text-dark mb-lg-auto mb-md-4 mb-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -184,7 +185,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 {desc1}
                             </motion.p>
                             <motion.p 
-                                className="text-300 mb-lg-auto mb-md-4 mb-3 mt-3"
+                                className="text-dark mb-lg-auto mb-md-4 mb-3 mt-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -193,7 +194,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 {desc2}
                             </motion.p>
                             <motion.p 
-                                className="text-300 mb-lg-auto mb-md-4 mb-3 mt-3"
+                                className="text-dark mb-lg-auto mb-md-4 mb-3 mt-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}

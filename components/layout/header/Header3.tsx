@@ -1,10 +1,8 @@
 import ThemeSwitch from '@/components/elements/ThemeSwitch'
 import Link from 'next/link'
 import { useTheme } from '@/util/useTheme'
-import OffCanvas from '../OffCanvas'
 import MobileMenu from '../MobileMenu'
 import { motion } from 'framer-motion'
-import NavSocial from '../NavSocial'
 import { useState, useEffect } from 'react'
 
 
@@ -48,9 +46,8 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 								whileHover={{ scale: 1.05 }}
 								transition={{ type: "spring", stiffness: 300 }}
 							>
-								<Link className="d-flex main-logo align-items-center justify-content-center" href="/index-3">
-									<h1 className="fs-28 mb-0 me-2">Mario Carballo</h1>
-									<img src="assets/imgs/home-page-3/template/favicon.svg" alt="zelio" />
+								<Link className="d-flex main-logo align-items-center justify-content-center" href="/">
+									<h1 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50 mb-0 me-2 text-primary-3">Mario Carballo</h1>
 								</Link>
 							</motion.div>
 							<div className="d-lg-flex d-none">
@@ -73,10 +70,6 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 									</motion.li>
 								</ul>
 								</div>
-							</div>
-							
-							<div className="d-flex align-items-center gap-3">
-								
 								{/* Mobile menu toggle */}
 								<motion.div 
 									className="burger-icon burger-icon-white border rounded-3 d-lg-none"
@@ -130,11 +123,12 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 									<ThemeSwitch />
 								</div>
 							</div>
+							
+			
 						</div>
 					</div>
 				</motion.nav>
 				{/* offCanvas-menu */}
-				<OffCanvas isOffCanvas={isOffCanvas} handleOffCanvas={handleOffCanvas} />
 				<MobileMenu isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} />
 			</motion.header>
 		</>
