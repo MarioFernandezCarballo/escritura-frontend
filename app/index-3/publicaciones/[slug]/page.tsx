@@ -5,6 +5,7 @@ import Script from "next/script"
 import Layout from "@/components/layout/Layout"
 import { motion } from 'framer-motion'
 import { Publication, getPublicationBySlug } from "@/util/publications"
+import { trackContentView, trackClick } from "@/util/analytics-helpers"
 
 // Add PayPal type declaration
 declare global {
@@ -33,6 +34,13 @@ export default function PublicacionDetalle() {
         
         if (publicationData) {
           setPublication(publicationData);
+          
+          // Track content view for analytics
+          trackContentView(
+            'publication', 
+            publicationData.slug, 
+            publicationData.title
+          );
         } else {
           setError('Publicación no encontrada');
         }
@@ -229,6 +237,7 @@ export default function PublicacionDetalle() {
                       className="btn btn-lg d-flex align-items-center gap-2"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
+                      onClick={() => trackClick('purchase', 'amazon', publication.buyingOptions.prices?.paperback?.amazon)}
                     >
                       <i className="ri-amazon-fill"></i>
                       <span>Comprar en Amazon</span>
@@ -238,6 +247,9 @@ export default function PublicacionDetalle() {
                   {publication.buyingOptions.webBuy && (
                     <motion.button 
                       onClick={() => {
+                        // Track click event
+                        trackClick('purchase', 'web', publication.buyingOptions.prices?.paperback?.web);
+                        
                         // Open modal for purchase
                         document.getElementById('purchaseModal')?.classList.add('show');
                         document.getElementById('purchaseModal')?.setAttribute('style', 'display: block; padding-right: 17px;');
@@ -263,6 +275,7 @@ export default function PublicacionDetalle() {
                       className="btn btn-lg btn-outline-secondary d-flex align-items-center gap-2"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
+                      onClick={() => trackClick('purchase', `other_store_${store.name.toLowerCase()}`, undefined)}
                     >
                       <i className={store.icon}></i>
                       <span>Comprar en {store.name}</span>
