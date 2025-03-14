@@ -8,7 +8,6 @@ import "/public/assets/css/main.css"
 import type { Metadata, Viewport } from "next"
 import GoogleTagManager from "@/components/analytics/GoogleTagManager"
 import GoogleTagManagerNoScript from "@/components/analytics/GoogleTagManagerNoScript"
-import PageViewTracker from "@/components/analytics/PageViewTracker"
 import { GTM_ID } from "@/util/analytics"
 import { Urbanist, Playfair_Display, DM_Mono } from "next/font/google"
 
@@ -120,7 +119,6 @@ export default function RootLayout({
 			<GoogleTagManager gtmId={GTM_ID} />
 			<body className={`${urbanist.variable} ${playfair_display.variable} ${dmMono.variable}`}>
 				<GoogleTagManagerNoScript gtmId={GTM_ID} />
-				<PageViewTracker />
 				{children}
 			</body>
 		</html>
