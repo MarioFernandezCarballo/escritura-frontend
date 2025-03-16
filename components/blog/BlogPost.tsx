@@ -1,8 +1,6 @@
 
 'use client'
 import React, { useEffect, useState } from "react"
-import BlogCard1 from "./BlogCard1"
-import BlogCard2 from "./BlogCard2"
 import BlogCard3 from "./BlogCard3"
 import Pagination from "./Pagination"
 import { API_BASE_URL } from "../../util/config"
@@ -79,8 +77,6 @@ export default function BlogPost({ style, showItem, showPagination }: BlogPostPr
     }
     return (
         <>
-
-
             {loading && <h3>Cargando posts...</h3>}
             {error && <h3>Error: {error}</h3>}
             {!loading && !error && getPaginatedProducts.length === 0 && (
@@ -88,14 +84,12 @@ export default function BlogPost({ style, showItem, showPagination }: BlogPostPr
             )}
 
             {getPaginatedProducts.map(item => (
-                <React.Fragment key={item.id}>
-                    {!style && <BlogCard1 item={item} />}
-                    {style === 1 && <BlogCard1 item={item} />}
-                    {style === 2 && <BlogCard2 item={item} />}
-                    {style === 3 && <BlogCard3 item={item} />}
-                </React.Fragment>
+                <div className="typical" key={item.id}>
+                    <BlogCard3 item={item} />
+                </div>
             ))}
-
+    
+                    <div className='d-flex flex-column align-items-center gap-4'>
             {showPagination &&
                 <Pagination
                     getPaginationGroup={
@@ -108,6 +102,7 @@ export default function BlogPost({ style, showItem, showPagination }: BlogPostPr
                     handleActive={handleActive}
                 />
             }
+            </div>
         </>
     )
 }

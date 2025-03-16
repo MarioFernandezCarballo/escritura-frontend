@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 
-export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffCanvas, handleOffCanvas }: any) {
+export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any) {
 	const { theme } = useTheme()
 	const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0)
 	
@@ -45,13 +45,38 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 							<motion.div
 								whileHover={{ scale: 1.05 }}
 								transition={{ type: "spring", stiffness: 300 }}
+								className={windowWidth < 992 ? "w-100 text-center" : "text-left"}
 							>
 								<Link className="d-flex main-logo align-items-center justify-content-center" href="/">
 									<h1 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50 mb-0 me-2 text-primary-3">Mario Carballo</h1>
 								</Link>
 							</motion.div>
-							<div className="d-lg-flex d-none">
-								<div className="navbar-collapse" id="navbarSupportedContent">
+							<div className={windowWidth < 992 ? "position-fixed top-0 end-0 mt-3 me-3 z-1000" : "d-lg-flex d-none"}>
+								{windowWidth < 992 && (
+									<motion.div 
+										className="burger-icon burger-icon-white border rounded-3 bg-white shadow-sm"
+										onClick={handleMobileMenu}
+										whileHover={{ scale: 1.1 }}
+										whileTap={{ scale: 0.95 }}
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										transition={{ duration: 0.3 }}
+									>
+										<motion.span 
+											className="burger-icon-top"
+											transition={{ duration: 0.2 }}
+										/>
+										<motion.span 
+											className="burger-icon-mid"
+											transition={{ duration: 0.2 }}
+										/>
+										<motion.span 
+											className="burger-icon-bottom"
+											transition={{ duration: 0.2 }}
+										/>
+									</motion.div>
+								)}
+								{windowWidth >= 992 && <div className="navbar-collapse" id="navbarSupportedContent">
 								<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
 										<Link className="nav-link active" href="/#about">Sobre mí</Link>
@@ -69,59 +94,13 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu, isOffC
 										<Link className="nav-link" href="/#contact">Contacto</Link>
 									</motion.li>
 								</ul>
-								</div>
-								{/* Mobile menu toggle */}
-								<motion.div 
-									className="burger-icon burger-icon-white border rounded-3 d-lg-none"
-									onClick={handleMobileMenu}
-									whileHover={{ scale: 1.1 }}
-									whileTap={{ scale: 0.95 }}
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{ duration: 0.3 }}
-								>
-									<motion.span 
-										className="burger-icon-top"
-										transition={{ duration: 0.2 }}
-									/>
-									<motion.span 
-										className="burger-icon-mid"
-										transition={{ duration: 0.2 }}
-									/>
-									<motion.span 
-										className="burger-icon-bottom"
-										transition={{ duration: 0.2 }}
-									/>
-								</motion.div>
-								
-								{/* Off canvas toggle - only visible on larger screens */}
-								<motion.div 
-									className="burger-icon burger-icon-white border rounded-3 d-none d-lg-block"
-									onClick={handleOffCanvas}
-									whileHover={{ scale: 1.1 }}
-									whileTap={{ scale: 0.95 }}
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									transition={{ duration: 0.3 }}
-								>
-									<motion.span 
-										className="burger-icon-top"
-										transition={{ duration: 0.2 }}
-									/>
-									<motion.span 
-										className="burger-icon-mid"
-										transition={{ duration: 0.2 }}
-									/>
-									<motion.span 
-										className="burger-icon-bottom"
-										transition={{ duration: 0.2 }}
-									/>
-								</motion.div>
-								
-								{/* Theme switch */}
 								<div className="d-flex align-items-center">
 									<ThemeSwitch />
 								</div>
+								</div>}
+								
+								{/* Theme switch */}
+								
 							</div>
 							
 			

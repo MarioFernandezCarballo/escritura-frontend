@@ -30,7 +30,7 @@ export default function Pagination({
 									: "page-item"
 							}
 						>
-							<a className="page-link">{item}</a>
+							<a className="page-link ">{item}</a>
 						</li>
 					)
 				})}

@@ -20,7 +20,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 				<div className="mobile-header-wrapper-inner">
 					<div className="mobile-header-logo">
 						<Link className="d-flex main-logo align-items-center justify-content-center" href="/index-3">
-							<h2 className="fs-28 mb-0 me-2">Mario Carballo</h2>
+							<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50 mb-0 me-2 text-primary-3">Mario Carballo</h2>
 						</Link>
 						<div className={`burger-icon burger-icon-white border rounded-3 ${isMobileMenu ? 'burger-close' : ''}`} onClick={handleMobileMenu}>
 							<span className="burger-icon-top" />
@@ -32,26 +32,23 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 						<PerfectScrollbar className="perfect-scroll">
 							<div className="mobile-menu-wrap mobile-header-border">
 								<nav>
-									<ul className="mobile-menu font-heading ps-0">
-										<li className="nav-item">
-											<Link className="nav-link active" href="/#about">Sobre mí</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="nav-link" href="/#publicaciones">Publicaciones</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="nav-link" href="/#services">Podcast</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="nav-link" href="/#resume">Premios</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="nav-link" href="/#blog">Blog</Link>
-										</li>
-										<li className="nav-item">
-											<Link className="nav-link" href="/#contact">Contacto</Link>
-										</li>
-									</ul>
+								<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+										<Link className="nav-link active" href="/#about">Sobre mí</Link>
+									</motion.li>
+									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+										<Link className="nav-link" href="/#publicaciones">Publicaciones</Link>
+									</motion.li>
+									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+										<Link className="nav-link" href="/#resume">Premios</Link>
+									</motion.li>
+									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+										<Link className="nav-link" href="/#blog">Blog</Link>
+									</motion.li>
+									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+										<Link className="nav-link" href="/#contact">Contacto</Link>
+									</motion.li>
+								</ul>
 								</nav>
 							</div>
 							

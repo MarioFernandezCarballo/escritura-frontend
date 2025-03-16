@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         '@type': 'Person',
         'name': 'Mario Carballo'
       },
-      'url': `https://mariocarballo.es/index-3/publicaciones/${params.slug}`,
+      'url': `https://mariocarballo.es/publicaciones/${params.slug}`,
       'workExample': [
         {
           '@type': 'Book',
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title,
         description,
         type: 'book',
-        url: `https://mariocarballo.es/index-3/publicaciones/${params.slug}`,
+        url: `https://mariocarballo.es/publicaciones/${params.slug}`,
         images: [
           {
             url: `https://mariocarballo.es${publication.coverImage}`,
@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         creator: '@MarioCarballo',
       },
       alternates: {
-        canonical: `https://mariocarballo.es/index-3/publicaciones/${params.slug}`,
+        canonical: `https://mariocarballo.es/publicaciones/${params.slug}`,
       },
       robots: {
         index: true,
@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         }),
         'schema:mainEntityOfPage': JSON.stringify({
           '@type': 'WebPage',
-          '@id': `https://mariocarballo.es/index-3/publicaciones/${params.slug}`
+          '@id': `https://mariocarballo.es/publicaciones/${params.slug}`
         }),
         'schema:genre': JSON.stringify(publication.details.genre || []),
         'schema:bookFormat': JSON.stringify(publication.details.format || []),
