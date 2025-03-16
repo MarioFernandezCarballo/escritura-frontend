@@ -73,7 +73,7 @@ export default function Blog() {
                                 <p>Aquí hablamos de historias, personajes y todo lo relacionado con la ciencia ficción y la fantasía. Si amas los mundos imposibles, los héroes inesperados y las aventuras épicas, este es tu lugar.</p>
                                 <div className='d-flex flex-wrap justify-content-around gap-2 mt-5'>
                                     {posts.map((post, index) => (
-                                        <div className='col-5'>
+                                        <div className='col-5' key={`b-post${index}`}>
                                             <motion.article 
                                                 className="rounded-4 position-relative border p-lg-4 p-md-4 p-3 mb-3"
                                                 itemScope
