@@ -14351,6 +14351,13 @@ Table of contents
 
 }
 
+.modal-title, .modal-body h6 {
+  color: var(--mc-light4);
+} 
+.modal-body p {
+
+  --mc-font-garamond: "EB Garamond", sans-serif !important;
+}
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .position-relative.d-flex.gap-2.pt-4 {

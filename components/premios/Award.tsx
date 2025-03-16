@@ -24,7 +24,7 @@ export default function Award({title, organization, date, description} : AwardPr
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.3 }}
             >
-                {title}
+                {date} - {title}
             </motion.p>
             <motion.div 
                 className="d-flex gap-4"
@@ -33,9 +33,8 @@ export default function Award({title, organization, date, description} : AwardPr
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.4 }}
-            >
-                <p className="mb-2">{date}</p>         
-                <p className="mb-0">{organization}</p>
+            >      
+                <p className="mb-2">{organization}</p>
             </motion.div>
             <motion.p 
                 className="mb-4"

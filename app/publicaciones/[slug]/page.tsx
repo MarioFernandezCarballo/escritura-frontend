@@ -23,6 +23,7 @@ export default function PublicacionDetalle() {
   const [publication, setPublication] = useState<Publication | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [paypalLoading, setPaypalLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPublication = async () => {
@@ -54,12 +55,28 @@ export default function PublicacionDetalle() {
     if (publication?.buyingOptions.paypalButtonId) {
       // Add event listener for modal opening
       const handleWebBuyClick = () => {
+        // Reset PayPal loading state when modal is opened
+        setPaypalLoading(true);
+        
         // Small delay to ensure the modal is visible before trying to render PayPal button
         setTimeout(() => {
           if (typeof window !== 'undefined' && window.paypal) {
-            window.paypal.HostedButtons({
-              hostedButtonId: publication.buyingOptions.paypalButtonId!
-            }).render(`#paypal-container-${publication.buyingOptions.paypalButtonId}`);
+            try {
+              window.paypal.HostedButtons({
+                hostedButtonId: publication.buyingOptions.paypalButtonId!
+              }).render(`#paypal-container-${publication.buyingOptions.paypalButtonId}`);
+              
+              // Set loading to false after a short delay to ensure button is visible
+              setTimeout(() => {
+                setPaypalLoading(false);
+              }, 500);
+            } catch (error) {
+              console.error("Error rendering PayPal button:", error);
+              setPaypalLoading(false);
+            }
+          } else {
+            console.warn("PayPal SDK not available");
+            setPaypalLoading(false);
           }
         }, 1000);
       };
@@ -220,15 +237,15 @@ export default function PublicacionDetalle() {
 
                 {/* Buying Options */}
                 <div className="mb-4">
-                  <h3 className="h4 mb-3 text-dark">Opciones de compra</h3>
+                  <h3 className="h4 mb-3">Opciones de compra</h3>
                   <div className="d-flex flex-wrap gap-3">
                     {publication.buyingOptions.amazon && (
                       <motion.a 
                         href={publication.buyingOptions.amazon}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{background: '#ff990080'}}
-                        className="btn btn-lg d-flex align-items-center gap-2 text-dark"
+                        style={{background: '#ff990080', minWidth: '300px'}}
+                        className="btn btn-lg d-flex align-items-center gap-2"
                         whileHover={{ scale: 1.02, background: '#ff9900' }}
                         transition={{ duration: 0.1 }}
                       >
@@ -246,8 +263,8 @@ export default function PublicacionDetalle() {
                           document.body.classList.add('modal-open');
                           document.body.setAttribute('style', 'overflow: hidden; padding-right: 17px;');
                         }}
-                        style={{background: '#627fc280'}}
-                        className="btn btn-lg btn-outline-primary d-flex align-items-center gap-2 text-dark"
+                        style={{background: '#627fc280', minWidth: '300px'}}
+                        className="btn btn-lg btn-outline-primary d-flex align-items-center gap-2"
                         whileHover={{ scale: 1.02, background: '#627fc2'}}
                         transition={{ duration: 0.1 }}
                       >
@@ -300,8 +317,26 @@ export default function PublicacionDetalle() {
                           <p>Si no te importa esperar un par de días más para tener tu libro disponible, comprando de esta forma maximizarás las ganacias del autor de la obra.</p>
                           <p className="mb-4">Muchísimas gracias por tu interés.</p>
                           {publication.buyingOptions.paypalButtonId ? (
-                            <div id={`paypal-container-${publication.buyingOptions.paypalButtonId}`} className="d-flex justify-content-center">
-                              {/* PayPal button will be rendered here */}
+                            <div className="container-fluid p-0">
+                              {paypalLoading && (
+                                <div className="text-center mb-3">
+                                  <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">Cargando PayPal...</span>
+                                  </div>
+                                  <p className="mt-2 text-muted">Cargando opciones de pago...</p>
+                                </div>
+                              )}
+                              <div 
+                                id={`paypal-container-${publication.buyingOptions.paypalButtonId}`} 
+                                className="w-100"
+                                style={{ 
+                                  display: paypalLoading ? 'none' : 'block',
+                                  maxWidth: '100%',
+                                  margin: '0 auto'
+                                }}
+                              >
+                                {/* PayPal button will be rendered here */}
+                              </div>
                             </div>
                           ) : (
                             <div id="paypal-button-container" className="d-flex justify-content-center">
@@ -384,9 +419,22 @@ export default function PublicacionDetalle() {
               if (document.getElementById('purchaseModal')?.classList.contains('show')) {
                 setTimeout(() => {
                   if (typeof window !== 'undefined' && window.paypal) {
-                    window.paypal.HostedButtons({
-                      hostedButtonId: publication.buyingOptions.paypalButtonId!
-                    }).render(`#paypal-container-${publication.buyingOptions.paypalButtonId}`);
+                    try {
+                      window.paypal.HostedButtons({
+                        hostedButtonId: publication.buyingOptions.paypalButtonId!
+                      }).render(`#paypal-container-${publication.buyingOptions.paypalButtonId}`);
+                      
+                      // Set loading to false after a short delay to ensure button is visible
+                      setTimeout(() => {
+                        setPaypalLoading(false);
+                      }, 500);
+                    } catch (error) {
+                      console.error("Error rendering PayPal button:", error);
+                      setPaypalLoading(false);
+                    }
+                  } else {
+                    console.warn("PayPal SDK not available");
+                    setPaypalLoading(false);
                   }
                 }, 500);
               }
