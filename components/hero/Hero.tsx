@@ -3,7 +3,11 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useSubscribers } from '@/util/api';
 
-export default function Hero({from}) {
+interface HeroProps {
+    from: string; // Adjust type as needed
+  }
+
+export default function Hero({from}: HeroProps) {
     const [newEmail, setNewEmail] = useState('');
     const { addSubscriber } = useSubscribers();
 
