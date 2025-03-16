@@ -53,10 +53,11 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 									<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50">Mario Carballo</h2>
 								</Link>
 							</motion.div>
-							<div className={windowWidth < 992 ? "position-fixed top-0 end-0 mt-3 me-3 z-1000" : "d-lg-flex d-none"}>
+							<div className={windowWidth < 992 ? "position-fixed top-0 end-0 me-3 z-1000" : "d-lg-flex d-none"}>
 								{windowWidth < 992 && (
-									<motion.div 
-										className="burger-icon burger-icon-white border rounded-3 bg-white shadow-sm"
+									<motion.div
+										id='burgir' 
+										className="burger-icon border rounded-3 shadow-sm"
 										onClick={handleMobileMenu}
 										whileHover={{ scale: 1.1 }}
 										whileTap={{ scale: 0.95 }}

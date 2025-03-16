@@ -65,7 +65,7 @@ export default function Blog() {
         <div>
             <div className="position-relative d-flex gap-2 pt-4">
                     {posts.slice(0, 3).map((post, index) => (
-                        <div className="col-4" key={post.id}>
+                        <div className="col-xl-4 col-md-12" key={post.id}>
                             <motion.article 
                                 className="rounded-4 position-relative border p-lg-4 p-md-4 p-3 mb-3"
                                 itemScope

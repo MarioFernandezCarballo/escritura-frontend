@@ -14211,7 +14211,7 @@ Table of contents
 
 
 #hero {
-  background-image: url('../imgs/home-page-3/typical/hero.png');
+  background-image: url('../imgs/home-page-3/typical/hero.webp');
 
   min-height: 600px;
 }
@@ -14226,6 +14226,9 @@ Table of contents
   background-image: linear-gradient(180deg, rgba(32,34,33,.3) 0%, #000000 100%);
 }
 
+#hero form {
+  background-color: transparent;
+}
 
 #mc-navbar h2 {
   margin: 0;
@@ -14324,4 +14327,55 @@ Table of contents
 }
 #resume .award-title {
   color: var(--mc-light4) !important;
+}
+
+#burgir {
+  background-color: var(--mc-dark1) !important;
+  border-color: var(--mc-light3-30) !important;
+}
+.mobile-header-logo h2 {
+  color: var(--mc-light4);
+}
+
+.section-footer-3 a, .section-footer-3 h2 {
+  color: var(--mc-light4) !important;
+}
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .position-relative.d-flex.gap-2.pt-4 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .col-xl-4.col-md-12 {
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  
+  .custom-header .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-header h1 { font-size: 1.8rem; }
+  .custom-header h2, .custom-header h3 { font-size: 1.5rem; }
+  .product h1, .product h3 { font-size: 1.6rem; }
+  #hero { min-height: 400px; background-position: center top; }
+  .mc-publicacion .card__inner { padding: 10px; }
+  .product .card { flex-direction: column; }
+  .product table { display: block; overflow-x: auto; white-space: nowrap; }
+ 
+}
+
+@media (max-width: 480px) {
+
+  .mc-button { font-size: 14px; padding: 8px 12px; }
+  .mc-publicacion i { display: none; }
 }

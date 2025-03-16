@@ -12,10 +12,9 @@ export default function Footer3() {
 								<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-48 mb-0 me-2 color-primary-3">Mario Carballo</h2>
 							</Link>
 							<div className="navigation d-flex align-items-center justify-content-center flex-wrap gap-4 my-4">
-								<a href="/#about" className="fs-6"> Sobre mí </a>
-								<a href="/#resume" className="fs-6"> Publicaciones </a>
-								<a href="/#portfolio" className="fs-6"> Premios </a>
-								<a href="/#blog" className="fs-6"> Blog </a>
+								<a href="/about" className="fs-6"> Sobre mí </a>
+								<a href="/publicaciones" className="fs-6"> Publicaciones </a>
+								<a href="/blog" className="fs-6"> Blog </a>
 								<a href="/#contact" className="fs-6"> Contacto </a>
 							</div>
 						</div>

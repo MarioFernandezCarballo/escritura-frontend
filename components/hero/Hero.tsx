@@ -36,7 +36,6 @@ export default function Hero({from}: HeroProps) {
                     <div className="col-xl-8 col-md-12 mx-auto">
                         <motion.h1 
                             className="my-3"
-                            style={{ fontSize: '52px' }}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.4 }}
@@ -94,7 +93,7 @@ export default function Hero({from}: HeroProps) {
                                 <div className="visually-hidden" aria-live="polite" role="status" id="form-status">
                                     {newEmail ? 'Email ingresado' : 'Formulario de suscripción listo'}
                                 </div>
-                                <div className='col-12'>
+                                <div className='col-xl-12 col-md-6'>
                                     <input 
                                         className="d-inline-block form-control"
                                         type="email" 
