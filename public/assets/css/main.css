@@ -2828,8 +2828,8 @@ textarea {
 @media (max-width: 768px) {
   .burger-icon {
     display: block;
-    top: 21px;
-    right: 24px;
+    top: 15px;
+    right: 10px;
   }
 }
 .offCanvas__info {
@@ -14340,6 +14340,17 @@ Table of contents
 .section-footer-3 a, .section-footer-3 h2 {
   color: var(--mc-light4) !important;
 }
+
+.mc-icon {
+  color: var(--mc-light4);
+}
+.blog-image {
+   overflow: 'hidden';
+   position: 'relative';
+   height: 200px;
+
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .position-relative.d-flex.gap-2.pt-4 {
@@ -14377,5 +14388,4 @@ Table of contents
 @media (max-width: 480px) {
 
   .mc-button { font-size: 14px; padding: 8px 12px; }
-  .mc-publicacion i { display: none; }
 }

@@ -35,7 +35,7 @@ export default function Contacto () {
                 <div className="row align-items-start">
                     <div className="col-xl-8 col-md-12 mt-5 mx-auto">
                         <h2>Contacto</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus quasi eligendi velit, natus et sed similique culpa rem voluptatum doloremque necessitatibus iste deleniti maiores, id totam ex doloribus modi nostrum!</p>
+                        <p>Estoy aquí para escuchar tus ideas y comentarios.</p>
                         <div id="contacto" className="contact">
                             <motion.div 
                                 className="position-relative z-2 mt-4"

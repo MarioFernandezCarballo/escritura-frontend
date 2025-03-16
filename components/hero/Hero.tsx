@@ -40,10 +40,10 @@ export default function Hero({from}: HeroProps) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.4 }}
                         >
-                            {from === 'home' 
-                            ? <>Mundos que <span className="">Inspiran.</span> Palabras que <span className="">Transforman</span></>
+                            {from === 'home'
+                            ? <>Mundos que <span className="">Despiertan.</span> Palabras que <span className="">Transforman</span></>
                             : from === 'blog' 
-                                ? <>Explora el <span className="">Universo</span> de la escritura, la <span className="">Imaginación</span> y la creatividad</>
+                                ? <>Explora el <span className="">Universo</span> de la escritura y la <span className="">Creatividad</span></>
                                 : from === 'publicaciones' 
                                     ? <>Mi <span>biblioteca</span> literaria.</>
                                     : from === 'about'
@@ -59,14 +59,14 @@ export default function Hero({from}: HeroProps) {
                             transition={{ duration: 0.4, delay: 0.5 }}
                         >
                             {from === 'home' 
-                            ? 'Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.'
+                            ? 'Sumérgete en un universo de relatos que desafían lo imaginable. Aquí, la fantasía y la ciencia ficción se encuentran para crear mundos sin fronteras, donde cada palabra construye realidades sorprendentes. Historias que inspiran, emocionan y perduran.'
                             : from === 'blog' 
-                                ? <>Explora el <span className="">Universo</span> de la escritura, la <span className="">Imaginación</span> y la creatividad</>
+                                ? 'Relatos, ideas y reflexiones que despiertan la imaginación'
                                 : from === 'publicaciones' 
                                     ? 'Cada historia es una puerta a lo imposible, un viaje a lo desconocido y una experiencia que deja huella.'
                                     : from === 'about'
                                         ? 'De la ingeniería espacial al espacio en el papel.'
-                                        : 'Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.'
+                                        : 'Sumérgete en un universo de relatos que desafían lo imaginable. Aquí, la fantasía y la ciencia ficción se encuentran para crear mundos sin fronteras, donde cada palabra construye realidades sorprendentes. Historias que inspiran, emocionan y perduran.'
                                 }                            
                         </motion.p>
                         {from === 'hero' &&

@@ -55,7 +55,7 @@ export default function Home() {
 					<div className="row align-items-start">
 						<div className="col-xl-8 col-md-12 mt-5 mx-auto">
 							<h2>Blog</h2>
-							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis aspernatur assumenda dolorum nisi, voluptas molestiae earum recusandae necessitatibus debitis itaque. Eum aliquid, nihil voluptatibus enim sapiente error vitae dolorum.</p>
+							<p>Aquí encontrarás relatos, reflexiones y todo lo relacionado con la creación literaria. Historias y mundos que desafían la realidad. Pensamientos que invitan a la reflexión. </p>
 							<Blog />
 						</div>
 					</div>

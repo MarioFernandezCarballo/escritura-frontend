@@ -64,7 +64,7 @@ export default function Blog() {
         
         <div>
             <div className="position-relative d-flex gap-2 pt-4">
-                    {posts.slice(0, 3).map((post, index) => (
+                    {posts.slice(-3).map((post, index) => (
                         <div className="col-xl-4 col-md-12" key={post.id}>
                             <motion.article 
                                 className="rounded-4 position-relative border p-lg-4 p-md-4 p-3 mb-3"
@@ -141,7 +141,7 @@ export default function Blog() {
                                             transition={{ duration: 0.1 }}
                                         >
                                             <i 
-                                                className="ri-book-open-line ri-lg"
+                                                className="ri-book-open-line mc-icon ri-lg"
                                                 aria-hidden="true"
                                             ></i>
                                         </motion.button>
@@ -149,7 +149,8 @@ export default function Blog() {
                                 </div>
                                 <div className="blog-image" style={{ overflow: 'hidden' }}>
                                     <img 
-                                        className="rounded-3 w-100 h-100 object-fit-" 
+                                        className="rounded-3 w-100 h-100" 
+                                        style={{objectFit: 'cover', objectPosition: 'center'}}
                                         src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
                                         alt={`Imagen para el artículo: ${post.title}`}
                                         itemProp="image"

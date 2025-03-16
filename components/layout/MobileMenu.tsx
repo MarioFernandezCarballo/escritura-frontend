@@ -19,7 +19,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 			>
 				<div className="mobile-header-wrapper-inner">
 					<div className="mobile-header-logo">
-						<Link className="d-flex main-logo align-items-center justify-content-center" href="/index-3">
+						<Link className="d-flex main-logo align-items-center justify-content-center" href="/">
 							<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50 mb-0 me-2">Mario Carballo</h2>
 						</Link>
 						<div className={`burger-icon burger-icon-black border rounded-3 ${isMobileMenu ? 'burger-close' : ''}`} onClick={handleMobileMenu}>
