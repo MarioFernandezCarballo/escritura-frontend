@@ -5,7 +5,7 @@ export default function Footer3() {
 	return (
 		<>
 			<footer>
-				<div className="section-footer-3 position-relative">
+				<div className="section-footer-3 position-relative mt-5">
 					<div className="container position-relative z-1 border-top border-secondary-3 pb-2 pt-4 px-lg-0">
 						<div className="d-lg-flex justify-content-between align-items-center">
 							<Link className="d-flex main-logo align-items-center justify-content-center ms-lg-0 ms-md-5 ms-3" href="/">

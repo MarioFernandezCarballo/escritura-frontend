@@ -1448,7 +1448,6 @@ img {
 	Typography css start
 ===============================*/
 body {
-  font-family: var(--urbanist);
   font-size: var(--tc-body-font-size);
   font-weight: 400;
   min-height: 100vh;
@@ -1465,7 +1464,6 @@ body.home-page-2 a:hover {
 }
 body.home-page-3 {
   background: #fbf8f9;
-  font-family: var(--urbanist);
   font-weight: 500;
   color: #5e5e65;
 }
@@ -1771,7 +1769,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--urbanist);
   color: var(--tc-neutral-0);
   margin-top: 0px;
   margin-bottom: 16px;
@@ -14128,3 +14125,203 @@ strong {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+/* ROBO & RANSO Styles */
+/*===========
+Table of contents
+
+==============*/
+:root{
+    --mc-dark1: #1c1c1c; /* Custom Primary Color */
+    --mc-dark2: #303531; /* Custom Secondary Color */
+    --mc-dark3: #4d574e; /* Custom Secondary Color */
+    --mc-light2: #654922; /* Custom Secondary Color */
+    --mc-light1: #956e2f; /* Custom Secondary Color */
+    --mc-light3: rgb(182, 139, 75);
+
+    --mc-light3-30: rgba(182, 139, 75, .4);
+    --mc-light3-10: rgba(182, 139, 75, .2);
+    --mc-light4: #e6b66f;
+    --mc-text: #fdecd2;
+
+    --mc-font-garamond: "EB Garamond", sans-serif;
+}
+* {
+  font-family: var(--mc-font-garamond);
+  color: var(--mc-text);
+  background-color: var(--mc-dark1);
+}
+
+/*Hero*/
+
+.custom-header {
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+.custom-header p, .custom-header h1 {
+  color: var(--mc-text);
+  background-color: transparent;
+  font-family: var(--mc-font-garamond);
+}
+.custom-header h1 span {
+  font-family: var(--mc-font-garamond) !important;
+  color: var(--mc-light4);
+  background-color: transparent;
+}
+.custom-header h2, .custom-header h3 {
+  color: var(--mc-light4);
+}
+.custom-header .container {
+  z-index: 2;
+  background-color: transparent;
+}
+.custom-header div {
+  background-color: transparent;
+}
+
+.form-control{
+  background-color: transparent !important;
+  border-color: var(--mc-light3-30);
+  color: var(--mc-text) !important; 
+}
+.form-control::-moz-placeholder {
+  color: var(--mc-light4) !important;
+  font-family: var(--mc-font-garamond);
+}
+.form-control::placeholder {
+  color: var(--mc-light4) !important;
+  font-family: var(--mc-font-garamond);
+  opacity: .5;
+}
+.form-control:focus {
+  border-color: var(--mc-text) !important;
+  box-shadow: none;
+}
+
+.mc-button {
+  color: var(--mc-text) !important;
+}
+.mc-button i {
+  font-size: 20px;
+  background-color: transparent;
+}
+
+
+#hero {
+  background-image: url('../imgs/home-page-3/typical/hero.png');
+
+  min-height: 600px;
+}
+#hero::before{
+  position: absolute;
+  z-index: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(180deg, rgba(32,34,33,.3) 0%, #000000 100%);
+}
+
+
+#mc-navbar h2 {
+  margin: 0;
+  margin-top: 10px;
+}
+#mc-navbar h2, #mc-navbar .nav-link {
+  color: var(--mc-light4);
+}
+
+#publicaciones h2{
+  color: var(--mc-light4);
+}
+#publicaciones a {
+  color: var(--mc-light3);
+}
+
+.mc-publicacion .card__inner {
+  background-color: var(--mc-dark1) !important;
+  border-color: var(--mc-light3-30) !important;
+  transition: all .3s;
+}
+.mc-publicacion .card__inner:hover {
+  border-color: var(--mc-light3) !important;
+}
+.mc-publicacion i{
+  color: var(--mc-light4);
+}
+
+.product {
+  background-color: transparent;
+}
+.product h1, .product h3{
+  color: var(--mc-light4);
+}
+.product p {
+  color: var(--mc-text);
+}
+.product .card {
+  border-radius: 3px;
+  border-color: var(--mc-light3-30);
+  background-color: transparent;
+}
+.product tr, 
+.product th,
+.product td {
+  background-color: transparent !important;
+  color: var(--mc-text);
+  border-bottom-color: var(--mc-light3-30) ;
+}
+.product span,
+.product i {
+  background-color: transparent;
+}
+
+#blog article {
+  border-color: var(--mc-light3-30) !important;
+}
+#blog article:hover {
+  border-color: var(--mc-light3) !important;
+}
+
+#blog-view article {
+  border-color: var(--mc-light3-30) !important;
+}
+#blog-view article:hover {
+  border-color: var(--mc-light3) !important;
+}
+
+.mc-blog-post::before {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(180deg, rgba(32,34,33,0) 0%, #000000 100%);
+}
+.post-title {
+  color: var(--mc-light4) !important;
+}
+.badge {
+  background-color: var(--mc-light3-10);
+  border-color: var(--mc-light3-30) !important;
+}
+
+
+#premios h2 {
+  color: var(--mc-light4);
+}
+#resume p {
+  color: var(--mc-text);
+}
+#resume .card-award {
+  border-color: transparent !important;
+}
+#resume .award-title {
+  color: var(--mc-light4) !important;
+}

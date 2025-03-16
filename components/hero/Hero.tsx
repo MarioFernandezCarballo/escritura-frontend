@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useSubscribers } from '@/util/api';
 
-export default function Hero() {
+export default function Hero({from}) {
     const [newEmail, setNewEmail] = useState('');
     const { addSubscriber } = useSubscribers();
 
@@ -19,119 +19,114 @@ export default function Hero() {
     };
     return (
         <motion.section 
-            id="about" 
-            className="hero-3 pe-lg-5"
+            id="hero" 
+            style={from !== 'home' ? {minHeight: 400} : {}}
+            className="custom-header hero-3 pe-lg-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             aria-label="Sección de introducción"
         >
-            <motion.h2 
-                className="text-dark my-3 responsive-heading"
-                style={{ fontSize: '52px' }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-            >
-                Mundos que <span className="text-primary-3">Inspiran.</span> Palabras que <span className="text-primary-3">Transforman</span>
-            </motion.h2>
-            <motion.p 
-                className="mb-4 text-dark fs-6 fs-md-5"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-            >
-                Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.
-            </motion.p>
-            <motion.p 
-                className="mb-4 text-dark fs-6 fs-md-5"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-            >
-                Realidades que inspiran, emocionan, y dejan huella.
-            </motion.p>
-            <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-                className="w-100 w-md-75 w-lg-50"
-            >
-                <form 
-                    className="d-flex flex-column flex-md-row align-items-md-center gap-2"
-                    onSubmit={handleAddSubscriber}
-                    aria-label="Formulario de suscripción al boletín"
-                >
-                    <div className="visually-hidden" aria-live="polite" role="status" id="form-status">
-                        {newEmail ? 'Email ingresado' : 'Formulario de suscripción listo'}
-                    </div>
-                    <motion.input 
-                        className="d-inline-block form-control text-dark"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        type="email" 
-                        name="email" 
-                        value={newEmail}
-                        onChange={(e) => setNewEmail(e.target.value)}
-                        placeholder="Escribe tu email y no te pierdas nada" 
-                        required 
-                        style={{height: '38px', width: '100%'}}
-                        aria-label="Correo electrónico para suscripción"
-                        aria-required="true"
-                        aria-describedby="form-status"
-                    />
-                    <motion.button 
-                        type="submit" 
-                        style={{width: 'fit-content'}}
-                        className="btn btn-secondary-3 fw-medium mx-auto mx-md-0"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, delay: 0 }}
-                        whileHover={{ 
-                            scale: 1.05,
-                            boxShadow: "0px 4px 15px rgba(0,0,0,0.1)"
-                        }}
-                        whileTap={{ scale: 0.95 }}>
+            <div className="container my-auto">
+                <div className="row">
+                    <div className="col-xl-8 col-md-12 mx-auto">
+                        <motion.h1 
+                            className="my-3"
+                            style={{ fontSize: '52px' }}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.4 }}
+                        >
+                            {from === 'home' 
+                            ? <>Mundos que <span className="">Inspiran.</span> Palabras que <span className="">Transforman</span></>
+                            : from === 'blog' 
+                                ? <>Explora el <span className="">Universo</span> de la escritura, la <span className="">Imaginación</span> y la creatividad</>
+                                : from === 'publicaciones' 
+                                    ? <>Mi <span>biblioteca</span> literaria.</>
+                                    : from === 'about'
+                                        ? <>Mario <span>Carballo</span></>
+                                        : <>Mundos que <span className="">Inspiran.</span> Palabras que <span className="">Transforman</span></>
+                                }
+                            
+                        </motion.h1>
+                        <motion.p 
+                            className="mb-4 fs-6 fs-md-5"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.5 }}
+                        >
+                            {from === 'home' 
+                            ? 'Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.'
+                            : from === 'blog' 
+                                ? <>Explora el <span className="">Universo</span> de la escritura, la <span className="">Imaginación</span> y la creatividad</>
+                                : from === 'publicaciones' 
+                                    ? 'Cada historia es una puerta a lo imposible, un viaje a lo desconocido y una experiencia que deja huella.'
+                                    : from === 'about'
+                                        ? 'De la ingeniería espacial al espacio en el papel.'
+                                        : 'Adéntrate en un universo de historias inolvidables. Aquí encontrarás mundos extraordinarios de fantasía y ciencia ficción, donde la imaginación no tiene límites y las palabras tejen realidades asombrosas. Realidades que inspiran, emocionan, y dejan huella.'
+                                }                            
+                        </motion.p>
+                        {from === 'hero' &&
+                        <motion.p 
+                            className="mb-4 fs-6 fs-md-5"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.5 }}
+                        >
+                            Realidades que inspiran, emocionan, y dejan huella.
+                        </motion.p>}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.6 }}
+                            className="w-100 w-md-75 w-lg-50"
+                        >
+                            {from == "home" && 
+                            <form 
+                                className="d-flex flex-column flex-md-row align-items-md-center gap-2"
+                                onSubmit={handleAddSubscriber}
+                                aria-label="Formulario de suscripción al boletín"
+                            >
+                                <div className="visually-hidden" aria-live="polite" role="status" id="form-status">
+                                    {newEmail ? 'Email ingresado' : 'Formulario de suscripción listo'}
+                                </div>
+                                <div className='col-12'>
+                                    <input 
+                                        className="d-inline-block form-control"
+                                        type="email" 
+                                        name="email" 
+                                        value={newEmail}
+                                        onChange={(e) => setNewEmail(e.target.value)}
+                                        placeholder="Escribe tu email y no te pierdas nada" 
+                                        required 
+                                        aria-label="Correo electrónico para suscripción"
+                                        aria-required="true"
+                                        aria-describedby="form-status"
+                                    />
+                                    </div>
+                                    <div className='col-12'>
+                                    <motion.button 
+                                        type="submit" 
+                                        style={{width: 'fit-content'}}
+                                        className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        whileHover={{ 
+                                            scale: 1.05
+                                        }}
+                                        whileTap={{ scale: 0.95 }}>
 
-                        Únete a la comunidad
-                        <motion.i 
-                            className="ri-arrow-right-up-line fw-medium"
-                            whileHover={{ x: 5, y: -5 }}
-                        />
-                    </motion.button>
-                </form>
-            </motion.div>
+                                        Únete a la comunidad
+                                        <i className="ri-arrow-right-up-line fw-medium"/>
+                                    </motion.button>
+                                </div>
+                            </form>}
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+            
         </motion.section>
     )
-}
-
-// Add responsive styles
-const responsiveStyles = `
-    @media (max-width: 992px) {
-        .responsive-heading {
-            font-size: 42px !important;
-        }
-    }
-    @media (max-width: 768px) {
-        .responsive-heading {
-            font-size: 36px !important;
-        }
-    }
-    @media (max-width: 576px) {
-        .responsive-heading {
-            font-size: 28px !important;
-        }
-    }
-`;
-
-// Add the styles to the document
-if (typeof document !== 'undefined') {
-    // Check if the style element already exists
-    const existingStyle = document.getElementById('hero-responsive-styles');
-    if (!existingStyle) {
-        const styleElement = document.createElement('style');
-        styleElement.id = 'hero-responsive-styles';
-        styleElement.innerHTML = responsiveStyles;
-        document.head.appendChild(styleElement);
-    }
 }

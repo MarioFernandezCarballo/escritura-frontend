@@ -28,42 +28,45 @@ export default function BlogDetails() {
                     <p className="text-danger">{error}</p>
                 </div>
             )}
-
+            {blogPost && !loading && !error &&
+            <section id={`blog-post-${blogPost.id}`} className="mc-blog-post custom-header pe-lg-5" style={{minHeight: 400, backgroundImage: `url(${blogPost.image_url})`}}>
+                <div className="container my-auto">
+                    <div className="row">
+                        <div className="col-xl-8 col-md-12 mt-5 mx-auto">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            }
+            
             {blogPost && !loading && !error && (
-                <div className="container py-5">
-                    <article className="row justify-content-center">
-                        <div className="col-lg-10">
-                            {blogPost.image_url && (
-                                <img 
-                                    src={blogPost.image_url} 
-                                    alt={blogPost.title}
-                                    className="img-fluid rounded mb-4"
-                                    style={{ maxHeight: '400px', width: '100%', objectFit: 'cover' }}
-                                />
+            <section id={`blog-post-desc-${blogPost.id}`} className="custom-header pe-lg-5">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-8 col-md-12 mt-5 mx-auto">
+                            <h1 className="mx-auto post-title">{blogPost.title}</h1>
+                            <time>{blogPost.created_at ? new Date(blogPost.created_at).toLocaleDateString() : ''}</time>
+                            {blogPost.tags && blogPost.tags.length > 0 && (
+                                <div className="mt-4 d-flex gap-2 flex-wrap">
+                                    {blogPost.tags.map((tag: string, index: number) => (
+                                        <span 
+                                            key={index}
+                                            className="badge border"
+                                        >
+                                            {tag.trim()}
+                                        </span>
+                                    ))}
+                                </div>
                             )}
-                            <h1 className="display-4 fw-bold mb-4">{blogPost.title}</h1>
-                            <div className="mb-4 text-muted">
-                                <time>{blogPost.created_at ? new Date(blogPost.created_at).toLocaleDateString() : ''}</time>
-                                {blogPost.tags && blogPost.tags.length > 0 && (
-                                    <div className="mt-2 d-flex gap-2 flex-wrap">
-                                        {blogPost.tags.map((tag: string, index: number) => (
-                                            <span 
-                                                key={index}
-                                                className="badge bg-light text-dark"
-                                            >
-                                                {tag.trim()}
-                                            </span>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
                             <div 
-                                className="blog-content"
+                                className="blog-content mt-5"
                                 dangerouslySetInnerHTML={{ __html: blogPost.content }}
                             />
                         </div>
-                    </article>
+                    </div>
                 </div>
+            </section>
+                
             )}
         </Layout>
     );

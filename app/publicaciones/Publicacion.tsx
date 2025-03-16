@@ -21,7 +21,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
     const [isHovered, setIsHovered] = useState(false)
     const router = useRouter()
     return (
-        <div className="container px-0 pt-4">
+        <div className="container mc-publicacion px-0 pt-4">
             <div className="row">
                 <motion.div 
                     className="pt-0" 
@@ -32,7 +32,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                     transition={{ duration: 0.6 }}
                 >
                     <motion.div 
-                        className="card__inner rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3 d-flex gap-4 position-relative flex-column flex-lg-row"
+                        className="card__inner rounded-4 border  p-lg-5 p-md-4 p-3 d-flex gap-4 position-relative flex-column flex-lg-row"
                         style={{minHeight: 550}}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
@@ -50,7 +50,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 left: 0,
                                 right: 0,
                                 bottom: 0,
-                                backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
                                 zIndex: 5,
                                 opacity: isHovered ? 1 : 0,
                                 transition: 'opacity 0.3s ease',
@@ -75,7 +75,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                             }}
                         >
                             <motion.button 
-                                className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
+                                className="d-flex align-items-center justify-content-center border-0"
                                 style={{
                                     width: '60px',
                                     height: '60px',
@@ -92,11 +92,11 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 }}
                                 transition={{ duration: 0.1 }}
                             >
-                                <i className="ri-information-line ri-lg text-primary-3"></i>
+                                <i className="ri-information-line ri-lg"></i>
                             </motion.button>
                             { amazon &&
                                 <motion.button 
-                                    className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
+                                    className="d-flex align-items-center justify-content-center border-0"
                                     style={{
                                         width: '60px',
                                         height: '60px',
@@ -113,13 +113,13 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                     }}
                                     transition={{ duration: 0.1 }}
                                 >
-                                    <i className="ri-amazon-fill ri-lg text-primary-3"></i>
+                                    <i className="ri-amazon-fill ri-lg"></i>
                                 </motion.button>
                             }
                             {
                             webBuy &&
                             <motion.button 
-                                className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
+                                className="d-flex align-items-center justify-content-center text-white border-0"
                                 style={{
                                     width: '60px',
                                     height: '60px',
@@ -137,7 +137,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 }}
                                 transition={{ duration: 0.1 }}
                             >
-                                <i className="ri-shopping-cart-line ri-lg text-primary-3"></i>
+                                <i className="ri-shopping-cart-line ri-lg"></i>
                             </motion.button>
                             }
                         </motion.div>
@@ -151,7 +151,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                             transition={{ duration: 0.3 }}
                         />                        
                         <motion.div 
-                            className="card__content px-md-4 px-3 pt-4 pt-lg-0 pb-lg-8 pb-5"
+                            className="card__content px-md-4 px-3 pt-4 pb-5"
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -164,19 +164,17 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: 0.4 }}
                             >
-                                <p className="text-300 text-primary-3 fs-5 mb-0">{year}</p>
-                                <Link href="#">
-                                    <motion.p 
-                                        className="fs-3 text-dark"
-                                        whileHover={{ x: 10 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        {title}
-                                    </motion.p>
-                                </Link>
+                                <p className="fs-5 mb-0"><span className='publication-year'>{year}</span></p>
+                                <motion.p 
+                                    className="fs-3"
+                                    whileHover={{ x: 10 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    {title}
+                                </motion.p>
                             </motion.div>
                             <motion.p 
-                                className="text-dark mb-lg-auto mb-md-4 mb-3"
+                                className="mb-lg-auto mb-md-4 mb-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -185,7 +183,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 {desc1}
                             </motion.p>
                             <motion.p 
-                                className="text-dark mb-lg-auto mb-md-4 mb-3 mt-3"
+                                className="mb-lg-auto mb-md-4 mb-3 mt-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -194,7 +192,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 {desc2}
                             </motion.p>
                             <motion.p 
-                                className="text-dark mb-lg-auto mb-md-4 mb-3 mt-3"
+                                className="mb-lg-auto mb-md-4 mb-3 mt-3"
                                 initial={{ opacity: 0, y: 10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}

@@ -1,11 +1,8 @@
 'use client'
 import Layout from "@/components/layout/Layout"
-import Podcast from "../components/podcast/page"
-import Publicaciones from "./publicaciones/page"
+import { motion } from 'framer-motion'
 import Contacto from "../components/contact/page"
-import Premios from "../components/premios/page"
 import Hero from "../components/hero/Hero"
-import HeadCard from "../components/headcard/HeadCard"
 import Blog from "../components/blog/Blog"
 import { getAllPublications } from "@/util/publications"
 import Publicacion from "./publicaciones/Publicacion"
@@ -14,15 +11,14 @@ export default function Home() {
 	
 	const publications = getAllPublications();
 	const publication = publications[0]
-	console.log(publications)
 	return (
 		<Layout headerStyle={3} footerStyle={3}>
-			<section className="section-home-3 pb-130 pt-50">
+			<Hero from={"home"}/>
+			<section id="publicaciones" className="section-home-3 custom-header pt-50">
 				<div className="container">
 					<div className="row align-items-start">
-						
-						<div className="col-xl-8 col-md-12 mt-4 mx-auto">
-							<Hero />
+						<div className="col-xl-8 col-md-12 mt-5 mx-auto">
+							<h2>Última publicación</h2>
 							<Publicacion 
 								key={publication.id}
 								link={publication.buyingOptions.amazon || ''}
@@ -35,13 +31,39 @@ export default function Home() {
 								desc3={publication.description[2] || ''}
 								amazon={!!publication.buyingOptions.amazon}
 								webBuy={!!publication.buyingOptions.webBuy}/>
-							<Premios />
-							<Blog />
-							<Contacto />
+							<motion.a 
+								href="/publicaciones" 
+								style={{width: 'fit-content'}}
+								className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.2 }}
+								whileHover={{ 
+									scale: 1.05
+								}}
+								whileTap={{ scale: 0.95 }}>
+
+								Ver todas las publicaciones
+								<i className="ri-arrow-right-up-line fw-medium"/>
+							</motion.a>
 						</div>
 					</div>
 				</div>
 			</section>
+			<section id="blog" className="section-home-3 custom-header pt-50">	
+				<div className="container">
+					<div className="row align-items-start">
+						<div className="col-xl-8 col-md-12 mt-5 mx-auto">
+							<h2>Blog</h2>
+							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nobis aspernatur assumenda dolorum nisi, voluptas molestiae earum recusandae necessitatibus debitis itaque. Eum aliquid, nihil voluptatibus enim sapiente error vitae dolorum.</p>
+							<Blog />
+						</div>
+					</div>
+				</div>
+			</section>
+			<Contacto />		
+			
+			
 		</Layout>
 	)
 

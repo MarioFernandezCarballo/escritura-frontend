@@ -116,6 +116,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="es" data-bs-theme="dark" className="zelio">
+			<head>
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+				<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+			</head>
 			<GoogleTagManager gtmId={GTM_ID} />
 			<body className={`${urbanist.variable} ${playfair_display.variable} ${dmMono.variable}`}>
 				<GoogleTagManagerNoScript gtmId={GTM_ID} />

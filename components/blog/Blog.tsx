@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import DOMPurify from 'isomorphic-dompurify'
 import { useBlogPosts } from '@/util/api'
 import Link from "next/link"
@@ -24,7 +24,7 @@ const swiperOptions = {
     },
 }
 
-const cleanAndTruncateContent = (content: string, maxLength: number = 150) => {
+const cleanAndTruncateContent = (content: string, maxLength: number = 50) => {
     // First remove HTML tags
     const withoutTags = content.replace(/<[^>]*>/g, '');
     
@@ -61,30 +61,20 @@ export default function Blog() {
         console.error('Error fetching posts:', error);
     }
     return (
-        <section id="blog" className="blog pt-70" aria-label="Blog posts">
-            <motion.h3
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-            >
-                Blog
-            </motion.h3>
-            <div className="position-relative pt-4">
-                <Swiper 
-                    {...swiperOptions} 
-                    className="swiper slider-two position-relative"
-                    aria-label="Carrusel de posts del blog"
-                >
-                    {posts.map((post, index) => (
-                        <SwiperSlide key={post.id}>
+        
+        <div>
+            <div className="position-relative d-flex gap-2 pt-4">
+                    {posts.slice(0, 3).map((post, index) => (
+                        <div className="col-4" key={post.id}>
                             <motion.article 
-                                className="card-services rounded-4 border border-secondary-3 bg-white p-lg-4 p-md-4 p-3 mb-3"
+                                className="rounded-4 position-relative border p-lg-4 p-md-4 p-3 mb-3"
                                 itemScope
                                 itemType="http://schema.org/BlogPosting"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
                                 whileHover={{ 
+                                    scale: 1.01,
                                     boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)"
                                 }}
                                 onMouseEnter={() => {
@@ -101,7 +91,7 @@ export default function Blog() {
                                 }}
                             >
                                 {/* Dark overlay */}
-                                <div 
+                                <motion.div 
                                     id={`blog-overlay-${index}`}
                                     style={{
                                         position: 'absolute',
@@ -109,11 +99,11 @@ export default function Blog() {
                                         left: 0,
                                         right: 0,
                                         bottom: 0,
-                                        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
                                         zIndex: 5,
                                         opacity: 0,
                                         transition: 'opacity 0.3s ease',
-                                        borderRadius: '0.5rem'
+                                        borderRadius: '1rem'
                                     }}
                                 />
 
@@ -137,7 +127,7 @@ export default function Blog() {
                                         aria-label={`Leer el artículo completo: ${post.title}`}
                                     >
                                         <motion.button 
-                                            className="d-flex align-items-center justify-content-center bg-primary-3 text-white border-0"
+                                            className="d-flex align-items-center justify-content-center border-0"
                                             style={{
                                                 width: '60px',
                                                 height: '60px',
@@ -151,14 +141,22 @@ export default function Blog() {
                                             transition={{ duration: 0.1 }}
                                         >
                                             <i 
-                                                className="ri-book-open-line ri-lg text-primary-3"
+                                                className="ri-book-open-line ri-lg"
                                                 aria-hidden="true"
                                             ></i>
                                         </motion.button>
                                     </Link>
                                 </div>
+                                <div className="blog-image" style={{ overflow: 'hidden' }}>
+                                    <img 
+                                        className="rounded-3 w-100 h-100 object-fit-" 
+                                        src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
+                                        alt={`Imagen para el artículo: ${post.title}`}
+                                        itemProp="image"
+                                    />
+                                </div>
                                     <motion.p 
-                                        className="fs-16 text-primary-3 mb-2"
+                                        className="fs-16 mb-2"
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ duration: 0.3, delay: 0.1 }}
@@ -176,41 +174,31 @@ export default function Blog() {
                                         transition={{ duration: 0.3, delay: 0.2 }}
                                     >
                                         <div>
-                                            <h4 className="fs-26 text-dark mb-3" itemProp="headline">{post.title}</h4>
+                                            <h3 className="fs-26 mb-3" itemProp="headline">{post.title}</h3>
                                             <p className="mb-4" itemProp="description">{cleanAndTruncateContent(post.content)}</p>
                                             <meta itemProp="datePublished" content={post.created_at} />
                                             <meta itemProp="author" content="Mario Carballo" />
                                         </div>
-                                        <div className="blog-image" style={{ height: '250px', overflow: 'hidden' }}>
-                                            <img 
-                                                className="rounded-3 w-100 h-100 object-fit-cover" 
-                                                src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
-                                                alt={`Imagen para el artículo: ${post.title}`}
-                                                itemProp="image"
-                                            />
-                                        </div>
                                     </motion.div>
                             </motion.article>
-                        </SwiperSlide>
+                        </div>
                     ))}
-                </Swiper>
-                <div 
-                    className="swiper-pagination"
-                    role="tablist"
-                    aria-label="Controles de paginación del carrusel"
-                />
             </div>
-            <motion.div 
-                className="text-center mt-1"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 }}
-            >
-                <Link href="/blog" className="btn btn-secondary-3">
-                    Ver todos los posts
-                    <i className="ri-arrow-right-line ms-2" aria-hidden="true" />
-                </Link>
-            </motion.div>
-        </section>
+            <motion.a 
+                href="/blog" 
+                style={{width: 'fit-content'}}
+                className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                whileHover={{ 
+                    scale: 1.05
+                }}
+                whileTap={{ scale: 0.95 }}>
+
+                Ver todos los posts
+                <i className="ri-arrow-right-up-line fw-medium"/>
+            </motion.a>
+        </div>
     )
 }

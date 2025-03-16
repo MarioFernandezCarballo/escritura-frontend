@@ -63,8 +63,7 @@ export default function Layout({ headerStyle, footerStyle, breadcrumbTitle, chil
 			<AddClassBody />
 			<DataBg />
 			<ImageHoverEffects />
-			{!headerStyle && <Header3 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} isOffCanvas={isOffCanvas} handleOffCanvas={handleOffCanvas} />}
-			{headerStyle == 3 ? <Header3 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} isOffCanvas={isOffCanvas} handleOffCanvas={handleOffCanvas} /> : null}
+			<Header3 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} isOffCanvas={isOffCanvas} handleOffCanvas={handleOffCanvas} />
 
 			<main className="main flex-grow-1">
 				{breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} />}
@@ -72,8 +71,7 @@ export default function Layout({ headerStyle, footerStyle, breadcrumbTitle, chil
 				{children}
 			</main>
 
-			{!footerStyle && < Footer3 />}
-			{footerStyle == 3 ? < Footer3 /> : null}
+			< Footer3 />
 
 			<BackToTop target="#top" />
 		</div>

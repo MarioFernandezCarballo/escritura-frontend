@@ -4,24 +4,11 @@ import Award from './Award'
 
 export default function Premios () {
     return (
-        <div id="resume" className="education pt-70">
+        <div id="resume" className="education">
             <div className="row">
-                <div className="col-12">
-                    <motion.h3 
-                        className="d-none d-md-block"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Premios
-                    </motion.h3>
-                </div>
-            </div>
-            <div className="row pt-4">
-                <div className="col-md-12 align-self-stretch mt-md-0 mt-5">
+                <div className="col-md-12 align-self-stretch mt-md-0">
                     <motion.div 
-                        className="card-award rounded-4 border border-secondary-3 bg-white p-lg-5 p-md-4 p-3 align-self-stretch h-100 overflow-hidden"
+                        className="card-award rounded-4 border p-lg-5 p-md-4 p-3 align-self-stretch h-100 overflow-hidden"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -36,19 +23,21 @@ export default function Premios () {
                                     title='Finalista de El Yunque Literario'
                                     organization='El yunque de Hefesto'
                                     date='2024'
-                                    description='Finalista de la III edición con el relato "La bóveda"'
+                                    description='Finalista de la III edición con el relato "La bóveda". Este relato es, con toda seguridad, mi pieza literaria más importante hasta el momento. ¿Por qué? Si te lees mis próximas novelas, lo entenderás.'
                                 />
                                 <Award
                                     title='Ganador Premios Talavera'
                                     organization='Concurso de relatos gran premio de Talavera'
                                     date='2022'
-                                    description='Ganador del certamen del torneo más importante en español sobre Warhammer 40K con "El vuelo del poeta"'
+                                    description='Se trata del mayor torneo de wargames de habla hispana, y sin duda el mayor concurso de relatos sobre Warhammer 40k en español. “El vuelo del poeta” se llevó el primer puesto.
+'
                                 />
                                 <Award
                                     title='Finalista Wikihammer'
                                     organization='Wikihhamer y la Voz de Horus'
                                     date='2022'
-                                    description='Finalista con el relato "La pregunta"'
+                                    description='Este reconocimiento es de gran importancia ya fue el que me acercó de nuevo a la escritura tras el parón que siguió a la publicación de “Al otro lado de la esfera”. Fue el detonador de esta nueva etapa de escritura, de la que no quiero volver a bajarme. 
+'
                                 />
                                 <Award
                                     title='Finalista Relatos Caseros'
