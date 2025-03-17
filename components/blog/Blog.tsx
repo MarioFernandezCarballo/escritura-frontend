@@ -1,32 +1,14 @@
 import { motion } from "framer-motion"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay, Navigation, Pagination } from "swiper/modules"
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import DOMPurify from 'isomorphic-dompurify'
 import { useBlogPosts } from '@/util/api'
 import Link from "next/link"
-
-const swiperOptions = {
-    modules: [Autoplay, Pagination, Navigation],
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    centeredSlides: false,
-    loop: true,
-    autoplay: {
-        delay: 4000,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-}
+import he from 'he'
 
 const cleanAndTruncateContent = (content: string, maxLength: number = 50) => {
+    const heDecoded = he.decode(content);
     // First remove HTML tags
-    const withoutTags = content.replace(/<[^>]*>/g, '');
+    const withoutTags = heDecoded.replace(/<[^>]*>/g, '');
     
     // Decode HTML entities
     const decoded = withoutTags

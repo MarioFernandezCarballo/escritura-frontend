@@ -1,17 +1,12 @@
 'use client'
-import BlogPost from '@/components/blog/BlogPost'
 import Hero from '@/components/hero/Hero'
 import Layout from '@/components/layout/Layout'
 import { useEffect, useState } from 'react'
 import DOMPurify from 'isomorphic-dompurify'
 import { API_BASE_URL } from "../../util/config"
-import BlogCard3 from '@/components/blog/BlogCard3'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import he from 'he'
-
-
-
 
 const cleanAndTruncateContent = (content: string, maxLength: number = 50) => {
     const heDecoded = he.decode(content);

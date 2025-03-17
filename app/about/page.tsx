@@ -2,7 +2,6 @@
 import Layout from "@/components/layout/Layout"
 import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
-import { useSinglePost } from "@/util/api"
 import Hero from "@/components/hero/Hero"
 import Premios from "@/components/premios/page"
 import SubscribeForm from "@/components/subscribeForm/SubscribeForm"

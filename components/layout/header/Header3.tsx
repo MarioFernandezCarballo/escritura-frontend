@@ -91,7 +91,7 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 										<Link className={`nav-link ${pathname === '/blog' || pathname.startsWith('/blog/') ? 'active' : ''}`} href="/blog">Blog</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className={`nav-link ${pathname === '/' && window.location.hash === '#contact' ? 'active' : ''}`} href="/#contact">Contacto</Link>
+										<Link className={`nav-link ${pathname === '/' && window.location.hash === '#contact' ? 'active' : ''}`} href="/contacto">Contacto</Link>
 									</motion.li>
 								</ul>
 								</div>}

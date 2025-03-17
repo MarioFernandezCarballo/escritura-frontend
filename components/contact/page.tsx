@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, ChangeEvent } from 'react'
 import { useContact } from '@/util/api'
 
 export default function Contacto () {
@@ -11,6 +11,7 @@ export default function Contacto () {
         subject: '',
         message: ''
     });
+    const [termsAgreed, setTermsAgreed] = useState(false);
     const { sendContactForm, status } = useContact();
 
     const handleSubmit = async (e: FormEvent) => {
@@ -18,15 +19,20 @@ export default function Contacto () {
         const success = await sendContactForm(formData);
         if (success) {
             setFormData({ name: '', email: '', subject: '', message: '' });
+            setTermsAgreed(false);
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
+    };
+
+    const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setTermsAgreed(e.target.checked);
     };
 
     return (
@@ -154,11 +160,33 @@ export default function Contacto () {
                                                 whileFocus={{ scale: 1.02, boxShadow: "0px 0px 8px rgba(0,0,0,0.1)" }}
                                             />
                                         </div>
+                                        <div className="col-12 mb-3">
+                                            <motion.div 
+                                                className="form-check"
+                                                initial={{ opacity: 0, y: 20 }}
+                                                whileInView={{ opacity: 1, y: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 0.1 }}
+                                            >
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="form-check-input" 
+                                                    id="termsAgreed" 
+                                                    checked={termsAgreed}
+                                                    onChange={handleCheckboxChange}
+                                                    required
+                                                />
+                                                <label className="form-check-label" htmlFor="termsAgreed">
+                                                    Acepto los <Link href="/terminos" className="text-decoration-underline">términos y condiciones</Link> y la <Link href="/privacidad" className="text-decoration-underline">política de privacidad</Link>
+                                                </label>
+                                            </motion.div>
+                                        </div>
                                         <div className="col-12">
                                             <motion.button 
                                                 type="submit" 
                                                 style={{width: 'fit-content'}}
                                                 className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
+                                                disabled={!termsAgreed}
                                                 initial={{ opacity: 0, y: 20 }}
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.2 }}

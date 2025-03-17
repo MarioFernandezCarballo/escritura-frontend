@@ -48,7 +48,9 @@ export default function Hero({from}: HeroProps) {
                                     ? <>Mi <span>biblioteca</span> literaria.</>
                                     : from === 'about'
                                         ? <>Mario <span>Carballo</span></>
-                                        : <>Mundos que <span className="">Inspiran.</span> Palabras que <span className="">Transforman</span></>
+                                        : from === 'contacto' 
+                                            ? <><span>Conecta</span> conmigo.</>
+                                            : <>Mundos que <span className="">Inspiran.</span> Palabras que <span className="">Transforman</span></>
                                 }
                             
                         </motion.h1>
@@ -66,7 +68,9 @@ export default function Hero({from}: HeroProps) {
                                     ? 'Cada historia es una puerta a lo imposible, un viaje a lo desconocido y una experiencia que deja huella.'
                                     : from === 'about'
                                         ? 'De la ingeniería espacial al espacio en el papel.'
-                                        : 'Sumérgete en un universo de relatos que desafían lo imaginable. Aquí, la fantasía y la ciencia ficción se encuentran para crear mundos sin fronteras, donde cada palabra construye realidades sorprendentes. Historias que inspiran, emocionan y perduran.'
+                                        : from === 'contacto'
+                                            ? "Hablemos por la vía que más te guste. Estoy disponible en cualquier momento."
+                                            : 'Sumérgete en un universo de relatos que desafían lo imaginable. Aquí, la fantasía y la ciencia ficción se encuentran para crear mundos sin fronteras, donde cada palabra construye realidades sorprendentes. Historias que inspiran, emocionan y perduran.'
                                 }                            
                         </motion.p>
                         {from === 'hero' &&

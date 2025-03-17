@@ -1106,7 +1106,7 @@ img {
   --bs-btn-bg: #b2a4ab;
   --bs-btn-border-color: none;
   --bs-btn-hover-color: #1f1f24;
-  --bs-btn-hover-bg: #b2a4ab;
+  --bs-btn-hover-bg: rgba(182, 139, 75, .2);
   --bs-btn-hover-border-color: none;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #1f1f24;
@@ -1123,7 +1123,7 @@ img {
   --bs-btn-bg: #ffffff;
   --bs-btn-border-color: #6e4ef2;
   --bs-btn-hover-color: #1f1f24;
-  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-bg: rgba(182, 139, 75, .2);
   --bs-btn-hover-border-color: transparent;
   --bs-btn-focus-shadow-rgb: 108, 117, 125;
   --bs-btn-active-color: #1f1f24;
@@ -1140,7 +1140,7 @@ img {
   --bs-btn-bg: #ffffff;
   --bs-btn-border-color: #b2a4ab;
   --bs-btn-hover-color: #1f1f24;
-  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-bg: rgba(182, 139, 75, .2);
   --bs-btn-hover-border-color: #b2a4ab;
   --bs-btn-focus-shadow-rgb: 108, 117, 125;
   --bs-btn-active-color: #1f1f24;
@@ -14208,6 +14208,9 @@ Table of contents
   font-size: 20px;
   background-color: transparent;
 }
+.mc-button:hover {
+  background-color: rgba(182, 139, 75, .2) !important;
+}
 
 
 #hero {
@@ -14361,6 +14364,13 @@ Table of contents
 .modal-body p {
 
   --mc-font-garamond: "EB Garamond", sans-serif !important;
+}
+
+.form-check-label {
+  color: var(--mc-text)
+}
+.form-check-label a {
+  color: var(--mc-light4)
 }
 /* Responsive Styles */
 @media (max-width: 1200px) {

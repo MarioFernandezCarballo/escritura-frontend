@@ -15,7 +15,7 @@ export default function Footer3() {
 								<a href="/about" className="fs-6"> Sobre mí </a>
 								<a href="/publicaciones" className="fs-6"> Publicaciones </a>
 								<a href="/blog" className="fs-6"> Blog </a>
-								<a href="/#contact" className="fs-6"> Contacto </a>
+								<a href="/contacto" className="fs-6"> Contacto </a>
 							</div>
 						</div>
 					</div>

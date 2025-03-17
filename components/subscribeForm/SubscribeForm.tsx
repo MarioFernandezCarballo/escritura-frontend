@@ -18,14 +18,14 @@ export default function SubscribeForm() {
     };
     return (
         <form 
-            className="col-8 d-flex flex-column flex-md-row align-items-md-center gap-2"
+            className="col-xl-8 col-md-12 d-flex flex-column flex-md-row align-items-md-center gap-2"
             onSubmit={handleAddSubscriber}
             aria-label="Formulario de suscripción al boletín"
         >
             <div className="visually-hidden" aria-live="polite" role="status" id="form-status">
                 {newEmail ? 'Email ingresado' : 'Formulario de suscripción listo'}
             </div>
-            <div className='col-12'>
+            <div className='col-xl-12 col-md-6'>
             <input 
                 className="d-inline-block form-control"
                 type="email" 
