@@ -292,13 +292,35 @@ export const useSubscribers = () => {
         }
     };
 
+    const deleteSubscriberByEmail = async (email: string) => {
+        try {
+            const headers: Record<string, string> = {
+                'Content-Type': 'application/json'
+            };
+            const response = await fetch(`${API_BASE_URL}/subscriber/email/${email}`, {
+                method: 'DELETE',
+                headers: headers
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete subscriber');
+            }
+            alert("Te has dado de baja. Hasta pronto.")
+        } catch (err) {
+            alert("Ha ocurrido un error. Por favor, inténtalo más tarde. Si el problema persiste, ponte en contacto conmigo en mariofernandezcarballo@gmail.com.")
+            setError(err instanceof Error ? err.message : 'An error occurred');
+            throw err;
+        }
+    };
+
     return {
         subscribers,
         loading,
         error,
         fetchSubscribers,
         addSubscriber,
-        deleteSubscriber
+        deleteSubscriber,
+        deleteSubscriberByEmail
     };
 };
 

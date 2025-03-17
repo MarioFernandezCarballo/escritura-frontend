@@ -14316,6 +14316,10 @@ Table of contents
 }
 
 
+#contact i {
+  color: var(--mc-light4);
+}
+
 #premios h2 {
   color: var(--mc-light4);
 }

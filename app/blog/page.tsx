@@ -8,14 +8,15 @@ import { API_BASE_URL } from "../../util/config"
 import BlogCard3 from '@/components/blog/BlogCard3'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-
+import he from 'he'
 
 
 
 
 const cleanAndTruncateContent = (content: string, maxLength: number = 50) => {
+    const heDecoded = he.decode(content);
     // First remove HTML tags
-    const withoutTags = content.replace(/<[^>]*>/g, '');
+    const withoutTags = heDecoded.replace(/<[^>]*>/g, '');
     
     // Decode HTML entities
     const decoded = withoutTags
@@ -71,7 +72,7 @@ export default function Blog() {
                             <div className="col-xl-8 col-md-12 mt-5 mx-auto">
                                 <h2>Entradas al blog</h2>
                                 <p>Aquí hablamos de historias, personajes y todo lo relacionado con la ciencia ficción y la fantasía. Si amas los mundos imposibles, los héroes inesperados y las aventuras épicas, este es tu lugar.</p>
-                                <div className='d-flex flex-wrap justify-content-around gap-2 mt-5'>
+                                <div className='row mt-5'>
                                     {posts.map((post, index) => (
                                         <div className='col-xl-4 col-md-12' key={`b-post${index}`}>
                                             <motion.article 
