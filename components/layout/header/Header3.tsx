@@ -1,6 +1,4 @@
-import ThemeSwitch from '@/components/elements/ThemeSwitch'
 import Link from 'next/link'
-import { useTheme } from '@/util/useTheme'
 import MobileMenu from '../MobileMenu'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
@@ -9,24 +7,18 @@ import { usePathname } from 'next/navigation'
 
 export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any) {
 	const pathname = usePathname()
-	const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0)
-	
+	//const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0)
+	const [windowWidth, setWindowWidth] = useState<number | null>(null);
+
 	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth)
-		}
-		
-		if (typeof window !== 'undefined') {
-			window.addEventListener('resize', handleResize)
-			handleResize()
-		}
-		
-		return () => {
-			if (typeof window !== 'undefined') {
-				window.removeEventListener('resize', handleResize)
-			}
-		}
-	}, [])
+	if (typeof window !== 'undefined') {
+		setWindowWidth(window.innerWidth);
+		const handleResize = () => setWindowWidth(window.innerWidth);
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}
+	}, []);
+	
 	return (
 		<>
 			<motion.header
@@ -47,14 +39,14 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 							<motion.div
 								whileHover={{ scale: 1.05 }}
 								transition={{ duration: 0.3 }}
-								className={windowWidth < 992 ? "w-100 text-center" : "text-left"}
+								className={(windowWidth ?? 1000) < 992 ? "w-100 text-center" : "text-left"}
 							>
 								<Link className="d-flex align-items-center justify-content-center" href="/">
 									<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50">Mario Carballo</h2>
 								</Link>
 							</motion.div>
-							<div className={windowWidth < 992 ? "position-fixed top-0 end-0 me-3 z-1000" : "d-lg-flex d-none"}>
-								{windowWidth < 992 && (
+							<div className={(windowWidth ?? 1000) < 992 ? "position-fixed top-0 end-0 me-3 z-1000" : "d-lg-flex d-none"}>
+								{(windowWidth ?? 1000) < 992 && (
 									<motion.div
 										id='burgir' 
 										className="burger-icon border rounded-3 shadow-sm"
@@ -79,7 +71,7 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 										/>
 									</motion.div>
 								)}
-								{windowWidth >= 992 && <div className="navbar-collapse" id="navbarSupportedContent">
+								{(windowWidth ?? 1000) >= 992 && <div className="navbar-collapse" id="navbarSupportedContent">
 								<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
 										<Link className={`nav-link ${pathname === '/about' ? 'active' : ''}`} href="/about">Sobre mí</Link>
@@ -91,12 +83,10 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 										<Link className={`nav-link ${pathname === '/blog' || pathname.startsWith('/blog/') ? 'active' : ''}`} href="/blog">Blog</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className={`nav-link ${pathname === '/' && window.location.hash === '#contact' ? 'active' : ''}`} href="/contacto">Contacto</Link>
+										<Link className={`nav-link ${pathname === '/contacto' ? 'active' : ''}`} href="/contacto">Contacto</Link>
 									</motion.li>
 								</ul>
 								</div>}
-								
-								{/* Theme switch */}
 								
 							</div>
 							
