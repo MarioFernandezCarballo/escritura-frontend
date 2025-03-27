@@ -241,6 +241,7 @@ export default function PublicacionDetalle() {
                   <div className="d-flex flex-wrap gap-3">
                     {publication.buyingOptions.amazon && (
                       <motion.a 
+                        id={`amazon-${publication.slug}`}
                         href={publication.buyingOptions.amazon}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -256,6 +257,7 @@ export default function PublicacionDetalle() {
                     
                     {publication.buyingOptions.webBuy && (
                       <motion.button 
+                        id={`web-${publication.slug}`}
                         onClick={() => {                        
                           // Open modal for purchase
                           document.getElementById('purchaseModal')?.classList.add('show');

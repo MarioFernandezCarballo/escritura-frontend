@@ -54,6 +54,7 @@ export default function Contacto () {
                                     <motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
                                         <Link 
                                             href="mailto:mariofernandezcarballo@gmail.com"
+                                            title='contact-mail'
                                             aria-label="Enviar email a Mario Carballo"
                                         >
                                             <i className="ri-mail-fill fs-7" aria-hidden="true" />
@@ -63,6 +64,7 @@ export default function Contacto () {
                                     <motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
                                         <Link 
                                             href="https://x.com/MarioFCarballo"
+                                            title='contact-x'
                                             aria-label="Perfil de Mario Carballo en X (Twitter)"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -74,6 +76,7 @@ export default function Contacto () {
                                     <motion.div whileHover={{ x: 10, transition: { duration: 0.2 } }}>
                                         <Link 
                                             href="https://bsky.app/profile/mariocarballo.bsky.social"
+                                            title='contact-bsky'
                                             aria-label="Perfil de Mario Carballo en Bluesky"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -177,13 +180,14 @@ export default function Contacto () {
                                                     required
                                                 />
                                                 <label className="form-check-label" htmlFor="termsAgreed">
-                                                    Acepto los <Link href="/terminos" className="text-decoration-underline">términos y condiciones</Link> y la <Link href="/privacidad" className="text-decoration-underline">política de privacidad</Link>
+                                                    Acepto los <Link title="terminos" href="/terminos" className="text-decoration-underline">términos y condiciones</Link> y la <Link title="privacidad" href="/privacidad" className="text-decoration-underline">política de privacidad</Link>
                                                 </label>
                                             </motion.div>
                                         </div>
                                         <div className="col-12">
                                             <motion.button 
                                                 type="submit" 
+                                                title='contact-submit'
                                                 style={{width: 'fit-content'}}
                                                 className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
                                                 disabled={!termsAgreed}

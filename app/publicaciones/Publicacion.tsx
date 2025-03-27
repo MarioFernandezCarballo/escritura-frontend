@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -76,6 +75,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                         >
                             <motion.button 
                                 className="d-flex align-items-center justify-content-center border-0"
+                                title={`info-${title?.replace(" ", "-")}`}
                                 style={{
                                     width: '60px',
                                     height: '60px',
@@ -97,6 +97,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                             { amazon &&
                                 <motion.button 
                                     className="d-flex align-items-center justify-content-center border-0"
+                                    title={`amzn-${title?.replace(" ", "-")}`}
                                     style={{
                                         width: '60px',
                                         height: '60px',
@@ -120,6 +121,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                             webBuy &&
                             <motion.button 
                                 className="d-flex align-items-center justify-content-center text-white border-0"
+                                title={`buy-${title?.replace(" ", "-")}`}
                                 style={{
                                     width: '60px',
                                     height: '60px',
@@ -144,6 +146,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                         <source srcSet={img?.replace(".jpg", "/webp")} type="image/webp"></source>
                         <motion.img 
                             className="object-fit-contain m-auto" 
+                            title={`img-out-${title?.replace(" ", "-")}`}
                             src={img}
                             alt={title} 
                             style={{ objectFit: 'cover', maxHeight: 'auto', maxWidth: 250 }}

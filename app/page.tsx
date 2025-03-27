@@ -33,6 +33,7 @@ export default function Home() {
 								webBuy={!!publication.buyingOptions.webBuy}/>
 							<motion.a 
 								href="/publicaciones" 
+								title="publicaciones"
 								style={{width: 'fit-content'}}
 								className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
 								initial={{ opacity: 0, y: 20 }}
@@ -62,8 +63,6 @@ export default function Home() {
 				</div>
 			</section>
 			<Contacto />		
-			
-			
 		</Layout>
 	)
 

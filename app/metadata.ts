@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         type: 'website',
         images: [
             {
-                url: '/assets/imgs/hero/hero-1/profile.jpg',
+                url: 'assets/imgs/home-page-3/hero/img-1.webp',
                 width: 1200,
                 height: 630,
                 alt: 'Mario Carballo - Escritor de Ciencia Ficción y Fantasía',

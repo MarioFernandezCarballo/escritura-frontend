@@ -27,6 +27,7 @@ export default function BlogDetails() {
 							</motion.h2>
 							<motion.img 
 								className="rounded-5 d-none" 
+								title='about-img'
 								src="assets/imgs/home-page-3/hero/img-1.webp" 
 								alt="Mario Carballo - Escritor"
 								whileHover={{ scale: 1.05 }}

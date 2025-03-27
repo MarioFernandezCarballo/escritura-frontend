@@ -5,15 +5,17 @@ export default function NavSocial () {
     return (
         <div className="navbar-social d-flex justify-content-center gap-4">
             <motion.div className="d-flex gap-4" whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}>
-                <Link href="https://x.com/MarioFCarballo"
-                
-                        aria-label="Perfil de Mario Carballo en X"
+                <Link 
+                    href="https://x.com/MarioFCarballo"
+                    title="social-x"
+                    aria-label="Perfil de Mario Carballo en X"
                     target="_blank"
                     rel="noopener noreferrer">
                     <i className="ri-twitter-x-fill fs-18" aria-hidden="true"/>
                 </Link>
                 <Link 
                     href="https://bsky.app/profile/mariocarballo.bsky.social"
+                    title="social-bsky"
                     aria-label="Perfil de Mario Carballo en Bluesky"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -22,6 +24,7 @@ export default function NavSocial () {
                 </Link>
                 <Link 
                     href="mailto:mariofernandezcarballo@gmail.com"
+                    title="social-mail"
                     aria-label="Enviar email a Mario Carballo"
                 >
                     <i className="ri-mail-fill fs-18" aria-hidden="true" />

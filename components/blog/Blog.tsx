@@ -106,10 +106,12 @@ export default function Blog() {
                                 >
                                     <Link 
                                         href={`/blog/${post.id}`}
+                                        title={`blog-${post.id}`}
                                         aria-label={`Leer el artículo completo: ${post.title}`}
                                     >
                                         <motion.button 
                                             className="d-flex align-items-center justify-content-center border-0"
+                                            title={`blog-${post.id}-btn`}
                                             style={{
                                                 width: '60px',
                                                 height: '60px',
@@ -132,6 +134,7 @@ export default function Blog() {
                                 <div className="blog-image" style={{ overflow: 'hidden' }}>
                                     <img 
                                         className="rounded-3 w-100 h-100" 
+                                        title={`img-${post.id}`}
                                         style={{objectFit: 'cover', objectPosition: 'center'}}
                                         src={post.image_url || "assets/imgs/home-page-3/blog/img-1.png"} 
                                         alt={`Imagen para el artículo: ${post.title}`}
@@ -169,6 +172,7 @@ export default function Blog() {
             </div>
             <motion.a 
                 href="/blog" 
+                title="blog-all"
                 style={{width: 'fit-content'}}
                 className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
                 initial={{ opacity: 0, y: 20 }}

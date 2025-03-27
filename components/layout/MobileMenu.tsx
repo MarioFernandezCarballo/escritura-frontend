@@ -19,7 +19,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 			>
 				<div className="mobile-header-wrapper-inner">
 					<div className="mobile-header-logo">
-						<Link className="d-flex main-logo align-items-center justify-content-center" href="/">
+						<Link className="d-flex main-logo align-items-center justify-content-center" href="/" title="mobile-home">
 							<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50 mb-0 me-2">Mario Carballo</h2>
 						</Link>
 						<div className={`burger-icon burger-icon-black border rounded-3 ${isMobileMenu ? 'burger-close' : ''}`} onClick={handleMobileMenu}>
@@ -34,27 +34,24 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: any) {
 								<nav>
 								<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className="nav-link active" href="/about">Sobre mí</Link>
+										<Link className="nav-link active" href="/about" title="mobile-about">Sobre mí</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className="nav-link" href="/publicaciones">Publicaciones</Link>
+										<Link className="nav-link" href="/publicaciones" title="mobile-publicaciones">Publicaciones</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className="nav-link" href="/blog">Blog</Link>
+										<Link className="nav-link" href="/blog" title="mobile-blog">Blog</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className="nav-link" href="/contacto">Contacto</Link>
+										<Link className="nav-link" href="/contacto" title="mobile-contact">Contacto</Link>
 									</motion.li>
 								</ul>
 								</nav>
 							</div>
-							
 							<div className="mobile-social-icon mt-4 text-center">
 								<NavSocial />
 							</div>
-							
 							<div className="site-copyright mt-4 text-center">
-		
 								<p className="mb-0">© {new Date().getFullYear()} Mario Carballo. Todos los derechos reservados.</p>
 							</div>
 						</PerfectScrollbar>

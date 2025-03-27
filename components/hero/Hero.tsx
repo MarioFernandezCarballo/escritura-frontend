@@ -114,6 +114,7 @@ export default function Hero({from}: HeroProps) {
                                     <div className='col-12'>
                                     <motion.button 
                                         type="submit" 
+                                        title='subscribe-button'
                                         style={{width: 'fit-content'}}
                                         className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
                                         initial={{ opacity: 0, y: 20 }}

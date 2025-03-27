@@ -33,6 +33,7 @@ export default function Unsubscribe() {
                             />
                             <button 
                                 type="submit" 
+                                title="unsubscribe-submit"
                                 style={{width: 'fit-content'}}
                                 className="btn btn-secondary-3 mc-button fw-medium mx-auto mx-md-0"
                                 onClick={handleUnsubscribe}>

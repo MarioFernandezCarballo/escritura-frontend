@@ -41,7 +41,7 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 								transition={{ duration: 0.3 }}
 								className={(windowWidth ?? 1000) < 992 ? "w-100 text-center" : "text-left"}
 							>
-								<Link className="d-flex align-items-center justify-content-center" href="/">
+								<Link className="d-flex align-items-center justify-content-center" href="/" title="header-home">
 									<h2 style={{ fontFamily: "'Joland Colline', sans-serif" }} className="fs-50">Mario Carballo</h2>
 								</Link>
 							</motion.div>
@@ -74,23 +74,20 @@ export default function Header3({ scroll, isMobileMenu, handleMobileMenu }: any)
 								{(windowWidth ?? 1000) >= 992 && <div className="navbar-collapse" id="navbarSupportedContent">
 								<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className={`nav-link ${pathname === '/about' ? 'active' : ''}`} href="/about">Sobre mí</Link>
+										<Link className={`nav-link ${pathname === '/about' ? 'active' : ''}`} href="/about" title="header-about">Sobre mí</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className={`nav-link ${pathname === '/publicaciones' || pathname.startsWith('/publicaciones/') ? 'active' : ''}`} href="/publicaciones">Publicaciones</Link>
+										<Link className={`nav-link ${pathname === '/publicaciones' || pathname.startsWith('/publicaciones/') ? 'active' : ''}`} href="/publicaciones" title="header-publicaciones">Publicaciones</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className={`nav-link ${pathname === '/blog' || pathname.startsWith('/blog/') ? 'active' : ''}`} href="/blog">Blog</Link>
+										<Link className={`nav-link ${pathname === '/blog' || pathname.startsWith('/blog/') ? 'active' : ''}`} href="/blog" title="header-blog">Blog</Link>
 									</motion.li>
 									<motion.li className="nav-item" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-										<Link className={`nav-link ${pathname === '/contacto' ? 'active' : ''}`} href="/contacto">Contacto</Link>
+										<Link className={`nav-link ${pathname === '/contacto' ? 'active' : ''}`} href="/contacto" title="header-contacto">Contacto</Link>
 									</motion.li>
 								</ul>
 								</div>}
-								
-							</div>
-							
-			
+							</div>			
 						</div>
 					</div>
 				</motion.nav>
