@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from "@/components/layout/Layout";
-import { useBlogPosts } from '@/util/api';
+import { useBlogPosts, useDeletePost } from '@/util/api';
+import { withAuth } from '@/components/auth/withAuth';
 
-export default function ManagePosts() {
+function ManagePosts() {
     const router = useRouter();
     const { posts, loading, error, fetchPosts } = useBlogPosts();
+    const { deletePost, loading: deleteLoading } = useDeletePost();
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
@@ -21,6 +23,15 @@ export default function ManagePosts() {
 
     const handleEditPost = (id: number) => {
         router.push(`/edit-post/${id}`);
+    };
+
+    const handleDeletePost = async (id: number) => {
+        if (window.confirm('¿Estás seguro de que quieres eliminar este post?')) {
+            const success = await deletePost(id);
+            if (success) {
+                fetchPosts();
+            }
+        }
     };
 
     if (loading) {
@@ -119,6 +130,13 @@ export default function ManagePosts() {
                                                     >
                                                         Edit
                                                     </button>
+                                                    <button
+                                                        onClick={() => handleDeletePost(post.id)}
+                                                        className="btn btn-danger btn-sm"
+                                                        disabled={deleteLoading}
+                                                    >
+                                                        Delete
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -132,3 +150,5 @@ export default function ManagePosts() {
         </Layout>
     );
 }
+
+export default withAuth(ManagePosts);

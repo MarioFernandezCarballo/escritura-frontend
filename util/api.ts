@@ -207,11 +207,70 @@ export const useEditPost = () => {
     return { editPost, error, loading };
 };
 
+export const useDeletePost = () => {
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    const deletePost = async (id: number) => {
+        setLoading(true);
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('Not authenticated');
+            }
+
+            const response = await fetch(`${API_BASE_URL}/blog/posts/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete post');
+            }
+
+            return true;
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'An error occurred');
+            return false;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { deletePost, error, loading };
+};
+
 // Auth Hooks
 export const useAuth = () => {
     const router = useRouter();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+
+    const checkAuth = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('No token found');
+            }
+
+            const response = await fetch(`${API_BASE_URL}/auth/ping`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Not authenticated');
+            }
+
+            return true;
+        } catch (err) {
+            router.push('/login');
+            return false;
+        }
+    };
 
     const login = async (credentials: LoginCredentials) => {
         setLoading(true);
@@ -230,7 +289,7 @@ export const useAuth = () => {
 
             const data = await response.json();
             localStorage.setItem('token', data.access_token);
-            router.push('/create-post');
+            router.push('/manage-posts');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'An error occurred');
         } finally {
@@ -238,7 +297,7 @@ export const useAuth = () => {
         }
     };
 
-    return { login, error, loading };
+    return { login, checkAuth, error, loading };
 };
 
 // Subscriber Hooks

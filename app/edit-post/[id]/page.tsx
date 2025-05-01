@@ -6,8 +6,9 @@ import { useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useEditPost, useSinglePost } from '@/util/api';
 import Layout from "@/components/layout/Layout";
+import { withAuth } from '@/components/auth/withAuth';
 
-export default function EditPost({ params }: { params: { id: string } }) {
+function EditPost({ params }: { params: { id: string } }) {
   const { post, loading: postLoading, error: postError, fetchPost } = useSinglePost(params.id);
   const { editPost, error: editError, loading: editLoading } = useEditPost();
 
@@ -180,3 +181,5 @@ export default function EditPost({ params }: { params: { id: string } }) {
     </Layout>
   );
 }
+
+export default withAuth(EditPost);

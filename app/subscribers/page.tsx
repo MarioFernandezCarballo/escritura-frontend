@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 import NewsletterManager from './NewsletterManager';
 import Layout from "@/components/layout/Layout";
 import { useSubscribers } from '@/util/api';
+import { withAuth } from '@/components/auth/withAuth';
 
-export default function SubscribersPage() {
+function SubscribersPage() {
     const { 
         subscribers, 
         loading, 
@@ -118,3 +119,5 @@ export default function SubscribersPage() {
         </Layout>
     );
 }
+
+export default withAuth(SubscribersPage);

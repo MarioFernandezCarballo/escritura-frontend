@@ -6,8 +6,9 @@ import { useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useCreatePost } from '@/util/api';
 import Layout from "@/components/layout/Layout";
+import { withAuth } from '@/components/auth/withAuth';
 
-export default function CreatePost() {
+function CreatePost() {
   const { createPost, error, loading } = useCreatePost();
 
   const formik = useFormik({
@@ -148,3 +149,5 @@ export default function CreatePost() {
     </Layout>
   );
 }
+
+export default withAuth(CreatePost);
