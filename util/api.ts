@@ -168,6 +168,45 @@ export const useCreatePost = () => {
     return { createPost, error, loading };
 };
 
+export const useEditPost = () => {
+    const router = useRouter();
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
+    const editPost = async (id: number, postData: Omit<BlogPost, 'id' | 'created_at'>) => {
+        setLoading(true);
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                router.push('/login');
+                return;
+            }
+
+            const response = await fetch(`${API_BASE_URL}/blog/posts/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(postData),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.error || 'Failed to update post');
+            }
+
+            router.push('/manage-posts');
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'An error occurred');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { editPost, error, loading };
+};
+
 // Auth Hooks
 export const useAuth = () => {
     const router = useRouter();
