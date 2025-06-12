@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { Publication } from '@/util/publications'
 
 
 interface PublicacionProps {
@@ -14,9 +15,12 @@ interface PublicacionProps {
     year?: string
     amazon?: boolean
     webBuy?: boolean
+    isPreorder?: boolean
+    preorderReleaseDate?: string
+    publication?: Publication
 }
 
-export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webBuy, post}:PublicacionProps ) {
+export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webBuy, post, isPreorder, preorderReleaseDate, publication}:PublicacionProps ) {
     const [isHovered, setIsHovered] = useState(false)
     const router = useRouter()
     return (
@@ -118,7 +122,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 </motion.button>
                             }
                             {
-                            webBuy &&
+                            webBuy || isPreorder &&
                             <motion.button 
                                 className="d-flex align-items-center justify-content-center text-white border-0"
                                 title={`buy-${title?.replace(" ", "-")}`}
@@ -167,7 +171,26 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: 0.4 }}
                             >
-                                <p className="fs-5 mb-0"><span className='publication-year'>{year}</span></p>
+                                <div className="d-flex align-items-center gap-2 mb-2">
+                                    <p className="fs-5 mb-0"><span className='publication-year'>{year}</span></p>
+                                    {isPreorder && (
+                                        <span 
+                                            className="badge px-2 py-1 d-flex align-items-center"
+                                            style={{backgroundColor: '#00cc0080'}}
+                                        >
+                                            Preventa
+                                        </span>
+                                    )}
+                                    {publication?.details?.format?.map((p, i) => (
+                                        <span 
+                                            key={i}
+                                            className="badge px-2 py-1 d-flex align-items-center"
+                                            style={{backgroundColor: '#55B7FF80'}}
+                                        >
+                                            {p}
+                                        </span>
+                                    ))}
+                                </div>
                                 <motion.p 
                                     className="fs-3"
                                     whileHover={{ x: 10 }}
@@ -175,6 +198,21 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 >
                                     {title}
                                 </motion.p>
+                                {isPreorder && preorderReleaseDate && (
+                                    <motion.p 
+                                        className="text-muted fs-6 mb-2"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.4, delay: 0.6 }}
+                                    >
+                                        <i className="ri-calendar-line me-1"></i>
+                                        Fecha de lanzamiento: {new Date(preorderReleaseDate).toLocaleDateString('es-ES', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}
+                                    </motion.p>
+                                )}
                             </motion.div>
                             <motion.p 
                                 className="mb-lg-auto mb-md-4 mb-3"

@@ -30,7 +30,9 @@ export default function Home() {
 								desc2={publication.description[1] || ''}
 								desc3={publication.description[2] || ''}
 								amazon={!!publication.buyingOptions.amazon}
-								webBuy={!!publication.buyingOptions.webBuy}/>
+								webBuy={!!publication.buyingOptions.webBuy}	
+								isPreorder={!!publication.buyingOptions.isPreorder}
+								preorderReleaseDate={publication.buyingOptions.preorderReleaseDate}/>
 							<motion.a 
 								href="/publicaciones" 
 								title="publicaciones"

@@ -6,24 +6,31 @@ export interface Publication {
   year: string;
   coverImage: string;
   description: string[];
+  preview?: string;
   buyingOptions: {
     amazon?: string;
     webBuy?: string;
     paypalButtonId?: string; // PayPal hosted button ID for this publication
+    preorderPaypalButtonId?: string; // PayPal hosted button ID for preorders
     isPhysical?: boolean;
     isEbook?: boolean;
+    isPreorder?: boolean; // Flag to indicate if this is a preorder
+    preorderReleaseDate?: string; // Expected release date for preorders
     prices?: {
       paperback?: {
         amazon?: number;
         web?: number;
+        preorder?: number; 
       };
       hardcover?: {
         amazon?: number;
         web?: number;
+        preorder?: number; 
       };
       ebook?: {
         amazon?: number;
         web?: number;
+        preorder?: number;
       };
     };
     otherStores?: Array<{
@@ -46,14 +53,71 @@ export interface Publication {
     rating?: number;
     source?: string;
   }>;
+  disponibility?: string[];
   featured?: boolean;
   releaseDate?: string;
 }
 
-// Sample publications data - in a real implementation, this would be fetched from an API
 export const publicationsData: Publication[] = [
   {
     id: "1",
+    slug: "huracan",
+    title: "Huracán",
+    year: "2025",
+    coverImage: "/assets/imgs/home-page-3/typical/huracan.webp",
+    description: [
+      "Sven Huracán Falk es un fantasma.",
+      "Uno que deambula entre islas de chatarra que sobrevuelan el núcleo de un planeta sin suelo. Al menos, es el título que le otorgaron después del motín. Atrás quedaron las grandes hazañas a bordo del Halcón, cuando mencionaban su verdadero nombre con respeto y temor, cuando navegaba los cielos.",
+      "Ahora, el viejo capitán cambia historias por licor, fama hueca por comida y puñetazos por insultos en tabernas oxidadas. Pero cuando el equilibrio amenaza con desmoronarse y una reliquia ancestral despierta fuerzas que deberían haber permanecido dormidas, el destino le ofrece una última oportunidad.",
+      "Entre asesinas letales, fanáticas brujas y mecánicos brillantes, Sven deberá enfrentarse a las decisiones que tomó cuando aún era una leyenda. Porque en un mundo donde las familias nobles luchan por el control del cielo, hay traiciones que el tiempo no borra, reliquias que despiertan peligros antiguos, y algunas tormentas que solo un huracán puede superar.",
+      "«Un corsero pertenece a un galeón, y solo a uno» —Artículo VI de la sección II del Código Corsero del Panaéreo",
+      "Para lectores que disfrutan de Joe Abercrombie, Brandon Sanderson y Terry Pratchett."
+    ],
+    preview: '/blog/6',
+    disponibility: [
+      "Estamos ultimando todos los detalles de la edición en papel para ofreceros un producto perfecto. Mientras tanto, podéis realizar una preventa del formato que prefiráis. En cuanto tengamos listos los ejemplares, os los enviaremos a la dirección definida durante el rpoceso de compra.",
+      "El formato electrónico está también disponible en preventa en Amazon.",
+      "Fecha prevista de lanzamiento, 20 de junio de 2025"
+    ],
+    buyingOptions: {
+      amazon: "https://amzn.eu/d/hZ8tllQ",
+      //webBuy: "#",
+      preorderPaypalButtonId: "DEE7Y8R8NFWGN",
+      isPhysical: true,
+      isEbook: true,
+      isPreorder: true,
+      preorderReleaseDate: "2025-06-20",
+      prices: {
+        paperback: {
+          // amazon: 14.90,
+          web: 13.90,
+          preorder: 12.90
+        },
+        hardcover: {
+          // amazon: 20.90,
+          web: 19.90,
+          preorder: 18.90
+        },
+        ebook: {
+          amazon: 5.65
+        }
+      }
+    },
+    details: {
+      isbn: "979-8286701612",
+      pages: 332,
+      publisher: "Ediciones Mario Carballo",
+      language: "Español",
+      format: ["Tapa blanda", "Tapa dura", "Ebook"],
+      genre: ["Ciencia Ficción", "Fantasía", "Aventuras", "Steampunk"]
+    },
+    reviews: [
+    ],
+    featured: true,
+    releaseDate: "2025-06-13"
+  },
+  {
+    id: "2",
     slug: "el-archivo-de-los-olvidados",
     title: "El archivo de los olvidados",
     year: "2025",
@@ -97,7 +161,7 @@ export const publicationsData: Publication[] = [
     releaseDate: "2025-03-06"
   },
   {
-    id: "2",
+    id: "3",
     slug: "al-otro-lado-de-la-esfera",
     title: "Al otro lado de la esfera",
     year: "2020",
@@ -170,4 +234,31 @@ export function getLatestPublications(limit: number = 3): Publication[] {
       return dateB - dateA;
     })
     .slice(0, limit);
+}
+
+// Function to get preorder publications
+export function getPreorderPublications(): Publication[] {
+  return publicationsData.filter(pub => pub.buyingOptions.isPreorder);
+}
+
+// Function to get available publications (not preorders)
+export function getAvailablePublications(): Publication[] {
+  return publicationsData.filter(pub => !pub.buyingOptions.isPreorder);
+}
+
+// Function to check if a publication is available for preorder
+export function isPreorderAvailable(publication: Publication): boolean {
+  return !!(publication.buyingOptions.isPreorder && publication.buyingOptions.preorderPaypalButtonId);
+}
+
+// Function to get preorder release date formatted
+export function getPreorderReleaseDate(publication: Publication): string | null {
+  if (!publication.buyingOptions.preorderReleaseDate) return null;
+  
+  const date = new Date(publication.buyingOptions.preorderReleaseDate);
+  return date.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 }

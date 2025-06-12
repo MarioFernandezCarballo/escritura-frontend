@@ -37,6 +37,9 @@ export default function Publicaciones() {
 									desc3={publication.description[2] || ''}
 									amazon={!!publication.buyingOptions.amazon}
 									webBuy={!!publication.buyingOptions.webBuy}
+									isPreorder={!!publication.buyingOptions.isPreorder}
+									preorderReleaseDate={publication.buyingOptions.preorderReleaseDate}
+									publication={publication}
 								/>
 							))}
 						</div>

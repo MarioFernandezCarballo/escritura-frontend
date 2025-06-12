@@ -14382,6 +14382,9 @@ Table of contents
   .col-xl-4.col-md-12 {
     width: 100%;
   }
+  .buylinks a {
+    font-size: 1rem;
+  }
 }
 @media (max-width: 1024px) {
   
