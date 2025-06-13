@@ -483,6 +483,8 @@ export default function PublicacionDetalle() {
                           </ul>
                           
                           <p className="mb-4">Muchísimas gracias por tu apoyo y confianza.</p>
+
+                          <p className="mb-4">IMPORTANTE: Apple Pay no disponible :(</p>
                           
                           {publication.buyingOptions.preorderPaypalButtonId ? (
                             <div className="container-fluid p-0">
