@@ -483,8 +483,6 @@ export default function PublicacionDetalle() {
                           </ul>
                           
                           <p className="mb-4">Muchísimas gracias por tu apoyo y confianza.</p>
-
-                          <p className="mb-4">IMPORTANTE: Apple Pay no disponible :(</p>
                           
                           {publication.buyingOptions.preorderPaypalButtonId ? (
                             <div className="container-fluid p-0">
@@ -580,7 +578,7 @@ export default function PublicacionDetalle() {
       {publication && (publication.buyingOptions.paypalButtonId || publication.buyingOptions.preorderPaypalButtonId) && (
         <>
           <Script
-            src="https://www.paypal.com/sdk/js?client-id=BAAxigeIQ8ik464fhcM3wmkW5xyDFvdkI4UP9BG5YFhqSvgkkaHHv8zRrHJ4k7tJbTUj_3mWF4L7lzGOks&components=hosted-buttons,applepay,buttons&disable-funding=venmo&currency=EUR" 
+            src="https://www.paypal.com/sdk/js?client-id=BAAxigeIQ8ik464fhcM3wmkW5xyDFvdkI4UP9BG5YFhqSvgkkaHHv8zRrHJ4k7tJbTUj_3mWF4L7lzGOks&components=hosted-buttons,buttons&disable-funding=venmo,applepay&currency=EUR" 
             crossOrigin="anonymous"
             strategy="afterInteractive"
             onLoad={() => {
