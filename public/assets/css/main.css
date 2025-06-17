@@ -14247,6 +14247,12 @@ Table of contents
 #publicaciones a {
   color: var(--mc-light3);
 }
+.publications-link {
+  color: var(--mc-light3);
+}
+.publications-link:hover {
+  color: var(--mc-light4);
+}
 
 .mc-publicacion .card__inner {
   background-color: var(--mc-dark1) !important;
@@ -14334,6 +14340,13 @@ Table of contents
 }
 #resume .award-title {
   color: var(--mc-light4) !important;
+}
+
+#about a {
+  color: var(--mc-light3);
+}
+#abut a:hover {
+  color: var(--mc-light4);
 }
 
 #burgir {

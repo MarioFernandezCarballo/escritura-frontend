@@ -267,7 +267,7 @@ export default function PublicacionDetalle() {
                 {/*Preview */}
                 {publication.preview && 
                 <div className="mb-4">
-                  <p>Puedes leer un adelanto <a href={publication.preview}>aquí</a></p>
+                  <p>Puedes leer un adelanto <a className="publications-link" href={publication.preview}>aquí</a></p>
                 </div>}
 
                 {/* Book Details */}

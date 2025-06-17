@@ -20,6 +20,12 @@ export default function Premios () {
                         <div className="position-relative h-100 align-self-stretch align-items-center">
                             <ul className="list-style-1 d-flex ps-3 flex-column mb-0">
                                 <Award
+                                    title='Ganador del concurso de relatos del Cosmere'
+                                    organization='Puente 4 Podcast'
+                                    date='2025'
+                                    description='Ganador de la segunda edición del concurso de relatos ambientados en el Cosmere, el universo de Brandon Sanderson.'
+                                />
+                                <Award
                                     title='Finalista de El Yunque Literario'
                                     organization='El yunque de Hefesto'
                                     date='2024'

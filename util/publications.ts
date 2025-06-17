@@ -89,7 +89,7 @@ export const publicationsData: Publication[] = [
       preorderReleaseDate: "2025-06-20",
       prices: {
         paperback: {
-          // amazon: 14.90,
+          amazon: 13.90,
           web: 13.90,
           preorder: 12.90
         },
@@ -99,7 +99,7 @@ export const publicationsData: Publication[] = [
           preorder: 18.90
         },
         ebook: {
-          amazon: 5.65
+          amazon: 4.76
         }
       }
     },

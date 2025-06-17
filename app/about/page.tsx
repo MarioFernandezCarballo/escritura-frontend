@@ -38,6 +38,7 @@ export default function BlogDetails() {
                             <p>Este impulso dio vida a “Al otro lado de la esfera” en 2020, mi primera novela. Con sus cosas buenas y no tan buenas, es la primera, la que cala, la que rompe el hielo de una vocación. Como el primer lanzamiento de un Ariane.</p>
                             <p>Hoy, varios manuscritos, relatos y certámenes más tarde, sé que esto es lo que quiero hacer. No busco reinventar la ciencia ficción ni la fantasía. Busco contar las historias que me hubiera gustado leer, explorar ideas que me fascinan y compartir reflexiones sobre lo que nos hace humanos, incluso cuando imaginamos no serlo.</p>
                             <p>Mi viaje como escritor apenas comienza, y me alegra que estés aquí para acompañarme.</p>
+							<p>Puedes leer mi entrevista para Equilibria.es <a href="https://www.equilibria.es/mario-carballo-entrevista/" target="_blank">aquí</a></p>
 						</div> 
 					</div>
 				</div>
