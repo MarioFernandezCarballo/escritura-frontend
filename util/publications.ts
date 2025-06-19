@@ -81,11 +81,10 @@ export const publicationsData: Publication[] = [
     ],
     buyingOptions: {
       amazon: "https://amzn.eu/d/hZ8tllQ",
-      //webBuy: "#",
-      preorderPaypalButtonId: "DEE7Y8R8NFWGN",
+      webBuy: "#",
+      paypalButtonId: "DEE7Y8R8NFWGN",
       isPhysical: true,
       isEbook: true,
-      isPreorder: true,
       preorderReleaseDate: "2025-06-20",
       prices: {
         paperback: {
@@ -94,7 +93,7 @@ export const publicationsData: Publication[] = [
           preorder: 12.90
         },
         hardcover: {
-          // amazon: 20.90,
+          amazon: 19.90,
           web: 19.90,
           preorder: 18.90
         },
