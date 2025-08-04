@@ -97,6 +97,7 @@ function ManagePosts() {
                                     <tr>
                                         <th>Title</th>
                                         <th>Type</th>
+                                        <th>Link</th>
                                         <th>Tags</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -123,6 +124,39 @@ function ManagePosts() {
                                                         Público
                                                     </span>
                                                 )}
+                                            </td>
+                                            <td>
+                                                <div className="d-flex flex-column gap-1">
+                                                    {/* Enlace público siempre disponible */}
+                                                    <button
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        onClick={() => {
+                                                            const url = `${window.location.origin}/blog/${post.id}`;
+                                                            navigator.clipboard.writeText(url);
+                                                            alert('Enlace público copiado');
+                                                        }}
+                                                        title="Copiar enlace público"
+                                                    >
+                                                        <i className="ri-global-line me-1"></i>
+                                                        Público
+                                                    </button>
+                                                    
+                                                    {/* Enlace secreto solo para posts secretos */}
+                                                    {post.is_secret && post.secret_token && (
+                                                        <button
+                                                            className="btn btn-outline-warning btn-sm"
+                                                            onClick={() => {
+                                                                const url = `${window.location.origin}/secret/${post.secret_token}`;
+                                                                navigator.clipboard.writeText(url);
+                                                                alert('Enlace secreto copiado');
+                                                            }}
+                                                            title="Copiar enlace secreto"
+                                                        >
+                                                            <i className="ri-lock-line me-1"></i>
+                                                            Secreto
+                                                        </button>
+                                                    )}
+                                                </div>
                                             </td>
                                             <td>
                                                 <div className="d-flex gap-1 flex-wrap">

@@ -24,6 +24,7 @@ interface BlogPost {
     tags: string[];
     created_at?: string;
     is_secret?: boolean;
+    secret_token?: string;
 }
 
 interface Newsletter {
@@ -163,6 +164,32 @@ export const useSinglePost = (id: string) => {
     };
 
     return { post, loading, error, fetchPost };
+};
+
+export const useSecretPost = (token: string) => {
+    const [post, setPost] = useState<BlogPost | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const fetchSecretPost = async () => {
+        if (!token) return;
+        
+        setLoading(true);
+        try {
+            const response = await fetch(`${API_BASE_URL}/secret/${token}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch secret post');
+            }
+            const data = await response.json();
+            setPost(data);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'An error occurred');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { post, loading, error, fetchSecretPost };
 };
 
 export const useCreatePost = () => {
