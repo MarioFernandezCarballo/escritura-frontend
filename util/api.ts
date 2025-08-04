@@ -23,6 +23,7 @@ interface BlogPost {
     image_url: string;
     tags: string[];
     created_at?: string;
+    is_secret?: boolean;
 }
 
 interface Newsletter {
@@ -101,6 +102,41 @@ export const useBlogPosts = () => {
     };
 
     return { posts, loading, error, fetchPosts };
+};
+
+export const useAllBlogPosts = () => {
+    const router = useRouter();
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const fetchAllPosts = async () => {
+        setLoading(true);
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                router.push('/login');
+                return;
+            }
+
+            const response = await fetch(`${API_BASE_URL}/blog/posts/admin`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch posts');
+            }
+            const data = await response.json();
+            setPosts(data);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'An error occurred');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { posts, loading, error, fetchAllPosts };
 };
 
 export const useSinglePost = (id: string) => {

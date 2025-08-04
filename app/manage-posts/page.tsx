@@ -3,22 +3,22 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from "@/components/layout/Layout";
-import { useBlogPosts, useDeletePost } from '@/util/api';
+import { useAllBlogPosts, useDeletePost } from '@/util/api';
 import { withAuth } from '@/components/auth/withAuth';
 
 function ManagePosts() {
     const router = useRouter();
-    const { posts, loading, error, fetchPosts } = useBlogPosts();
+    const { posts, loading, error, fetchAllPosts } = useAllBlogPosts();
     const { deletePost, loading: deleteLoading } = useDeletePost();
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetchPosts();
+        fetchAllPosts();
     }, []);
 
-    const filteredPosts = posts.filter(post =>
+    const filteredPosts = posts.filter((post: any) =>
         post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        post.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
     const handleEditPost = (id: number) => {
@@ -29,7 +29,7 @@ function ManagePosts() {
         if (window.confirm('¿Estás seguro de que quieres eliminar este post?')) {
             const success = await deletePost(id);
             if (success) {
-                fetchPosts();
+                fetchAllPosts();
             }
         }
     };
@@ -96,6 +96,7 @@ function ManagePosts() {
                                 <thead>
                                     <tr>
                                         <th>Title</th>
+                                        <th>Type</th>
                                         <th>Tags</th>
                                         <th>Created At</th>
                                         <th>Actions</th>
@@ -104,7 +105,25 @@ function ManagePosts() {
                                 <tbody>
                                     {filteredPosts.map((post) => (
                                         <tr key={post.id}>
-                                            <td>{post.title}</td>
+                                            <td>
+                                                {post.title}
+                                                {post.is_secret && (
+                                                    <i className="ri-eye-off-line ms-2 text-warning" title="Post secreto"></i>
+                                                )}
+                                            </td>
+                                            <td>
+                                                {post.is_secret ? (
+                                                    <span className="badge bg-warning text-dark">
+                                                        <i className="ri-lock-line me-1"></i>
+                                                        Secreto
+                                                    </span>
+                                                ) : (
+                                                    <span className="badge bg-success">
+                                                        <i className="ri-global-line me-1"></i>
+                                                        Público
+                                                    </span>
+                                                )}
+                                            </td>
                                             <td>
                                                 <div className="d-flex gap-1 flex-wrap">
                                                     {post.tags.map((tag, index) => (

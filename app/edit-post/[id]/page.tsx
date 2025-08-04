@@ -21,14 +21,16 @@ function EditPost({ params }: { params: { id: string } }) {
       title: post?.title || '',
       content: post?.content || '',
       tags: post?.tags?.join(', ') || '',
-      image_url: post?.image_url || ''
+      image_url: post?.image_url || '',
+      is_secret: post?.is_secret || false
     },
     enableReinitialize: true,
     validationSchema: Yup.object({
       title: Yup.string().required('Title is required'),
       content: Yup.string().required('Content is required'),
       tags: Yup.string(),
-      image_url: Yup.string().url('Must be a valid URL')
+      image_url: Yup.string().url('Must be a valid URL'),
+      is_secret: Yup.boolean()
     }),
     onSubmit: (values) => {
       editPost(parseInt(params.id), {
@@ -161,6 +163,26 @@ function EditPost({ params }: { params: { id: string } }) {
                   {formik.touched.image_url && formik.errors.image_url ? (
                     <div className="text-danger small mt-1">{formik.errors.image_url}</div>
                   ) : null}
+                </div>
+
+                <div className="mb-4">
+                  <div className="form-check">
+                    <input
+                      type="checkbox"
+                      id="is_secret"
+                      name="is_secret"
+                      onChange={formik.handleChange}
+                      checked={formik.values.is_secret}
+                      className="form-check-input"
+                    />
+                    <label htmlFor="is_secret" className="form-check-label">
+                      <i className="ri-lock-line me-2"></i>
+                      Post secreto (solo accesible por link directo)
+                    </label>
+                  </div>
+                  <small className="text-muted">
+                    Los posts secretos no aparecen en la lista pública del blog, pero son accesibles si alguien tiene el enlace directo.
+                  </small>
                 </div>
 
                 <div className="text-end">
