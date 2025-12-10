@@ -61,6 +61,60 @@ export interface Publication {
 export const publicationsData: Publication[] = [
   {
     id: "1",
+    slug: "omnisciens",
+    title: "Omnisciens",
+    year: "2025",
+    coverImage: "/assets/imgs/home-page-3/typical/omnisciens.webp",
+    description: [
+      "La ciudad de Concordia gime bajo el azote de un planeta que nunca la quiso allí.",
+      "La zarandea hasta los cimientos, rompiéndola para llenarla con el aire letal de su atmósfera. Quizás por eso, la humanidad ha olvidado su cometido.",
+      "Allí, una joven desea crear en un mundo donde las ideas están perseguidas, un contrabandista odia ver a su gente explotada por los poderosos y un agente lucha contra su monstruo interior. Los tres buscan un destino diferente al que tienen en un lugar que se resquebraja.",
+      "Y antes de que Omnisciens despierte, cada uno deberá descubrir hasta dónde está dispuesto a traicionarse a sí mismo.",
+      "Omnisciens es una novela de ciencia ficción oscura y poética, donde la tecnología, la fe y la identidad se superponen en una ciudad al borde del colapso. Una historia sobre la libertad de pensar en un mundo diseñado para no hacerlo, y sobre el precio que implica desafiar a los dioses que nosotros mismos hemos creado.",
+      "Si disfrutas de los universos de Dune, Blade Runner o Amanecer Rojo, Adéntrate en Concordia y escucha la historia que reverbera entre sus muros."
+    ],
+    preview: '/blog/7',
+    disponibility: [
+      "Estamos ultimando todos los detalles de la edición en papel para ofreceros un producto perfecto. Mientras tanto, podéis realizar una preventa del formato que prefiráis. En cuanto tengamos listos los ejemplares, os los enviaremos a la dirección definida durante el rpoceso de compra.",
+      "El formato electrónico está también disponible en preventa en Amazon.",
+      "Fecha prevista de lanzamiento, 20 de junio de 2025"
+    ],
+    buyingOptions: {
+      amazon: "https://amzn.eu/d/hZ8tllQ",
+      webBuy: "#",
+      paypalButtonId: "DEE7Y8R8NFWGN",
+      isPhysical: true,
+      isEbook: true,
+      preorderReleaseDate: "2025-12-12",
+      prices: {
+        paperback: {
+          amazon: 14.90,
+          web: 13.90
+        },
+        hardcover: {
+          amazon: 19.90,
+          web: 18.90
+        },
+        ebook: {
+          amazon: 4.91
+        }
+      }
+    },
+    details: {
+      isbn: "979-8271629877",
+      pages: 332,
+      publisher: "Ediciones Mario Carballo",
+      language: "Español",
+      format: ["Tapa blanda", "Tapa dura", "Ebook"],
+      genre: ["Ciencia Ficción", "Fantasía", "Distopía", "Cyberpunk"]
+    },
+    reviews: [
+    ],
+    featured: true,
+    releaseDate: "2025-12-12"
+  },
+  {
+    id: "2",
     slug: "huracan",
     title: "Huracán",
     year: "2025",
@@ -75,9 +129,8 @@ export const publicationsData: Publication[] = [
     ],
     preview: '/blog/6',
     disponibility: [
-      "Estamos ultimando todos los detalles de la edición en papel para ofreceros un producto perfecto. Mientras tanto, podéis realizar una preventa del formato que prefiráis. En cuanto tengamos listos los ejemplares, os los enviaremos a la dirección definida durante el rpoceso de compra.",
       "El formato electrónico está también disponible en preventa en Amazon.",
-      "Fecha prevista de lanzamiento, 20 de junio de 2025"
+      "Fecha de lanzamiento, 20 de junio de 2025"
     ],
     buyingOptions: {
       amazon: "https://amzn.eu/d/hZ8tllQ",
@@ -112,11 +165,11 @@ export const publicationsData: Publication[] = [
     },
     reviews: [
     ],
-    featured: true,
+    featured: false,
     releaseDate: "2025-06-13"
   },
   {
-    id: "2",
+    id: "3",
     slug: "el-archivo-de-los-olvidados",
     title: "El archivo de los olvidados",
     year: "2025",
@@ -160,7 +213,7 @@ export const publicationsData: Publication[] = [
     releaseDate: "2025-03-06"
   },
   {
-    id: "3",
+    id: "4",
     slug: "al-otro-lado-de-la-esfera",
     title: "Al otro lado de la esfera",
     year: "2020",
