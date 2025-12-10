@@ -73,27 +73,23 @@ export const publicationsData: Publication[] = [
       "Omnisciens es una novela de ciencia ficción oscura y poética, donde la tecnología, la fe y la identidad se superponen en una ciudad al borde del colapso. Una historia sobre la libertad de pensar en un mundo diseñado para no hacerlo, y sobre el precio que implica desafiar a los dioses que nosotros mismos hemos creado.",
       "Si disfrutas de los universos de Dune, Blade Runner o Amanecer Rojo, Adéntrate en Concordia y escucha la historia que reverbera entre sus muros."
     ],
-    preview: '/blog/7',
-    disponibility: [
-      "Estamos ultimando todos los detalles de la edición en papel para ofreceros un producto perfecto. Mientras tanto, podéis realizar una preventa del formato que prefiráis. En cuanto tengamos listos los ejemplares, os los enviaremos a la dirección definida durante el rpoceso de compra.",
-      "El formato electrónico está también disponible en preventa en Amazon.",
-      "Fecha prevista de lanzamiento, 20 de junio de 2025"
-    ],
+    preview: '/blog/10',
+    disponibility: [],
     buyingOptions: {
       amazon: "https://amzn.eu/d/hZ8tllQ",
       webBuy: "#",
-      paypalButtonId: "DEE7Y8R8NFWGN",
+      paypalButtonId: "72W6MC38YB6SS",
       isPhysical: true,
       isEbook: true,
       preorderReleaseDate: "2025-12-12",
       prices: {
         paperback: {
           amazon: 14.90,
-          web: 13.90
+          web: 14.90
         },
         hardcover: {
-          amazon: 19.90,
-          web: 18.90
+          amazon: 20.90,
+          web: 20.90
         },
         ebook: {
           amazon: 4.91
@@ -102,7 +98,7 @@ export const publicationsData: Publication[] = [
     },
     details: {
       isbn: "979-8271629877",
-      pages: 332,
+      pages: 402,
       publisher: "Ediciones Mario Carballo",
       language: "Español",
       format: ["Tapa blanda", "Tapa dura", "Ebook"],
