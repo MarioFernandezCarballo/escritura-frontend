@@ -76,7 +76,7 @@ export const publicationsData: Publication[] = [
     preview: '/blog/10',
     disponibility: [],
     buyingOptions: {
-      amazon: "https://amzn.eu/d/hZ8tllQ",
+      amazon: "https://www.amazon.es/dp/B0G6DSD4WG",
       webBuy: "#",
       paypalButtonId: "72W6MC38YB6SS",
       isPhysical: true,
