@@ -20,13 +20,31 @@ export default function Premios () {
                         <div className="position-relative h-100 align-self-stretch align-items-center">
                             <ul className="list-style-1 d-flex ps-3 flex-column mb-0">
                                 <Award
+                                    title='Finalista del concurso de relatos Ediciones Akera'
+                                    organization='Editorial Letras Negras'
+                                    date='2025'
+                                    description='Ganador del certámen de relatos apocalípticos de Ediciones Akera con el relato "Revelación".'
+                                />
+                                <Award
+                                    title='Finalista de El Yunque Literario IV'
+                                    organization='El yunque de Hefesto'
+                                    date='2025'
+                                    description='Finalista de la IV edición con el relato "Nunca estarás solo".'
+                                />
+                                <Award
+                                    title='Autor publicado en Tentacle Pulp'
+                                    organization='Tentacle Pulp'
+                                    date='2025'
+                                    description='El número 52 de Tentacle Pulp podréis encontrar "La gorgona", relato publicado en su app.'
+                                />
+                                <Award
                                     title='Ganador del concurso de relatos del Cosmere'
                                     organization='Puente 4 Podcast'
                                     date='2025'
                                     description='Ganador de la segunda edición del concurso de relatos ambientados en el Cosmere, el universo de Brandon Sanderson.'
                                 />
                                 <Award
-                                    title='Finalista de El Yunque Literario'
+                                    title='Finalista de El Yunque Literario III'
                                     organization='El yunque de Hefesto'
                                     date='2024'
                                     description='Finalista de la III edición con el relato "La bóveda". Este relato es, con toda seguridad, mi pieza literaria más importante hasta el momento. ¿Por qué? Si te lees mis próximas novelas, lo entenderás.'
@@ -35,8 +53,7 @@ export default function Premios () {
                                     title='Ganador Premios Talavera'
                                     organization='Concurso de relatos gran premio de Talavera'
                                     date='2022'
-                                    description='Se trata del mayor torneo de wargames de habla hispana, y sin duda el mayor concurso de relatos sobre Warhammer 40k en español. “El vuelo del poeta” se llevó el primer puesto.
-'
+                                    description='Se trata del mayor torneo de wargames de habla hispana, y sin duda el mayor concurso de relatos sobre Warhammer 40k en español. “El vuelo del poeta” se llevó el primer puesto.'
                                 />
                                 <Award
                                     title='Finalista Wikihammer'
