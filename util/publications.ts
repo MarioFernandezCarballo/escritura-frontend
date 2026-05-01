@@ -75,7 +75,7 @@ export const publicationsData: Publication[] = [
     preview: '/blog/11',
     disponibility: [],
     buyingOptions: {
-      amazon: "", // TODO
+      amazon: "#", // TODO
       webBuy: "#",
       paypalButtonId: "TR8PTW32K32GY",
       isPhysical: true,
