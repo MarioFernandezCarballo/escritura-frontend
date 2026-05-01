@@ -75,13 +75,13 @@ export const publicationsData: Publication[] = [
     preview: '/blog/11',
     disponibility: [],
     buyingOptions: {
-      amazon: "#", // TODO
+      amazon: "", // TODO
       webBuy: "#",
-      paypalButtonId: "TR8PTW32K32GY",
+      preorderPaypalButtonId: "TR8PTW32K32GY",
       isPhysical: true,
       isEbook: true,
       isPreorder: true,
-      preorderReleaseDate: "2026-05-03",
+      preorderReleaseDate: "2026-05-01",
       prices: {
         paperback: {
           preorder: 14.90
