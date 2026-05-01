@@ -61,6 +61,55 @@ export interface Publication {
 export const publicationsData: Publication[] = [
   {
     id: "1",
+    slug: "el-tejido-del-mundo",
+    title: "El tejido del mundo",
+    year: "2026",
+    coverImage: "/assets/imgs/home-page-3/typical/tejido.webp",
+    description: [
+      "El progreso está matando a la tradición.",
+      "Durante siglos, solo los tejedores supieron hablar con la Urdimbre. Hoy, las nuevas industrias han aprendido a mecanizarla, y prometen llevar a todos lo que antes era privilegio de unos pocos.",
+      "Enikka Cornelia ha crecido entre sedas y silencios. Su familia conserva el don del tejido, pero lo ha puesto al servicio de Industrias Valerius a cambio de posición y riqueza. La tradición la obliga a convertirse en una dama ejemplar. La industria le promete avanzar hacia un mundo más justo.",
+      "Para Resheph, la Urdimbre no se mecaniza ni se vende: se escucha, se respeta. Lo que unos llaman progreso, para los suyos es profanación, y él hará lo necesario para salvaguardar lo poco que queda de sus ancestros.",
+      "Dos herederos de un mismo don. Dos ideas de lo que significa ser libre. Y un mundo que avanza sin mirar atrás."
+    ],
+    preview: '/blog/11',
+    disponibility: [],
+    buyingOptions: {
+      amazon: "", // TODO
+      webBuy: "#",
+      paypalButtonId: "TR8PTW32K32GY",
+      isPhysical: true,
+      isEbook: true,
+      preorderReleaseDate: "2026-05-03",
+      prices: {
+        paperback: {
+          amazon: 14.90,
+          web: 14.90
+        },
+        hardcover: {
+          amazon: 20.90,
+          web: 20.90
+        },
+        ebook: {
+          amazon: 4.91
+        }
+      }
+    },
+    details: {
+      isbn: "979-8195119454",
+      pages: 448,
+      publisher: "Ediciones Mario Carballo",
+      language: "Español",
+      format: ["Tapa blanda", "Tapa dura", "Ebook"],
+      genre: ["Ciencia Ficción", "Fantasía", "Victoriana", "Gaslamp"]
+    },
+    reviews: [
+    ],
+    featured: true,
+    releaseDate: "2025-06-05"
+  },
+  {
+    id: "2",
     slug: "omnisciens",
     title: "Omnisciens",
     year: "2025",
@@ -110,7 +159,7 @@ export const publicationsData: Publication[] = [
     releaseDate: "2025-12-12"
   },
   {
-    id: "2",
+    id: "3",
     slug: "huracan",
     title: "Huracán",
     year: "2025",
@@ -124,10 +173,7 @@ export const publicationsData: Publication[] = [
       "Para lectores que disfrutan de Joe Abercrombie, Brandon Sanderson y Terry Pratchett."
     ],
     preview: '/blog/6',
-    disponibility: [
-      "El formato electrónico está también disponible en preventa en Amazon.",
-      "Fecha de lanzamiento, 20 de junio de 2025"
-    ],
+    disponibility: [],
     buyingOptions: {
       amazon: "https://amzn.eu/d/hZ8tllQ",
       webBuy: "#",
@@ -165,7 +211,7 @@ export const publicationsData: Publication[] = [
     releaseDate: "2025-06-13"
   },
   {
-    id: "3",
+    id: "4",
     slug: "el-archivo-de-los-olvidados",
     title: "El archivo de los olvidados",
     year: "2025",
@@ -209,7 +255,7 @@ export const publicationsData: Publication[] = [
     releaseDate: "2025-03-06"
   },
   {
-    id: "4",
+    id: "5",
     slug: "al-otro-lado-de-la-esfera",
     title: "Al otro lado de la esfera",
     year: "2020",
