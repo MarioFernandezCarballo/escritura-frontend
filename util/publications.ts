@@ -80,6 +80,7 @@ export const publicationsData: Publication[] = [
       paypalButtonId: "TR8PTW32K32GY",
       isPhysical: true,
       isEbook: true,
+      isPreorder: true,
       preorderReleaseDate: "2026-05-03",
       prices: {
         paperback: {
