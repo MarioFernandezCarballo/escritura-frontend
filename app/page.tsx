@@ -32,7 +32,7 @@ export default function Home() {
 								amazon={!!publication.buyingOptions.amazon}
 								webBuy={!!publication.buyingOptions.webBuy}	
 								isPreorder={!!publication.buyingOptions.isPreorder}
-								preorderReleaseDate={publication.buyingOptions.preorderReleaseDate}/>
+								releaseDate={publication.releaseDate}/>
 							<motion.a 
 								href="/publicaciones" 
 								title="publicaciones"

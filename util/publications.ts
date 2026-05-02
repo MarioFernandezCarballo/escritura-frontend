@@ -207,7 +207,7 @@ export const publicationsData: Publication[] = [
     ],
     featured: false,
     releaseDate: "2025-06-13"
-  },
+  }/*,
   {
     id: "4",
     slug: "el-archivo-de-los-olvidados",
@@ -290,7 +290,7 @@ export const publicationsData: Publication[] = [
     ],
     featured: true,
     releaseDate: "2020-06-11"
-  }
+  }*/
 ];
 
 // Function to get all publications
