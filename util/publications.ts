@@ -354,3 +354,15 @@ export function getPreorderReleaseDate(publication: Publication): string | null 
     day: 'numeric'
   });
 }
+
+// Function to get preorder release date formatted
+export function getReleaseDate(publication: Publication): string | null {
+  if (!publication.releaseDate) return null;
+  
+  const date = new Date(publication.releaseDate);
+  return date.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}

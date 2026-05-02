@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Script from "next/script"
 import Layout from "@/components/layout/Layout"
 import { motion } from 'framer-motion'
-import { Publication, getPublicationBySlug, isPreorderAvailable, getPreorderReleaseDate } from "@/util/publications"
+import { Publication, getPublicationBySlug, isPreorderAvailable, getPreorderReleaseDate, getReleaseDate } from "@/util/publications"
 
 // Add PayPal type declaration
 declare global {
@@ -460,10 +460,10 @@ export default function PublicacionDetalle() {
                         ></button>
                       </div>
                       <div className="modal-body">
-                        {publication.buyingOptions.preorderReleaseDate && (
+                        {publication.releaseDate && (
                           <div className="alert alert-warning mb-4">
                             <i className="ri-calendar-line me-2"></i>
-                            Fecha prevista de lanzamiento: {getPreorderReleaseDate(publication)}
+                            Fecha prevista de lanzamiento: {getReleaseDate(publication)}
                           </div>
                         )}
                         
