@@ -476,10 +476,11 @@ export default function PublicacionDetalle() {
                           
                           <h6>Ventajas:</h6>
                           <ul>
-                            <li>Precio especial de preventa (más económico que el precio final)</li>
                             <li>Garantizas tu copia desde el primer día</li>
                             <li>Apoyas directamente al autor</li>
                             <li>Recibes el libro tan pronto como esté disponible</li>
+                            <li>Lo recibirás firmado</li>
+                            <li>Obtendrás además una lámina ilustrada por Gar Leyva, el artista que ha diseñado la portada.</li>
                           </ul>
                           
                           <p className="mb-4">Muchísimas gracias por tu apoyo y confianza.</p>
