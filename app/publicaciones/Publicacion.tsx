@@ -17,10 +17,11 @@ interface PublicacionProps {
     webBuy?: boolean
     isPreorder?: boolean
     preorderReleaseDate?: string
+    releaseDate?: string
     publication?: Publication
 }
 
-export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webBuy, post, isPreorder, preorderReleaseDate, publication}:PublicacionProps ) {
+export default function Publicacion({link, img, title, desc1, desc2, desc3, year, amazon, webBuy, post, isPreorder, preorderReleaseDate, releaseDate, publication}:PublicacionProps ) {
     const [isHovered, setIsHovered] = useState(false)
     const router = useRouter()
     return (
@@ -198,7 +199,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                 >
                                     {title}
                                 </motion.p>
-                                {isPreorder && preorderReleaseDate && (
+                                {isPreorder && releaseDate && (
                                     <motion.p 
                                         className="text-muted fs-6 mb-2"
                                         initial={{ opacity: 0 }}
@@ -206,7 +207,7 @@ export default function Publicacion({link, img, title, desc1, desc2, desc3, year
                                         transition={{ duration: 0.4, delay: 0.6 }}
                                     >
                                         <i className="ri-calendar-line me-1"></i>
-                                        Fecha de lanzamiento: {new Date(preorderReleaseDate).toLocaleDateString('es-ES', {
+                                        Fecha de lanzamiento: {new Date(releaseDate).toLocaleDateString('es-ES', {
                                             year: 'numeric',
                                             month: 'long',
                                             day: 'numeric'

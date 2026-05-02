@@ -253,7 +253,7 @@ export default function PublicacionDetalle() {
                 {publication.buyingOptions.isPreorder && publication.buyingOptions.preorderReleaseDate && (
                   <p className="text-muted mb-4">
                     <i className="ri-calendar-line me-1"></i>
-                    Fecha de lanzamiento: {getPreorderReleaseDate(publication)}
+                    Fecha de lanzamiento: {getReleaseDate(publication)}
                   </p>
                 )}
 

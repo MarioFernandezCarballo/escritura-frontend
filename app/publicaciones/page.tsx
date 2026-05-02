@@ -39,6 +39,7 @@ export default function Publicaciones() {
 									webBuy={!!publication.buyingOptions.webBuy}
 									isPreorder={!!publication.buyingOptions.isPreorder}
 									preorderReleaseDate={publication.buyingOptions.preorderReleaseDate}
+									releaseDate={publication.releaseDate}
 									publication={publication}
 								/>
 							))}
